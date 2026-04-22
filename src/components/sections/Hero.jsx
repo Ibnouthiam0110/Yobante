@@ -1,7 +1,7 @@
-// src/components/sections/Hero.jsx (version avec défilement gauche/droite)
+// src/components/sections/Hero.jsx
 import { useState, useEffect } from 'react';
 import deliveryPhone from '../../assets/images/mockeup.png';
-import bgImage from '../../assets/images/image.jpg'; // Changé pour image.png
+import bgImage from '../../assets/images/image.jpg';
 import deliveryPhone2 from '../../assets/images/mockeup2.png';
 
 const AppStoreIcon = () => (
@@ -35,52 +35,52 @@ const Hero = ({ scrollTo }) => {
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
-      bgColor: "white",
+      bgColor: "#ffffff",
       textColor: "#1a3a8f",
       descriptionColor: "#4a5568",
       statColor: "#1a3a8f",
-      badgeBg: "rgba(0, 0, 0, 0.05)",
+      badgeBg: "#f0f0f0",
       badgeTextColor: "#1a3a8f",
-      dotColor: "rgba(26, 58, 143, 0.3)",
+      dotColor: "rgba(0, 0, 0, 0.2)",
       dotActiveColor: "#1a3a8f",
     },
-   // Dans le slide 2 (boutique), supprimez l'overlay
-{
-  id: 2,
-  title: "Découvrez notre boutique en ligne",
-  highlight: "boutique",
-  description: "Achetez des produits sélectionnés en France et faites-les livrer directement à vos proches au Sénégal.",
-  buttonText: "Explorer",
-  buttonLink: "apps",
-  image: deliveryPhone,
-  bgColor: "transparent", // ou laissez vide
-  bgImage: bgImage,
-  textColor: "white",
-  descriptionColor: "rgba(255, 255, 255, 0.9)",
-  statColor: "white",
-  badgeBg: "rgba(0, 0, 0, 0.5)", // fond sombre pour que le badge reste lisible
-  badgeTextColor: "white",
-  dotColor: "rgba(255, 255, 255, 0.5)",
-  dotActiveColor: "#FFC72C",
-  hasOverlay: false, // Ajoutez cette propriété
-}
+    {
+      id: 2,
+      title: "Découvrez notre boutique en ligne",
+      highlight: "boutique",
+      description: "Achetez des produits sélectionnés en France et faites-les livrer directement à vos proches au Sénégal.",
+      buttonText: "Explorer",
+      buttonLink: "apps",
+      image: deliveryPhone,
+      bgImage: bgImage,
+      textColor: "#ffffff",
+      descriptionColor: "rgba(255, 255, 255, 0.9)",
+      statColor: "#ffffff",
+      badgeBg: "rgba(0, 0, 0, 0.4)",
+      badgeTextColor: "#ffffff",
+      dotColor: "rgba(255, 255, 255, 0.4)",
+      dotActiveColor: "#FFC72C",
+    }
   ];
 
   const current = slides[currentSlide];
 
   return (
     <section className="hero">
-      {/* Fond dynamique selon le slide */}
-      <div className="hero-bg" style={{ 
-        background: current.bgColor,
-        backgroundImage: current.bgImage ? `url(${current.bgImage})` : 'none',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}>
+      {/* Fond dynamique SANS aucun trait ni bordure */}
+      <div 
+        className="hero-bg" 
+        style={{ 
+          background: current.bgColor,
+          backgroundImage: current.bgImage ? `url(${current.bgImage})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         {current.bgImage && <div className="hero-overlay"></div>}
       </div>
 
-      {/* Slides avec défilement horizontal */}
       <div className="slides-container">
         <div 
           className="slides-track"
@@ -91,8 +91,7 @@ const Hero = ({ scrollTo }) => {
               <div className="hero-content-wrapper">
                 <div className="hero-container">
                   
-                  {/* Partie gauche - Texte */}
-                  <div className="hero-text" style={{ color: slide.textColor }}>
+                  <div className="hero-text">
                     <div className="hero-badge" style={{ background: slide.badgeBg }}>
                       <span className="badge-dot"></span>
                       <span style={{ color: slide.badgeTextColor }}>Service actif — France → Sénégal</span>
@@ -113,7 +112,6 @@ const Hero = ({ scrollTo }) => {
                       >
                         {slide.buttonText} →
                       </button>
-                      
                     </div>
 
                     <div className="store-buttons">
@@ -157,7 +155,6 @@ const Hero = ({ scrollTo }) => {
                     </div>
                   </div>
 
-                  {/* Partie droite - Image du téléphone */}
                   <div className="hero-image">
                     <div className="image-wrapper">
                       <img src={slide.image} alt="Application mobile" />
@@ -171,7 +168,6 @@ const Hero = ({ scrollTo }) => {
         </div>
       </div>
 
-      {/* Indicateurs */}
       <div className="slide-dots">
         {slides.map((_, index) => (
           <button
@@ -191,17 +187,35 @@ const Hero = ({ scrollTo }) => {
           width: 100%;
           min-height: 100vh;
           overflow: hidden;
+          margin: 0;
+          padding: 0;
+          border: none;
         }
 
-        /* Fond dynamique */
+        /* Fond SANS AUCUN TRAIT ni bordure - CORRECTION IMPORTANTE */
         .hero-bg {
           position: absolute;
           top: 0;
           left: 0;
+          right: 0;
+          bottom: 0;
           width: 100%;
           height: 100%;
           z-index: 0;
           transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0 !important;
+          outline: 0 !important;
+          box-shadow: none !important;
+          background-repeat: no-repeat !important;
+          background-position: center !important;
+          background-size: cover !important;
+        }
+
+        /* Pour le slide blanc (pas d'overlay) */
+        .hero-bg:not([style*="url"]) {
+          background-color: #ffffff;
         }
 
         .hero-overlay {
@@ -210,10 +224,12 @@ const Hero = ({ scrollTo }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(135deg, rgba(26, 58, 143, 0.7) 0%, rgba(26, 58, 143, 0.6) 100%);
+          background: linear-gradient(135deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.25) 100%);
+          margin: 0;
+          padding: 0;
+          border: 0;
         }
 
-        /* Conteneur des slides */
         .slides-container {
           position: relative;
           z-index: 2;
@@ -306,8 +322,8 @@ const Hero = ({ scrollTo }) => {
         }
 
         .btn-primary:hover {
-          background: #e0b000;
           transform: translateY(-2px);
+          opacity: 0.9;
         }
 
         .store-buttons {
@@ -389,19 +405,19 @@ const Hero = ({ scrollTo }) => {
           flex: 1;
           display: flex;
           justify-content: center;
-          align-items: flex-start;
-          margin-top: -170px;
+          align-items:  flex-start;
+          margin-top: -58px;
         }
 
         .image-wrapper {
           position: relative;
-          width: 100%;
-          max-width: 350px;
+          width: 290%;
+          max-width: 520px;
           text-align: center;
         }
 
         .image-wrapper img {
-          width: 150%;
+          width: 100%;
           height: auto;
           filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.2));
         }
@@ -449,7 +465,6 @@ const Hero = ({ scrollTo }) => {
 
           .hero-image {
             order: -1;
-            margin-top: 0;
           }
 
           .image-wrapper {

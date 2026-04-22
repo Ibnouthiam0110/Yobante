@@ -2,9 +2,9 @@
 import { useCallback, memo } from "react";
 
 // Import des images de fond
-import expeditionBg from '../../assets/images/expedition-bg.png';
+import expeditionBg from '../../assets/images/tracking-bg.png';
 import boutiqueBg from '../../assets/images/boutique-bg.png';
-import trackingBg from '../../assets/images/tracking-bg.png';
+import trackingBg from '../../assets/images/expedition-bg.png';
 
 // données séparées (meilleur perf)
 const SERVICES = [
