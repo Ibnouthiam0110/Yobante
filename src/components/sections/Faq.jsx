@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 const faqs = [
-  { q: "Quels objets puis-je envoyer ?", a: "Documents, vêtements, chaussures, produits alimentaires non périssables, appareils électroniques, cosmétiques, jouets. Les produits inflammables et armes sont interdits." },
-  { q: "Comment obtenir un devis ?", a: "Remplissez le formulaire de contact avec le poids estimé. Vous recevrez une réponse sous 24h avec un tarif personnalisé selon votre envoi." },
-  { q: "Quel est le délai de livraison ?", a: "7 à 14 jours ouvrés entre la France et le Sénégal, selon le mode d'expédition choisi et la destination finale." },
+  { q: "Quels objets puis-je envoyer ?", a: "Documents, vêtements, chaussures, produits alimentaires, appareils électroniques et électroménagers, cosmétiques, jouets, produit lessiviel et mobilier. Les produits inflammables et armes sont interdits." },
+  { q: "Comment obtenir un devis ?", a: "Télécharger l'application Yobante et répondez aux informations demandées. Selon la demande de catégorie de votre colis une réponse vous sera apportée de façon immédiate ou sous 24h." },
+  { q: "Quel est le délai de livraison ?", a: "2 à 4 jours ouvrés entre la France et le Sénégal par avion et 5 à 7 semaines par bateau." },
   { q: "Comment suivre mon colis ?", a: "Un numéro de suivi unique vous est communiqué dès l'expédition. Vous pouvez le consulter en temps réel directement sur notre application mobile." },
 ];
 
@@ -123,6 +123,13 @@ const Faq = () => {
 
         .faq-item {
           border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+          transition: background 0.2s ease;
+        }
+
+        /* ✅ Fond jaune au survol de toute la question ✅ */
+        .faq-btn:hover {
+          background: var(--yellow, #FFC72C);
+          border-radius: 12px;
         }
 
         .faq-btn {
@@ -135,6 +142,22 @@ const Faq = () => {
           border: none;
           cursor: pointer;
           text-align: left;
+          transition: background 0.2s ease, border-radius 0.2s ease;
+        }
+
+        /* Changement de couleur du texte au survol */
+        .faq-btn:hover .faq-q {
+          color: var(--blue-dark, #1a2540);
+        }
+
+        .faq-btn:hover .faq-num {
+          color: var(--blue-dark, #1a2540);
+        }
+
+        /* Changement du cercle au survol */
+        .faq-btn:hover .faq-arrow {
+          background: var(--white);
+          border-color: var(--white);
         }
 
         .faq-num {
@@ -143,6 +166,7 @@ const Faq = () => {
           color: #aaa;
           min-width: 24px;
           flex-shrink: 0;
+          transition: color 0.2s ease;
         }
 
         .faq-q {
@@ -156,7 +180,7 @@ const Faq = () => {
 
         .faq-item.open .faq-q,
         .faq-btn:hover .faq-q {
-          color: var(--blue, #185FA5);
+          color: var(--blue-dark, #1a2540);
         }
 
         .faq-arrow {

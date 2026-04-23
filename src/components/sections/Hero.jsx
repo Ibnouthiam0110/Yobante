@@ -1,7 +1,6 @@
 // src/components/sections/Hero.jsx
 import { useState, useEffect } from 'react';
 import deliveryPhone from '../../assets/images/mockeup.png';
-import bgImage from '../../assets/images/image.jpg';
 import deliveryPhone2 from '../../assets/images/mockeup2.png';
 
 const AppStoreIcon = () => (
@@ -29,15 +28,15 @@ const Hero = ({ scrollTo }) => {
   const slides = [
     {
       id: 1,
-      title: "Expédiez vos colis facilement",
+      title: "Expédiez vos colis depuis chez vous !",
       highlight: "Expédiez",
-      description: "La solution simple et rapide pour envoyer vos colis de la France vers le Sénégal. Suivi en temps réel, tarifs transparents.",
+      subtitle: "Fret Aérien • Fret Maritime • Colis GP",
+      description: "",
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
-      bgColor: "#ffffff",
+      bgColor: "#e7db2e",
       textColor: "#1a3a8f",
-      descriptionColor: "#4a5568",
       statColor: "#1a3a8f",
       badgeBg: "#f0f0f0",
       badgeTextColor: "#1a3a8f",
@@ -46,15 +45,14 @@ const Hero = ({ scrollTo }) => {
     },
     {
       id: 2,
-      title: "Découvrez notre boutique en ligne",
-      highlight: "boutique",
-      description: "Achetez des produits sélectionnés en France et faites-les livrer directement à vos proches au Sénégal.",
+      title: "Achetez vos marques préférées à prix discount !",
+      highlight: "Achetez",
+      description: "",
       buttonText: "Explorer",
       buttonLink: "apps",
       image: deliveryPhone,
-      bgImage: bgImage,
+      bgColor: "#2418d1",
       textColor: "#ffffff",
-      descriptionColor: "rgba(255, 255, 255, 0.9)",
       statColor: "#ffffff",
       badgeBg: "rgba(0, 0, 0, 0.4)",
       badgeTextColor: "#ffffff",
@@ -67,7 +65,7 @@ const Hero = ({ scrollTo }) => {
 
   return (
     <section className="hero">
-      {/* Fond dynamique SANS aucun trait ni bordure */}
+      {/* Fond dynamique */}
       <div 
         className="hero-bg" 
         style={{ 
@@ -98,16 +96,33 @@ const Hero = ({ scrollTo }) => {
                     </div>
                     
                     <h1 className="hero-title" style={{ color: slide.textColor }}>
-                      {slide.title.split(slide.highlight)[0]}
-                      <span className="hero-highlight">{slide.highlight}</span>
-                      {slide.title.split(slide.highlight)[1]}
+                      {slide.title}
                     </h1>
                     
-                    <p className="hero-description" style={{ color: slide.descriptionColor }}>{slide.description}</p>
+                    {/* Affichage des moyens d'expédition pour le slide 1 */}
+                    {slide.id === 1 && (
+                      <div className="shipping-methods">
+                        <div className="method-card">
+                          <span className="method-icon">✈️</span>
+                          <span className="method-name">Fret Aérien</span>
+                          <span className="method-desc">Rapide • 2-4 jours</span>
+                        </div>
+                        <div className="method-card">
+                          <span className="method-icon">🚢</span>
+                          <span className="method-name">Fret Maritime</span>
+                          <span className="method-desc">Économique • 5-7 semaines</span>
+                        </div>
+                        <div className="method-card">
+                          <span className="method-icon">📦</span>
+                          <span className="method-name">Colis GP</span>
+                          <span className="method-desc">Standard • 7-14 jours</span>
+                        </div>
+                      </div>
+                    )}
                     
                     <div className="hero-buttons">
                       <button 
-                        className="btn-primary"
+                        className={`btn-primary ${slide.id === 1 ? 'btn-expedition' : ''}`}
                         onClick={() => scrollTo(slide.buttonLink)}
                       >
                         {slide.buttonText} →
@@ -128,7 +143,7 @@ const Hero = ({ scrollTo }) => {
                       </a>
                       <a 
                         href="#" 
-                        className="store-btn googleplay"
+                        className={`store-btn googleplay ${slide.id === 1 ? 'btn-expedition-gp' : ''}`}
                         onClick={() => window.open('https://play.google.com', '_blank')}
                       >
                         <PlayStoreIcon />
@@ -142,15 +157,15 @@ const Hero = ({ scrollTo }) => {
                     <div className="hero-stats">
                       <div className="stat">
                         <span className="stat-number" style={{ color: slide.statColor }}>5k+</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(255,255,255,0.7)' : '#718096' }}>Colis livrés</span>
+                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(13, 9, 233, 0.7)' : '#000005' }}>Colis livrés</span>
                       </div>
                       <div className="stat">
-                        <span className="stat-number" style={{ color: slide.statColor }}>7-14j</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(255,255,255,0.7)' : '#718096' }}>Délai moyen</span>
+                        <span className="stat-number" style={{ color: slide.statColor }}>2-4j</span>
+                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(27, 13, 230, 0.7)' : '#000005' }}>Par avion</span>
                       </div>
                       <div className="stat">
                         <span className="stat-number" style={{ color: slide.statColor }}>24/7</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(255,255,255,0.7)' : '#718096' }}>Support</span>
+                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(11, 15, 221, 0.7)' : '#000005' }}>Support</span>
                       </div>
                     </div>
                   </div>
@@ -192,7 +207,6 @@ const Hero = ({ scrollTo }) => {
           border: none;
         }
 
-        /* Fond SANS AUCUN TRAIT ni bordure - CORRECTION IMPORTANTE */
         .hero-bg {
           position: absolute;
           top: 0;
@@ -211,11 +225,7 @@ const Hero = ({ scrollTo }) => {
           background-repeat: no-repeat !important;
           background-position: center !important;
           background-size: cover !important;
-        }
-
-        /* Pour le slide blanc (pas d'overlay) */
-        .hero-bg:not([style*="url"]) {
-          background-color: #ffffff;
+          
         }
 
         .hero-overlay {
@@ -292,15 +302,46 @@ const Hero = ({ scrollTo }) => {
           margin-bottom: 24px;
         }
 
-        .hero-highlight {
-          color: #FFC72C;
-          display: inline-block;
+        /* Styles pour les moyens d'expédition */
+        .shipping-methods {
+          display: flex;
+          gap: 16px;
+          margin-bottom: 32px;
+          flex-wrap: wrap;
         }
 
-        .hero-description {
-          font-size: 16px;
-          line-height: 1.6;
-          margin-bottom: 32px;
+        .method-card {
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 16px;
+          padding: 12px 16px;
+          text-align: center;
+          min-width: 100px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s;
+        }
+
+        .method-card:hover {
+          transform: translateY(-4px);
+        }
+
+        .method-icon {
+          font-size: 24px;
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        .method-name {
+          font-weight: 700;
+          font-size: 14px;
+          color: #1a3a8f;
+          display: block;
+        }
+
+        .method-desc {
+          font-size: 11px;
+          color: #64748B;
+          display: block;
+          margin-top: 4px;
         }
 
         .hero-buttons {
@@ -309,6 +350,7 @@ const Hero = ({ scrollTo }) => {
           margin-bottom: 24px;
         }
 
+        /* Bouton par défaut (pour la boutique) - reste comme avant */
         .btn-primary {
           background: #FFC72C;
           color: #1a3a8f;
@@ -319,6 +361,12 @@ const Hero = ({ scrollTo }) => {
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s;
+        }
+
+        /* ✅ Bouton spécifique pour le slide Expédition : fond bleu, écriture jaune ✅ */
+        .btn-primary.btn-expedition {
+          background: #1a3a8f;
+          color: #FFC72C;
         }
 
         .btn-primary:hover {
@@ -348,8 +396,24 @@ const Hero = ({ scrollTo }) => {
           background: #000000;
         }
 
+        /* Bouton Google Play par défaut (pour la boutique) - reste comme avant */
         .store-btn.googleplay {
           background: #FFC72C;
+        }
+
+        .store-btn.googleplay .store-text span,
+        .store-btn.googleplay .store-text strong {
+          color: #1a1a1a;
+        }
+
+        /* ✅ Bouton Google Play spécifique pour le slide Expédition : fond bleu, écriture jaune ✅ */
+        .store-btn.googleplay.btn-expedition-gp {
+          background: #1a3a8f;
+        }
+
+        .store-btn.googleplay.btn-expedition-gp .store-text span,
+        .store-btn.googleplay.btn-expedition-gp .store-text strong {
+          color: #FFC72C;
         }
 
         .store-btn:hover {
@@ -376,11 +440,6 @@ const Hero = ({ scrollTo }) => {
           color: white;
         }
 
-        .store-btn.googleplay .store-text span,
-        .store-btn.googleplay .store-text strong {
-          color: #1a1a1a;
-        }
-
         .hero-stats {
           display: flex;
           gap: 48px;
@@ -405,7 +464,7 @@ const Hero = ({ scrollTo }) => {
           flex: 1;
           display: flex;
           justify-content: center;
-          align-items:  flex-start;
+          align-items: flex-start;
           margin-top: -58px;
         }
 
@@ -459,6 +518,10 @@ const Hero = ({ scrollTo }) => {
             text-align: center;
           }
 
+          .shipping-methods {
+            justify-content: center;
+          }
+
           .hero-buttons, .store-buttons, .hero-stats {
             justify-content: center;
           }
@@ -499,6 +562,19 @@ const Hero = ({ scrollTo }) => {
           .hero-stats {
             flex-wrap: wrap;
             gap: 24px;
+          }
+
+          .method-card {
+            min-width: 85px;
+            padding: 8px 12px;
+          }
+
+          .method-name {
+            font-size: 12px;
+          }
+
+          .method-desc {
+            font-size: 9px;
           }
         }
       `}</style>

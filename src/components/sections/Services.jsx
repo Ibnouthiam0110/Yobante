@@ -12,27 +12,30 @@ const SERVICES = [
     id: "expedition",
     title: "Expédition de colis",
     desc: "Envoyez vos colis depuis la France vers le Sénégal avec collecte ou dépôt en point relais.",
-    bgImage: expeditionBg
+    bgImage: expeditionBg,
+    hasYellowBg: true,  // Fond jaune
   },
   {
     id: "boutique",
     title: "Boutique en ligne",
     desc: "Achetez en France et recevez vos produits directement au Sénégal.",
-    bgImage: boutiqueBg
+    bgImage: boutiqueBg,
+    hasYellowBg: false, // Pas de fond jaune
   },
   {
     id: "tracking",
     title: "Suivi des colis",
     desc: "Suivi en temps réel avec notifications à chaque étape.",
-    bgImage: trackingBg
+    bgImage: trackingBg,
+    hasYellowBg: true,  // Fond jaune
   }
 ];
 
 // composant carte isolé (réutilisable + memo)
-const ServiceCard = memo(({ title, desc, bgImage, onClick }) => {
+const ServiceCard = memo(({ title, desc, bgImage, hasYellowBg, onClick }) => {
   return (
     <div 
-      className="service-card"
+      className={`service-card ${hasYellowBg ? 'yellow-bg' : ''}`}
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="service-overlay"></div>
@@ -138,12 +141,39 @@ const Services = ({ scrollTo }) => {
           cursor: pointer;
         }
 
-        .service-card:hover {
+        /* Fond jaune pour certaines cartes (sans cacher l'image) */
+        .service-card.yellow-bg {
+          background-blend-mode: overlay;
+          background-color: #ddb74d;
+        }
+
+        .service-card.yellow-bg .service-overlay {
+          background: linear-gradient(135deg, rgba(255, 199, 44, 0.4) 0%, rgba(255, 199, 44, 0.3) 100%);
+        }
+
+        .service-card.yellow-bg h3 {
+          color: var(--blue);
+        }
+
+        .service-card.yellow-bg p {
+          color: var(--black);
+        }
+
+        .service-card.yellow-bg .service-link {
+          background: var(--white);
+          color: var(--blue-dark);
+        }
+
+        .service-card.yellow-bg .service-link:hover {
+          background: var(--blue-dark);
+          color: var(--white);
+        }
+
+        .service-card:not(.yellow-bg):hover {
           transform: translateY(-8px);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        /* Overlay sombre pour la lisibilité du texte */
         .service-overlay {
           position: absolute;
           top: 0;
@@ -154,7 +184,7 @@ const Services = ({ scrollTo }) => {
           transition: opacity 0.3s ease;
         }
 
-        .service-card:hover .service-overlay {
+        .service-card:not(.yellow-bg):hover .service-overlay {
           background: linear-gradient(135deg, rgba(26, 58, 143, 0.92) 0%, rgba(26, 58, 143, 0.85) 100%);
         }
 
@@ -179,18 +209,17 @@ const Services = ({ scrollTo }) => {
         }
 
         .service-card p {
-          font-size: 14px;
+          font-size: 20px;
           color: rgba(255, 255, 255, 0.9);
           margin-bottom: 24px;
           line-height: 1.6;
           max-width: 260px;
         }
 
-        /* Bouton "En savoir plus" - fond bleu, écriture jaune */
         .service-link {
-          background: var(--blue-dark);
+          background: var(--white);
           border: none;
-          color: var(--yellow);
+          color: var(--blue-dark);
           font-weight: 600;
           font-size: 14px;
           padding: 12px 28px;
@@ -228,7 +257,7 @@ const Services = ({ scrollTo }) => {
           }
 
           .service-card h3 {
-            font-size: 20px;
+            font-size: 50px;
           }
 
           .service-link {

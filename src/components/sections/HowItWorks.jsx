@@ -8,19 +8,14 @@ const STEPS = [
   {
     id: "create",
     num: "01",
-    title: "Créez votre envoi",
+    title: " Enregistré votre colis ",
     desc: "Remplissez les informations de votre colis sur notre site ou via l'application."
   },
-  {
-    id: "drop",
-    num: "02",
-    title: "Déposez ou collecte",
-    desc: "Déposez en point relais ou demandez une collecte à domicile."
-  },
+ 
   {
     id: "pay",
-    num: "03",
-    title: "Payez en ligne",
+    num: "02",
+    title: "Paiement en ligne à la collecte ou au retrait ",
     desc: "Réglez votre expédition directement depuis l'application."
   },
   {

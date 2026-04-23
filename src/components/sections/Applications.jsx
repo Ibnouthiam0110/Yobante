@@ -28,7 +28,6 @@ const Applications = () => {
             <p>L'application dédiée à l'envoi et au suivi de vos colis entre la France et le Sénégal.</p>
             <ul className="app-features">
               <li>✓ Créer et gérer vos expéditions</li>
-              <li>✓ Suivi GPS de vos colis</li>
               <li>✓ Paiement en ligne sécurisé</li>
             </ul>
             <div className="download-buttons">

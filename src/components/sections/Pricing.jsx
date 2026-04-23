@@ -86,10 +86,6 @@ const Pricing = ({ scrollTo }) => {
             Tarification
           </div>
 
-          <h2 className="section-title">
-            Des tarifs clairs,<br />
-            selon ce que vous envoyez.
-          </h2>
         </header>
 
         {/* grid */}
