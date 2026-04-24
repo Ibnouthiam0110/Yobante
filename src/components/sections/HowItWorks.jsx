@@ -20,7 +20,7 @@ const STEPS = [
   },
   {
     id: "deliver",
-    num: "04",
+    num: "03 ",
     title: "Livraison à domicile",
     desc: "Le colis est livré à l'adresse du destinataire au Sénégal."
   }

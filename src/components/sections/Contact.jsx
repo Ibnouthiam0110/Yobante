@@ -13,21 +13,21 @@ const Contact = ({ scrollTo }) => {
               <span className="tag-line"></span>
               Contact
             </div>
-            <h2 className="section-title">Parlons de<br/>votre projet.</h2>
+           
             <p>Notre équipe répond à toutes vos questions et organise vos expéditions dans les meilleurs délais.</p>
           </div>
           <div className="contact-info">
             <div className="contact-item">
               <span>📧</span>
-              <div><span>Email</span><a href="/cdn-cgi/l/email-protection#12717d7c66737167527b6d60636c76673c7460">contact@yobante.com</a></div>
+              <div><span>Email : </span><a href="/cdn-cgi/l/email-protection#12717d7c66737167527b6d60636c76673c7460">contact@yobante.com</a></div>
             </div>
             <div className="contact-item">
               <span>💬</span>
-              <div><span>WhatsApp</span><a href="https://wa.me/33600000000">+33 6 00 00 00 00</a></div>
+              <div><span>WhatsApp : </span><a href="https://wa.me/33600000000">+33 6 00 00 00 00</a></div>
             </div>
             <div className="contact-item">
               <span>⏰</span>
-              <div><span>Disponibilité</span><div>Lundi – Samedi · 8h00 – 20h00</div></div>
+              <div><span>Disponibilité : </span><div>Lundi – Samedi · 8h00 – 20h00</div></div>
             </div>
           </div>
         </div>

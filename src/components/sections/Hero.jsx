@@ -21,7 +21,7 @@ const Hero = ({ scrollTo }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 2);
-    }, 4000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
