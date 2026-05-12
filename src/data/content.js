@@ -12,7 +12,7 @@ export const siteContent = {
   services: [
     { id: "expedition", num: "01", title: "Expédition de colis", description: "Envoyez vos colis depuis la France vers le Sénégal. Collecte à domicile ou dépôt en point relais.", link: "pricing", icon: "package" },
     { id: "boutique", num: "02", title: "Boutique en ligne", description: "Achetez des produits sélectionnés en France et faites-les livrer directement à vos proches.", link: "applications", icon: "shopping" },
-    { id: "tracking", num: "03", title: "Traçabilité", description: "Un numéro de suivi unique par colis. Notifications à chaque étape.", link: "applications", icon: "clock" },
+    { id: "tracking", num: "03", title: "Traçabilité", description: " Notifications à chaque étape.", link: "applications", icon: "clock" },
     { id: "delivery", num: "04", title: "Livraison à domicile", description: "Vos colis sont livrés directement à l'adresse choisie partout au Sénégal.", link: "contact", icon: "truck" },
     { id: "payment", num: "05", title: "Paiement en ligne", description: "Réglez vos expéditions directement depuis l'application.", link: "applications", icon: "credit" },
     { id: "support", num: "06", title: "Assistance", description: "Notre équipe est disponible 7 jours sur 7 sur WhatsApp.", link: "contact", icon: "message" }
@@ -32,7 +32,7 @@ export const siteContent = {
         price: "Tarif fixe", 
         unit: "par envoi", 
         popular: false, 
-        features: ["Documents, courriers, enveloppes", "Poids inférieur à 500g", "Suivi en ligne inclus", "Livraison à domicile"] 
+        features: ["Documents, courriers, enveloppes", "Poids inférieur à 500g",  "Livraison à domicile"] 
       },
       { 
         name: "Colis -10kg", 
@@ -40,7 +40,7 @@ export const siteContent = {
         price: "Devis", 
         unit: "sous 24h", 
         popular: true, 
-        features: ["Jusqu'à 10 kg", "Devis personnalisé rapide", "Paiement via l'application", "Suivi GPS temps réel", "Assurance incluse", "Livraison prioritaire"] 
+        features: ["Jusqu'à 10 kg", "Devis personnalisé rapide", "Paiement via l'application",  "Assurance incluse", "Livraison prioritaire"] 
       },
       { 
         name: "Colis +10kg", 
@@ -55,14 +55,14 @@ export const siteContent = {
   applications: [
     { 
       name: "YOBANTÉ Expédition", 
-      description: "L'application dédiée à l'envoi et au suivi de vos colis entre la France et le Sénégal.", 
-      features: ["Créer et gérer vos expéditions", "Suivi GPS de vos colis", "Paiement en ligne sécurisé", "Notifications à chaque étape"],
+      description: "L'application dédiée à l'envoi de  colis entre la France et le Sénégal.", 
+      features: ["Créer et gérer vos expéditions", "Paiement en ligne sécurisé", "Notifications à chaque étape"],
       icon: "package"
     },
     { 
       name: "YOBANTÉ Boutique", 
       description: "Notre application e-commerce pour acheter des produits sélectionnés en France.", 
-      features: ["Catalogue de produits sélectionnés", "Commandes livrées au Sénégal", "Paiement en ligne sécurisé", "Suivi de vos commandes"],
+      features: ["Catalogue de produits sélectionnés", "Commandes livrées au Sénégal", "Paiement en ligne sécurisé"],
       icon: "shopping"
     }
   ],
@@ -70,7 +70,7 @@ export const siteContent = {
     { q: "Quels objets puis-je envoyer ?", a: "Vous pouvez envoyer des documents, vêtements, chaussures, produits alimentaires non périssables, appareils électroniques, cosmétiques, jouets, médicaments (avec ordonnance). Les produits inflammables, armes, et périssables sont interdits." },
     { q: "Comment obtenir un devis pour mon colis ?", a: "Pour les colis (moins de 10 kg ou plus de 10 kg), remplissez le formulaire de contact en indiquant le poids estimé et la nature des objets. Nous vous répondons sous 24 heures avec un tarif personnalisé." },
     { q: "Quel est le délai de livraison ?", a: "Le délai standard est de 7 à 14 jours ouvrés depuis la France vers le Sénégal. Les délais peuvent varier selon les douanes et la destination exacte." },
-    { q: "Comment suivre mon colis ?", a: "Dès la prise en charge, vous recevez un numéro de suivi unique (format YBT-AAAA-XXXXXX). Utilisez-le directement depuis l'application YOBANTÉ Expédition." },
+    { q: "Comment suivre mon colis ?", a: "Dès la prise en charge. Utilisez-le directement depuis l'application YOBANTÉ Expédition." },
     { q: "Le paiement en ligne est-il sécurisé ?", a: "Oui, le paiement est entièrement sécurisé via notre application. Nous utilisons des protocoles de chiffrement standard pour protéger vos données bancaires." }
   ],
   contact: {

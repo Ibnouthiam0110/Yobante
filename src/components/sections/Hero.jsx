@@ -18,12 +18,7 @@ const PlayStoreIcon = () => (
 const Hero = ({ scrollTo }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 2);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+  // Défilement automatique désactivé
 
   const slides = [
     {
@@ -35,7 +30,7 @@ const Hero = ({ scrollTo }) => {
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
-      bgColor: "#e7db2e",
+      bgColor: "#faf066",
       textColor: "#1a3a8f",
       statColor: "#1a3a8f",
       badgeBg: "#f0f0f0",
@@ -77,6 +72,26 @@ const Hero = ({ scrollTo }) => {
         }}
       >
         {current.bgImage && <div className="hero-overlay"></div>}
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="hero-tabs">
+        <div className="tabs-wrapper">
+          <button
+            className={`tab-btn ${currentSlide === 0 ? 'tab-active' : 'tab-inactive'}`}
+            onClick={() => setCurrentSlide(0)}
+          >
+            <span className="tab-icon">📦</span>
+            Yobante Expédition
+          </button>
+          <button
+            className={`tab-btn ${currentSlide === 1 ? 'tab-active' : 'tab-inactive'}`}
+            onClick={() => setCurrentSlide(1)}
+          >
+            <span className="tab-icon">🛍️</span>
+            Yobante Boutique
+          </button>
+        </div>
       </div>
 
       <div className="slides-container">
@@ -225,7 +240,6 @@ const Hero = ({ scrollTo }) => {
           background-repeat: no-repeat !important;
           background-position: center !important;
           background-size: cover !important;
-          
         }
 
         .hero-overlay {
@@ -239,6 +253,67 @@ const Hero = ({ scrollTo }) => {
           padding: 0;
           border: 0;
         }
+
+        /* ===== TAB NAVIGATION ===== */
+        .hero-tabs {
+          position: absolute;
+          top: 70px;
+          left: 0;
+          right: 0;
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+        }
+
+        .tabs-wrapper {
+          display: flex;
+          align-items: flex-end;
+          gap: 0;
+          background: rgba(0, 0, 0, 0.15);
+          backdrop-filter: blur(12px);
+          border-radius: 14px 14px 0 0;
+          padding: 6px 6px 0 6px;
+          gap: 4px;
+        }
+
+        .tab-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 24px 12px;
+          border: none;
+          border-radius: 10px 10px 0 0;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          white-space: nowrap;
+          position: relative;
+          bottom: 0;
+        }
+
+        .tab-btn.tab-active {
+          background: #ffffff;
+          color: #1a3a8f;
+          box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+          padding-bottom: 16px;
+          margin-bottom: -2px;
+        }
+
+        .tab-btn.tab-inactive {
+          background: rgba(255, 255, 255, 0.15);
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tab-btn.tab-inactive:hover {
+          background: rgba(255, 255, 255, 0.28);
+          color: #ffffff;
+        }
+
+        .tab-icon {
+          font-size: 16px;
+        }
+        /* ===== END TAB NAVIGATION ===== */
 
         .slides-container {
           position: relative;
@@ -465,7 +540,7 @@ const Hero = ({ scrollTo }) => {
           display: flex;
           justify-content: center;
           align-items: flex-start;
-          margin-top: -58px;
+          margin-top: 60px;
         }
 
         .image-wrapper {
@@ -575,6 +650,16 @@ const Hero = ({ scrollTo }) => {
 
           .method-desc {
             font-size: 9px;
+          }
+
+          .tab-btn {
+            font-size: 12px;
+            padding: 8px 16px 10px;
+            gap: 6px;
+          }
+
+          .tab-icon {
+            font-size: 14px;
           }
         }
       `}</style>

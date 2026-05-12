@@ -32,7 +32,7 @@ const Contact = ({ scrollTo }) => {
           </div>
         </div>
         <form className="contact-form" onSubmit={handleSubmit}>
-          <h3>Envoyer un message</h3>
+          <h3>Avez-vous une question ?</h3>
           <p>Réponse garantie sous 24 heures.</p>
           <div className="form-row">
             <input type="text" placeholder="Prénom" required />
@@ -41,10 +41,10 @@ const Contact = ({ scrollTo }) => {
           <input type="email" placeholder="Email" required />
           <select>
             <option>Sélectionner un sujet</option>
+            <option>Autres</option>
             <option>Demande de devis - Colis -10kg</option>
             <option>Demande de devis - Colis +10kg</option>
             <option>Envoi de documents</option>
-            <option>Suivi de colis</option>
             <option>Boutique en ligne</option>
           </select>
           <textarea placeholder="Décrivez votre demande (poids estimé, nature des objets...)" rows="4"></textarea>

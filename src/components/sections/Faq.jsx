@@ -4,7 +4,7 @@ const faqs = [
   { q: "Quels objets puis-je envoyer ?", a: "Documents, vêtements, chaussures, produits alimentaires, appareils électroniques et électroménagers, cosmétiques, jouets, produit lessiviel et mobilier. Les produits inflammables et armes sont interdits." },
   { q: "Comment obtenir un devis ?", a: "Télécharger l'application Yobante et répondez aux informations demandées. Selon la demande de catégorie de votre colis une réponse vous sera apportée de façon immédiate ou sous 24h." },
   { q: "Quel est le délai de livraison ?", a: "2 à 4 jours ouvrés entre la France et le Sénégal par avion et 5 à 7 semaines par bateau." },
-  { q: "Comment suivre mon colis ?", a: "Un numéro de suivi unique vous est communiqué dès l'expédition. Vous pouvez le consulter en temps réel directement sur notre application mobile." },
+  { q: "Comment suivre mon colis ?", a: "Un numéro de  unique vous est communiqué dès l'expédition. Vous pouvez le consulter en temps réel directement sur notre application mobile." },
 ];
 
 const PlusIcon = ({ open }) => (
@@ -43,8 +43,8 @@ const Faq = () => {
         </div>
 
         <h2 className="faq-title">
-          Vos questions,<br />
-          <em>nos réponses.</em>
+          Vos questions, <em>nos réponses.</em><br />  
+
         </h2>
 
         <div className="faq-list">

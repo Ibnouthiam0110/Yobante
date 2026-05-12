@@ -7,8 +7,6 @@ import WhatsAppFloat from './components/layout/WhatsAppFloat';
 import Hero from './components/sections/Hero';
 import TrustBar from './components/sections/TrustBar';
 import Services from './components/sections/Services';
-import HowItWorks from './components/sections/HowItWorks';
-import Pricing from './components/sections/Pricing';
 import Applications from './components/sections/Applications';
 import Faq from './components/sections/Faq';
 import Contact from './components/sections/Contact';
@@ -36,8 +34,6 @@ function App() {
       <Hero scrollTo={scrollTo} />
       <TrustBar />
       <Services scrollTo={scrollTo} />
-      <HowItWorks />
-      <Pricing scrollTo={scrollTo} />
       <Applications />
       <Faq />
       <Contact scrollTo={scrollTo} />

@@ -25,7 +25,7 @@ const Applications = () => {
               />
             </div>
             <h3>YOBANTÉ Expédition</h3>
-            <p>L'application dédiée à l'envoi et au suivi de vos colis entre la France et le Sénégal.</p>
+            <p>L'application dédiée à l'envoi  entre la France et le Sénégal.</p>
             <ul className="app-features">
               <li>✓ Créer et gérer vos expéditions</li>
               <li>✓ Paiement en ligne sécurisé</li>
