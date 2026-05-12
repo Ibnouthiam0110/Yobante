@@ -1,10 +1,23 @@
+// src/components/sections/Faq.jsx
 import { useState } from 'react';
 
 const faqs = [
-  { q: "Quels objets puis-je envoyer ?", a: "Documents, vêtements, chaussures, produits alimentaires, appareils électroniques et électroménagers, cosmétiques, jouets, produit lessiviel et mobilier. Les produits inflammables et armes sont interdits." },
-  { q: "Comment obtenir un devis ?", a: "Télécharger l'application Yobante et répondez aux informations demandées. Selon la demande de catégorie de votre colis une réponse vous sera apportée de façon immédiate ou sous 24h." },
-  { q: "Quel est le délai de livraison ?", a: "2 à 4 jours ouvrés entre la France et le Sénégal par avion et 5 à 7 semaines par bateau." },
-  { q: "Comment suivre mon colis ?", a: "Un numéro de  unique vous est communiqué dès l'expédition. Vous pouvez le consulter en temps réel directement sur notre application mobile." },
+  { 
+    q: "Quels objets puis-je envoyer ?", 
+    a: "Documents, vêtements, chaussures, produits alimentaires, appareils électroniques et électroménagers, cosmétiques, jouets, produit lessiviel et mobilier. Les produits inflammables et armes sont strictement interdits." 
+  },
+  { 
+    q: "Comment obtenir un devis ?", 
+    a: "Téléchargez l'application Yobante et saisissez les informations de votre colis. Selon la catégorie, une réponse vous sera apportée immédiatement ou sous 24h par notre équipe commerciale." 
+  },
+  { 
+    q: "Quel est le délai de livraison ?", 
+    a: "Comptez 2 à 4 jours ouvrés entre la France et le Sénégal par fret aérien, et environ 5 à 7 semaines pour les envois par fret maritime (bateau)." 
+  },
+  { 
+    q: "Comment suivre mon colis ?", 
+    a: "Un numéro de suivi unique vous est communiqué dès l'expédition. Vous pouvez consulter le statut de votre colis en temps réel directement via l'onglet suivi de notre application mobile." 
+  },
 ];
 
 const PlusIcon = ({ open }) => (
@@ -21,8 +34,8 @@ const PlusIcon = ({ open }) => (
   >
     <path
       d="M7 1v12M1 7h12"
-      stroke={open ? '#fff' : 'currentColor'}
-      strokeWidth="1.5"
+      stroke={open ? '#ffffff' : 'currentColor'}
+      strokeWidth="2"
       strokeLinecap="round"
     />
   </svg>
@@ -43,8 +56,7 @@ const Faq = () => {
         </div>
 
         <h2 className="faq-title">
-          Vos questions, <em>nos réponses.</em><br />  
-
+          Vos questions, <em>nos réponses.</em>
         </h2>
 
         <div className="faq-list">
@@ -66,7 +78,10 @@ const Faq = () => {
 
                 <div
                   className="faq-body"
-                  style={{ maxHeight: open ? 300 : 0 }}
+                  style={{ 
+                    maxHeight: open ? '200px' : '0',
+                    opacity: open ? 1 : 0 
+                  }}
                 >
                   <p className="faq-body-inner">{faq.a}</p>
                 </div>
@@ -77,10 +92,15 @@ const Faq = () => {
       </div>
 
       <style jsx>{`
+        .section {
+          padding: 80px 0;
+          background: #ffffff;
+        }
+
         .faq-container {
-          max-width: 780px;
+          max-width: 850px;
           margin: 0 auto;
-          padding: 80px 24px;
+          padding: 0 24px;
         }
 
         .faq-tag {
@@ -88,132 +108,122 @@ const Faq = () => {
           align-items: center;
           gap: 8px;
           font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.08em;
+          font-weight: 700;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: var(--blue, #185FA5);
-          margin-bottom: 12px;
+          color: #1a3a8f;
+          margin-bottom: 16px;
         }
 
         .faq-tag-dot {
-          display: block;
-          width: 6px;
-          height: 6px;
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
-          background: var(--blue, #185FA5);
+          background: #faf066;
         }
 
         .faq-title {
-          font-size: clamp(26px, 4vw, 36px);
-          font-weight: 700;
-          color: var(--blue-dark, #1a2540);
+          font-size: clamp(28px, 5vw, 42px);
+          font-weight: 800;
+          color: #1a3a8f;
           line-height: 1.2;
           margin: 0 0 48px;
         }
 
         .faq-title em {
           font-style: normal;
-          color: var(--blue, #185FA5);
+          color: #185FA5;
         }
 
         .faq-list {
           display: flex;
           flex-direction: column;
+          gap: 8px;
         }
 
         .faq-item {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-          transition: background 0.2s ease;
-        }
-
-        /* ✅ Fond jaune au survol de toute la question ✅ */
-        .faq-btn:hover {
-          background: var(--yellow, #FFC72C);
-          border-radius: 12px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
         }
 
         .faq-btn {
           width: 100%;
           display: flex;
           align-items: center;
-          gap: 16px;
-          padding: 22px 4px;
-          background: none;
+          gap: 20px;
+          padding: 24px 15px;
+          background: transparent;
           border: none;
           cursor: pointer;
           text-align: left;
-          transition: background 0.2s ease, border-radius 0.2s ease;
+          transition: all 0.2s ease;
+          border-radius: 12px;
         }
 
-        /* Changement de couleur du texte au survol */
-        .faq-btn:hover .faq-q {
-          color: var(--blue-dark, #1a2540);
-        }
-
-        .faq-btn:hover .faq-num {
-          color: var(--blue-dark, #1a2540);
-        }
-
-        /* Changement du cercle au survol */
-        .faq-btn:hover .faq-arrow {
-          background: var(--white);
-          border-color: var(--white);
+        .faq-btn:hover {
+          background: #faf066;
         }
 
         .faq-num {
-          font-size: 12px;
-          font-weight: 600;
-          color: #aaa;
-          min-width: 24px;
-          flex-shrink: 0;
+          font-size: 14px;
+          font-weight: 700;
+          color: #94a3b8;
+          min-width: 30px;
           transition: color 0.2s ease;
         }
 
         .faq-q {
           flex: 1;
-          font-size: 16px;
-          font-weight: 600;
-          color: var(--blue-dark, #1a2540);
+          font-size: 17px;
+          font-weight: 700;
+          color: #1a3a8f;
           line-height: 1.4;
           transition: color 0.2s ease;
         }
 
-        .faq-item.open .faq-q,
-        .faq-btn:hover .faq-q {
-          color: var(--blue-dark, #1a2540);
-        }
-
         .faq-arrow {
-          width: 30px;
-          height: 30px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
-          border: 1px solid rgba(0, 0, 0, 0.12);
+          border: 1px solid rgba(0, 0, 0, 0.1);
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-shrink: 0;
-          color: var(--blue-dark, #1a2540);
-          background: #f5f5f5;
-          transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+          background: #ffffff;
+          transition: all 0.3s ease;
+          color: #1a3a8f;
         }
 
         .faq-arrow.open {
-          background: var(--blue, #185FA5);
-          border-color: var(--blue, #185FA5);
-          color: #fff;
+          background: #1a3a8f;
+          border-color: #1a3a8f;
+          color: #ffffff;
+        }
+
+        .faq-btn:hover .faq-arrow {
+          border-color: #ffffff;
         }
 
         .faq-body {
           overflow: hidden;
-          transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .faq-body-inner {
           margin: 0;
-          padding: 0 4px 22px 40px;
+          padding: 0 40px 24px 65px;
           font-size: 15px;
-          line-height: 1.7;
-          color: #666;
+          line-height: 1.6;
+          color: #475569;
+        }
+
+        @media (max-width: 640px) {
+          .faq-body-inner {
+            padding: 0 15px 20px 50px;
+          }
+          .faq-btn {
+            gap: 12px;
+          }
         }
       `}</style>
     </section>

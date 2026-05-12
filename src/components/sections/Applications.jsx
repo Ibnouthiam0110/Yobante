@@ -13,6 +13,7 @@ const Applications = () => {
           </div>
           <h2 className="section-title">Deux applications,<br/>deux usages distincts.</h2>
         </div>
+
         <div className="apps-grid">
           
           {/* Carte 1 - YOBANTÉ Expédition */}
@@ -25,10 +26,11 @@ const Applications = () => {
               />
             </div>
             <h3>YOBANTÉ Expédition</h3>
-            <p>L'application dédiée à l'envoi  entre la France et le Sénégal.</p>
+            <p>L'application dédiée à l'envoi de colis et à la gestion logistique entre la France et le Sénégal.</p>
             <ul className="app-features">
-              <li>✓ Créer et gérer vos expéditions</li>
-              <li>✓ Paiement en ligne sécurisé</li>
+              <li>Créer et gérer vos expéditions</li>
+              <li>Suivi en temps réel de vos colis</li>
+              <li>Paiement en ligne sécurisé</li>
             </ul>
             <div className="download-buttons">
               <button className="download-btn ios" onClick={() => window.open('https://apps.apple.com', '_blank')}>
@@ -50,11 +52,11 @@ const Applications = () => {
               />
             </div>
             <h3>YOBANTÉ Boutique</h3>
-            <p>Notre application e-commerce pour acheter des produits sélectionnés en France.</p>
+            <p>Notre plateforme e-commerce pour shopper vos marques préférées et vous faire livrer au pays.</p>
             <ul className="app-features">
-              <li>✓ Catalogue de produits variés</li>
-              <li>✓ Commandes livrées au Sénégal</li>
-              <li>✓ Paiement sécurisé</li>
+              <li>Catalogue de produits variés</li>
+              <li>Commandes livrées au Sénégal</li>
+              <li>Promotions et prix discount</li>
             </ul>
             <div className="download-buttons">
               <button className="download-btn ios" onClick={() => window.open('https://apps.apple.com', '_blank')}>
@@ -75,183 +77,186 @@ const Applications = () => {
         }
         
         .alt {
-          background: var(--gray-light);
+          background: #f8fafc; /* Remplacement de var par une couleur stable si besoin */
         }
         
         .container {
-          max-width: 1280px;
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 0 32px;
+          padding: 0 24px;
         }
         
         .section-header {
           text-align: center;
-          margin-bottom: 64px;
+          margin-bottom: 60px;
         }
         
         .section-badge {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 12px;
           margin-bottom: 16px;
+          color: #1a3a8f;
+          font-size: 14px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
         }
         
         .tag-line {
           width: 30px;
           height: 2px;
-          background: var(--yellow);
-        }
-        
-        .section-badge {
-          color: var(--blue-dark);
-          font-size: 13px;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 2px;
+          background: #faf066;
         }
         
         .section-title {
-          font-size: clamp(32px, 4vw, 48px);
+          font-size: clamp(28px, 4vw, 42px);
           line-height: 1.2;
-          color: var(--blue-dark);
-          margin-bottom: 16px;
+          color: #1a3a8f;
+          font-weight: 800;
         }
         
         .apps-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
         }
         
         .app-card {
-          background: var(--white);
-          border-radius: 24px;
-          padding: 40px;
+          background: #ffffff;
+          border-radius: 28px;
+          padding: 48px 40px;
           text-align: center;
-          box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-          border: 1px solid var(--gray);
-          transition: all 0.3s;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         
         .app-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
-          border-color: var(--yellow);
+          transform: translateY(-10px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          border-color: #faf066;
         }
         
-        /* ✅ PAS DE CERCLE - JUSTE LE LOGO ✅ */
         .app-logo-container {
-          margin: 0 auto 24px;
+          margin-bottom: 32px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
         }
         
         .app-logo {
-          width: 290px;
-          height: 90px;
+          width: 100%;
+          max-width: 240px;
+          height: 80px;
           object-fit: contain;
         }
         
         .app-card h3 {
           font-size: 24px;
-          margin-bottom: 12px;
-          color: var(--blue-dark);
+          margin-bottom: 16px;
+          color: #1a3a8f;
+          font-weight: 700;
         }
         
         .app-card p {
-          color: var(--text-light);
+          color: #64748b;
           margin-bottom: 24px;
           line-height: 1.6;
+          font-size: 15px;
         }
         
         .app-features {
           list-style: none;
+          padding: 0;
           text-align: left;
-          max-width: 280px;
+          width: 100%;
+          max-width: 300px;
           margin: 0 auto 32px;
         }
         
         .app-features li {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           font-size: 14px;
-          color: var(--text-light);
+          color: #475569;
           margin-bottom: 12px;
         }
         
         .app-features li::before {
           content: "✓";
-          color: var(--blue);
-          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          background: rgba(26, 58, 143, 0.1);
+          color: #1a3a8f;
+          border-radius: 50%;
+          font-size: 12px;
+          font-weight: 900;
+          flex-shrink: 0;
         }
         
         .download-buttons {
           display: flex;
-          gap: 16px;
-          justify-content: center;
+          gap: 12px;
+          width: 100%;
+          margin-top: auto;
         }
         
         .download-btn {
-          padding: 12px 24px;
-          border-radius: 40px;
-          font-weight: 600;
+          flex: 1;
+          padding: 14px 20px;
+          border-radius: 14px;
+          font-weight: 700;
+          font-size: 14px;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all 0.3s;
           border: none;
+          white-space: nowrap;
         }
         
         .download-btn.ios {
-          background: var(--blue-dark);
-          color: white;
-        }
-        
-        .download-btn.ios:hover {
-          background: var(--blue);
-          transform: translateY(-2px);
+          background: #1a1a1a;
+          color: #ffffff;
         }
         
         .download-btn.android {
-          background: var(--yellow);
-          color: var(--blue-dark);
+          background: #faf066;
+          color: #1a3a8f;
         }
         
-        .download-btn.android:hover {
-          background: var(--yellow-dark);
-          transform: translateY(-2px);
+        .download-btn:hover {
+          transform: translateY(-3px);
+          filter: brightness(1.1);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
-        @media (max-width: 768px) {
-          .section {
-            padding: 56px 0;
-          }
-          
-          .container {
-            padding: 0 20px;
-          }
-          
+        @media (max-width: 968px) {
           .apps-grid {
             grid-template-columns: 1fr;
-            gap: 32px;
+            gap: 24px;
           }
-          
           .app-card {
-            padding: 32px 24px;
+            padding: 40px 24px;
           }
-          
-          .app-logo {
-            width: 290px;
-            height: 90px;
+        }
+
+        @media (max-width: 480px) {
+          .section {
+            padding: 60px 0;
           }
-          
-          .app-card h3 {
-            font-size: 20px;
-          }
-          
           .download-buttons {
             flex-direction: column;
           }
-          
-          .download-btn {
-            width: 100%;
+          .app-logo {
+            max-width: 200px;
+            height: 60px;
           }
         }
       `}</style>

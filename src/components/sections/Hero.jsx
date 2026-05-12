@@ -1,5 +1,5 @@
 // src/components/sections/Hero.jsx
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import deliveryPhone from '../../assets/images/mockeup.png';
 import deliveryPhone2 from '../../assets/images/mockeup2.png';
 
@@ -18,15 +18,11 @@ const PlayStoreIcon = () => (
 const Hero = ({ scrollTo }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Défilement automatique désactivé
-
   const slides = [
     {
       id: 1,
       title: "Expédiez vos colis depuis chez vous !",
-      highlight: "Expédiez",
       subtitle: "Fret Aérien • Fret Maritime • Colis GP",
-      description: "",
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
@@ -41,8 +37,6 @@ const Hero = ({ scrollTo }) => {
     {
       id: 2,
       title: "Achetez vos marques préférées à prix discount !",
-      highlight: "Achetez",
-      description: "",
       buttonText: "Explorer",
       buttonLink: "apps",
       image: deliveryPhone,
@@ -52,7 +46,7 @@ const Hero = ({ scrollTo }) => {
       badgeBg: "rgba(0, 0, 0, 0.4)",
       badgeTextColor: "#ffffff",
       dotColor: "rgba(255, 255, 255, 0.4)",
-      dotActiveColor: "#FFC72C",
+      dotActiveColor: "#faf066",
     }
   ];
 
@@ -60,21 +54,13 @@ const Hero = ({ scrollTo }) => {
 
   return (
     <section className="hero">
-      {/* Fond dynamique */}
+      {/* Background Layer */}
       <div 
         className="hero-bg" 
-        style={{ 
-          background: current.bgColor,
-          backgroundImage: current.bgImage ? `url(${current.bgImage})` : 'none',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-        }}
-      >
-        {current.bgImage && <div className="hero-overlay"></div>}
-      </div>
+        style={{ background: current.bgColor }}
+      />
 
-      {/* Tab Navigation */}
+      {/* Tabs Navigation */}
       <div className="hero-tabs">
         <div className="tabs-wrapper">
           <button
@@ -82,14 +68,14 @@ const Hero = ({ scrollTo }) => {
             onClick={() => setCurrentSlide(0)}
           >
             <span className="tab-icon">📦</span>
-            Yobante Expédition
+            <span className="tab-label">Yobante Expédition</span>
           </button>
           <button
             className={`tab-btn ${currentSlide === 1 ? 'tab-active' : 'tab-inactive'}`}
             onClick={() => setCurrentSlide(1)}
           >
             <span className="tab-icon">🛍️</span>
-            Yobante Boutique
+            <span className="tab-label">Yobante Boutique</span>
           </button>
         </div>
       </div>
@@ -114,23 +100,22 @@ const Hero = ({ scrollTo }) => {
                       {slide.title}
                     </h1>
                     
-                    {/* Affichage des moyens d'expédition pour le slide 1 */}
                     {slide.id === 1 && (
                       <div className="shipping-methods">
                         <div className="method-card">
                           <span className="method-icon">✈️</span>
                           <span className="method-name">Fret Aérien</span>
-                          <span className="method-desc">Rapide • 2-4 jours</span>
+                          <span className="method-desc">Rapide • 2-4 j</span>
                         </div>
                         <div className="method-card">
                           <span className="method-icon">🚢</span>
                           <span className="method-name">Fret Maritime</span>
-                          <span className="method-desc">Économique • 5-7 semaines</span>
+                          <span className="method-desc">Éco • 5-7 sem</span>
                         </div>
                         <div className="method-card">
                           <span className="method-icon">📦</span>
                           <span className="method-name">Colis GP</span>
-                          <span className="method-desc">Standard • 7-14 jours</span>
+                          <span className="method-desc">Std • 7-14 j</span>
                         </div>
                       </div>
                     )}
@@ -145,22 +130,14 @@ const Hero = ({ scrollTo }) => {
                     </div>
 
                     <div className="store-buttons">
-                      <a 
-                        href="#" 
-                        className="store-btn appstore"
-                        onClick={() => window.open('https://apps.apple.com', '_blank')}
-                      >
+                      <a href="#" className="store-btn appstore" onClick={(e) => { e.preventDefault(); window.open('https://apps.apple.com', '_blank'); }}>
                         <AppStoreIcon />
                         <div className="store-text">
                           <span>Télécharger sur l'</span>
                           <strong>App Store</strong>
                         </div>
                       </a>
-                      <a 
-                        href="#" 
-                        className={`store-btn googleplay ${slide.id === 1 ? 'btn-expedition-gp' : ''}`}
-                        onClick={() => window.open('https://play.google.com', '_blank')}
-                      >
+                      <a href="#" className={`store-btn googleplay ${slide.id === 1 ? 'btn-expedition-gp' : ''}`} onClick={(e) => { e.preventDefault(); window.open('https://play.google.com', '_blank'); }}>
                         <PlayStoreIcon />
                         <div className="store-text">
                           <span>Disponible sur</span>
@@ -172,15 +149,15 @@ const Hero = ({ scrollTo }) => {
                     <div className="hero-stats">
                       <div className="stat">
                         <span className="stat-number" style={{ color: slide.statColor }}>5k+</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(13, 9, 233, 0.7)' : '#000005' }}>Colis livrés</span>
+                        <span className="stat-label">Colis livrés</span>
                       </div>
                       <div className="stat">
                         <span className="stat-number" style={{ color: slide.statColor }}>2-4j</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(27, 13, 230, 0.7)' : '#000005' }}>Par avion</span>
+                        <span className="stat-label">Par avion</span>
                       </div>
                       <div className="stat">
                         <span className="stat-number" style={{ color: slide.statColor }}>24/7</span>
-                        <span className="stat-label" style={{ color: slide.badgeTextColor === 'white' ? 'rgba(11, 15, 221, 0.7)' : '#000005' }}>Support</span>
+                        <span className="stat-label">Support</span>
                       </div>
                     </div>
                   </div>
@@ -216,63 +193,37 @@ const Hero = ({ scrollTo }) => {
           position: relative;
           width: 100%;
           min-height: 100vh;
+          min-height: 100dvh;
           overflow: hidden;
-          margin: 0;
-          padding: 0;
-          border: none;
+          display: flex;
+          flex-direction: column;
         }
 
         .hero-bg {
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          height: 100%;
+          inset: 0;
           z-index: 0;
-          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          margin: 0 !important;
-          padding: 0 !important;
-          border: 0 !important;
-          outline: 0 !important;
-          box-shadow: none !important;
-          background-repeat: no-repeat !important;
-          background-position: center !important;
-          background-size: cover !important;
+          transition: background 0.6s ease;
         }
 
-        .hero-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(135deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.25) 100%);
-          margin: 0;
-          padding: 0;
-          border: 0;
-        }
-
-        /* ===== TAB NAVIGATION ===== */
+        /* ===== TABS ===== */
         .hero-tabs {
           position: absolute;
-          top: 70px;
+          top: 80px;
           left: 0;
           right: 0;
           z-index: 10;
           display: flex;
           justify-content: center;
+          padding: 0 20px;
         }
 
         .tabs-wrapper {
           display: flex;
-          align-items: flex-end;
-          gap: 0;
-          background: rgba(0, 0, 0, 0.15);
+          background: rgba(0, 0, 0, 0.1);
           backdrop-filter: blur(12px);
-          border-radius: 14px 14px 0 0;
-          padding: 6px 6px 0 6px;
+          border-radius: 16px;
+          padding: 4px;
           gap: 4px;
         }
 
@@ -280,62 +231,51 @@ const Hero = ({ scrollTo }) => {
           display: flex;
           align-items: center;
           gap: 8px;
-          padding: 10px 24px 12px;
+          padding: 10px 20px;
           border: none;
-          border-radius: 10px 10px 0 0;
+          border-radius: 12px;
           font-size: 14px;
           font-weight: 600;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.3s ease;
           white-space: nowrap;
-          position: relative;
-          bottom: 0;
         }
 
-        .tab-btn.tab-active {
+        .tab-active {
           background: #ffffff;
           color: #1a3a8f;
-          box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
-          padding-bottom: 16px;
-          margin-bottom: -2px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .tab-btn.tab-inactive {
-          background: rgba(255, 255, 255, 0.15);
-          color: rgba(255, 255, 255, 0.85);
+        .tab-inactive {
+          background: transparent;
+          color: rgba(255, 255, 255, 0.9);
         }
 
-        .tab-btn.tab-inactive:hover {
-          background: rgba(255, 255, 255, 0.28);
-          color: #ffffff;
-        }
-
-        .tab-icon {
-          font-size: 16px;
-        }
-        /* ===== END TAB NAVIGATION ===== */
-
+        /* ===== SLIDER ===== */
         .slides-container {
-          position: relative;
+          flex: 1;
+          display: flex;
+          align-items: center;
           z-index: 2;
-          width: 100%;
-          overflow: hidden;
         }
 
         .slides-track {
           display: flex;
-          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           width: 100%;
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slide {
           flex: 0 0 100%;
           width: 100%;
+          display: flex;
+          justify-content: center;
         }
 
         .hero-content-wrapper {
           width: 100%;
-          padding: 120px 0 80px;
+          padding: 140px 0 80px;
         }
 
         .hero-container {
@@ -345,22 +285,25 @@ const Hero = ({ scrollTo }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 60px;
+          gap: 40px;
         }
 
+        /* ===== TEXT CONTENT ===== */
         .hero-text {
           flex: 1;
           max-width: 550px;
+          text-align: left;
         }
 
         .hero-badge {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
-          backdrop-filter: blur(10px);
-          padding: 8px 20px;
+          gap: 8px;
+          padding: 6px 16px;
           border-radius: 100px;
-          margin-bottom: 28px;
+          margin-bottom: 24px;
+          font-size: 13px;
+          font-weight: 500;
         }
 
         .badge-dot {
@@ -368,299 +311,137 @@ const Hero = ({ scrollTo }) => {
           height: 8px;
           background: #10b981;
           border-radius: 50%;
+          box-shadow: 0 0 8px #10b981;
         }
 
         .hero-title {
-          font-size: clamp(36px, 5vw, 56px);
-          font-weight: 700;
-          line-height: 1.2;
+          font-size: clamp(32px, 5vw, 56px);
+          font-weight: 800;
+          line-height: 1.1;
           margin-bottom: 24px;
         }
 
-        /* Styles pour les moyens d'expédition */
+        /* ===== SHIPPING CARDS ===== */
         .shipping-methods {
-          display: flex;
-          gap: 16px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 12px;
           margin-bottom: 32px;
-          flex-wrap: wrap;
         }
 
         .method-card {
-          background: rgba(255, 255, 255, 0.9);
-          border-radius: 16px;
-          padding: 12px 16px;
+          background: white;
+          padding: 12px;
+          border-radius: 12px;
           text-align: center;
-          min-width: 100px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .method-card:hover {
-          transform: translateY(-4px);
-        }
+        .method-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+        .method-name { font-weight: 700; font-size: 13px; color: #1a3a8f; display: block; }
+        .method-desc { font-size: 10px; color: #64748b; }
 
-        .method-icon {
-          font-size: 24px;
-          display: block;
-          margin-bottom: 6px;
-        }
+        /* ===== BUTTONS ===== */
+        .hero-buttons { margin-bottom: 24px; }
 
-        .method-name {
-          font-weight: 700;
-          font-size: 14px;
-          color: #1a3a8f;
-          display: block;
-        }
-
-        .method-desc {
-          font-size: 11px;
-          color: #64748B;
-          display: block;
-          margin-top: 4px;
-        }
-
-        .hero-buttons {
-          display: flex;
-          gap: 16px;
-          margin-bottom: 24px;
-        }
-
-        /* Bouton par défaut (pour la boutique) - reste comme avant */
         .btn-primary {
-          background: #FFC72C;
+          background: #faf066;
           color: #1a3a8f;
           border: none;
-          padding: 12px 28px;
+          padding: 14px 32px;
           border-radius: 50px;
-          font-size: 14px;
-          font-weight: 600;
+          font-weight: 700;
           cursor: pointer;
-          transition: all 0.3s;
+          transition: transform 0.2s;
         }
 
-        /* ✅ Bouton spécifique pour le slide Expédition : fond bleu, écriture jaune ✅ */
-        .btn-primary.btn-expedition {
-          background: #1a3a8f;
-          color: #FFC72C;
-        }
+        .btn-expedition { background: #1a3a8f; color: #faf066; }
 
-        .btn-primary:hover {
-          transform: translateY(-2px);
-          opacity: 0.9;
-        }
-
-        .store-buttons {
-          display: flex;
-          gap: 16px;
-          margin-bottom: 40px;
-          flex-wrap: wrap;
-        }
-
+        .store-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
         .store-btn {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 10px 20px;
-          border-radius: 12px;
+          padding: 8px 16px;
+          border-radius: 10px;
           text-decoration: none;
-          transition: all 0.3s;
-          cursor: pointer;
+          min-width: 160px;
         }
 
-        .store-btn.appstore {
-          background: #000000;
-        }
+        .appstore { background: #000; color: white; }
+        .googleplay { background: #faf066; color: #1a3a8f; }
+        .googleplay.btn-expedition-gp { background: #1a3a8f; color: #faf066; }
 
-        /* Bouton Google Play par défaut (pour la boutique) - reste comme avant */
-        .store-btn.googleplay {
-          background: #FFC72C;
-        }
+        .store-text span { font-size: 9px; display: block; opacity: 0.8; }
+        .store-text strong { font-size: 14px; display: block; }
 
-        .store-btn.googleplay .store-text span,
-        .store-btn.googleplay .store-text strong {
-          color: #1a1a1a;
-        }
+        /* ===== STATS ===== */
+        .hero-stats { display: flex; gap: 32px; }
+        .stat-number { font-size: 24px; font-weight: 800; display: block; }
+        .stat-label { font-size: 12px; opacity: 0.7; color: inherit; }
 
-        /* ✅ Bouton Google Play spécifique pour le slide Expédition : fond bleu, écriture jaune ✅ */
-        .store-btn.googleplay.btn-expedition-gp {
-          background: #1a3a8f;
-        }
-
-        .store-btn.googleplay.btn-expedition-gp .store-text span,
-        .store-btn.googleplay.btn-expedition-gp .store-text strong {
-          color: #FFC72C;
-        }
-
-        .store-btn:hover {
-          transform: translateY(-2px);
-        }
-
-        .store-text {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .store-text span {
-          font-size: 9px;
-          opacity: 0.8;
-        }
-
-        .store-text strong {
-          font-size: 13px;
-          font-weight: 700;
-        }
-
-        .store-btn.appstore .store-text span,
-        .store-btn.appstore .store-text strong {
-          color: white;
-        }
-
-        .hero-stats {
-          display: flex;
-          gap: 48px;
-        }
-
-        .stat {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .stat-number {
-          font-size: 28px;
-          font-weight: 700;
-        }
-
-        .stat-label {
-          font-size: 13px;
-          margin-top: 4px;
-        }
-
+        /* ===== IMAGE ===== */
         .hero-image {
           flex: 1;
           display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          margin-top: 60px;
+          justify-content: flex-end;
         }
 
         .image-wrapper {
-          position: relative;
-          width: 290%;
-          max-width: 520px;
-          text-align: center;
+          width: 100%;
+          max-width: 450px;
         }
 
         .image-wrapper img {
           width: 100%;
           height: auto;
-          filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));
         }
 
         .slide-dots {
           position: absolute;
-          bottom: 30px;
-          left: 0;
-          right: 0;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
           display: flex;
-          justify-content: center;
-          gap: 12px;
-          z-index: 10;
+          gap: 8px;
         }
 
         .dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
           border: none;
-          cursor: pointer;
           transition: all 0.3s;
+          cursor: pointer;
         }
 
-        .dot.active {
-          width: 30px;
-          border-radius: 5px;
-        }
+        .dot.active { width: 24px; }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 968px) {
           .hero-container {
             flex-direction: column;
             text-align: center;
-            gap: 40px;
+            padding-top: 40px;
           }
-
-          .hero-text {
-            max-width: 100%;
-            text-align: center;
-          }
-
-          .shipping-methods {
-            justify-content: center;
-          }
-
-          .hero-buttons, .store-buttons, .hero-stats {
-            justify-content: center;
-          }
-
-          .hero-image {
-            order: -1;
-          }
-
-          .image-wrapper {
-            max-width: 280px;
-          }
+          .hero-text { text-align: center; max-width: 100%; order: 2; }
+          .hero-image { order: 1; justify-content: center; }
+          .image-wrapper { max-width: 250px; }
+          .hero-badge, .hero-buttons, .store-buttons, .hero-stats { justify-content: center; }
+          .shipping-methods { max-width: 400px; margin: 0 auto 32px; }
         }
 
-        @media (max-width: 768px) {
-          .hero-content-wrapper {
-            padding: 100px 0 60px;
-          }
-
-          .hero-container {
-            padding: 0 20px;
-          }
-
-          .hero-title {
-            font-size: 32px;
-          }
-
-          .hero-buttons, .store-buttons {
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .btn-primary, .store-btn {
-            width: 100%;
-            max-width: 220px;
-            justify-content: center;
-          }
-
+        @media (max-width: 480px) {
           .hero-stats {
-            flex-wrap: wrap;
-            gap: 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
           }
-
-          .method-card {
-            min-width: 85px;
-            padding: 8px 12px;
-          }
-
-          .method-name {
-            font-size: 12px;
-          }
-
-          .method-desc {
-            font-size: 9px;
-          }
-
-          .tab-btn {
-            font-size: 12px;
-            padding: 8px 16px 10px;
-            gap: 6px;
-          }
-
-          .tab-icon {
-            font-size: 14px;
-          }
+          .tab-label { display: none; } /* On ne garde que l'icône sur mini écrans */
+          .tab-btn { padding: 10px 15px; }
+          .shipping-methods { grid-template-columns: 1fr; }
+          .store-btn { width: 100%; }
         }
       `}</style>
     </section>

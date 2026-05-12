@@ -13,8 +13,8 @@ const STEPS = [
   {
     id: "pay",
     num: "02",
-    title: "Paiement en ligne à la collecte ou au retrait",
-    desc: "Réglez votre expédition directement depuis l'application."
+    title: "Paiement en ligne",
+    desc: "Réglez votre expédition en toute sécurité directement depuis l'application."
   },
   {
     id: "deliver",
@@ -41,7 +41,7 @@ const PRICING_PLANS = [
     name: "Colis -10kg",
     price: "Devis sous 24h",
     desc: "Vêtements, chaussures, électronique légère, matériel informatique, produits lessiviels, etc...",
-    features: ["Jusqu'à 10 kg"],
+    features: ["Jus'qu'à 10 kg"],
     button: "Obtenir un devis",
     type: "popular"
   },
@@ -58,18 +58,30 @@ const PRICING_PLANS = [
 ];
 
 const BOUTIQUE_STEPS = [
-  { num: "01", title: "Choisissez vos articles", desc: "Parcourez notre boutique et ajoutez vos articles au panier." },
-  { num: "02", title: "Passez commande", desc: "Payez en ligne en toute sécurité depuis l'application." },
-  { num: "03", title: "Recevez chez vous", desc: "Vos articles sont livrés directement à votre adresse au Sénégal." }
+  { 
+    num: "01", 
+    title: "Choisissez vos articles", 
+    desc: "Parcourez notre catalogue et sélectionnez vos produits préférés." 
+  },
+  { 
+    num: "02", 
+    title: "Commandez en ligne", 
+    desc: "Payez en toute sécurité via l'application mobile." 
+  },
+  { 
+    num: "03", 
+    title: "Livraison rapide", 
+    desc: "Recevez vos articles directement chez vous au Sénégal." 
+  }
 ];
 
 const CATEGORIES = [
-  { icon: "👕", label: "Mode" },
+  { icon: "👕", label: "Mode & Textile" },
   { icon: "📱", label: "Électronique" },
-  { icon: "🏠", label: "Maison" },
-  { icon: "💄", label: "Beauté" },
+  { icon: "💄", label: "Beauté & Soins" },
+  { icon: "🏠", label: "Maison & Déco" },
   { icon: "👟", label: "Chaussures" },
-  { icon: "🎮", label: "Jeux & Loisirs" },
+  { icon: "📦", label: "Vente en gros" },
 ];
 
 const Services = ({ scrollTo }) => {
@@ -81,7 +93,7 @@ const Services = ({ scrollTo }) => {
     <section id="services" className="section">
       <div className="container">
 
-        {/* header */}
+        {/* HEADER */}
         <div className="section-header">
           <div className="section-tag">
             <span className="tag-line"></span>
@@ -90,118 +102,99 @@ const Services = ({ scrollTo }) => {
           <h2 className="section-title">Des solutions adaptées à vos besoins</h2>
         </div>
 
-        {/* ===== CARTE EXPÉDITION : 2/3 jaune + 1/3 blanc ===== */}
-        <div className="service-card-wrapper">
-          {/* Gauche 2/3 : jaune */}
-          <div className="card-left yellow">
+        {/* ===== CARTE EXPÉDITION (JAUNE & BLANC) ===== */}
+        <div className="service-card-wrapper shadow-lg">
+          <div className="card-left yellow-main">
             <div className="card-title-row">
-              <div className="card-icon-circle blue-circle">
+              <div className="card-icon-circle blue-bg">
                 <span>📦</span>
               </div>
               <h3 className="card-main-title blue-text">Expédiez votre colis</h3>
             </div>
 
-            {/* Comment ça marche */}
+            {/* Comment ça marche Expédition */}
             <div className="inner-section">
-              <div className="inner-tag">
-                <span className="inner-tag-line"></span>
-                Comment ça marche
+              <div className="inner-tag blue-text">
+                <span className="inner-tag-line blue-bg"></span>
+                COMMENT ÇA MARCHE
               </div>
-              <p className="inner-subtitle blue-text">Expédier un colis en 3 étapes simples.</p>
-
               <div className="steps-row">
                 {STEPS.map((step, i) => (
                   <div key={step.id} className="step-wrapper">
                     <div className="step-card white-card">
-                      <div className="step-num">{step.num}</div>
+                      <div className="step-num blue-bg">{step.num}</div>
                       <p className="step-title blue-text">{step.title}</p>
                       <p className="step-desc">{step.desc}</p>
                     </div>
-                    {i < STEPS.length - 1 && (
-                      <div className="step-arrow blue-text">→</div>
-                    )}
+                    {i < STEPS.length - 1 && <div className="step-arrow blue-text">→</div>}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Tarification */}
-            <div className="inner-section">
-              <div className="inner-tag">
-                <span className="inner-tag-line"></span>
-                Tarification
+            {/* Tarification (Basé sur l'image) */}
+            <div className="inner-section" style={{ marginTop: '20px' }}>
+              <div className="inner-tag blue-text">
+                <span className="inner-tag-line blue-bg"></span>
+                TARIFICATION
               </div>
-
               <div className="pricing-row">
                 {PRICING_PLANS.map((plan) => (
-                  <div
-                    key={plan.id}
-                    className={`pricing-card white-card ${plan.type === "popular" ? "popular-card" : ""}`}
-                  >
-                    {plan.type === "popular" && (
-                      <span className="popular-badge">Populaire</span>
-                    )}
-                    <div className="plan-icon">{plan.icon}</div>
-                    <p className="plan-name blue-text">{plan.name}</p>
-                    <p className="plan-price">{plan.price}</p>
-                    <p className="plan-desc">{plan.desc}</p>
-                    {plan.features.map((f, i) => (
-                      <p key={i} className="plan-feature">{f}</p>
-                    ))}
-                    <button className="plan-btn" onClick={handleClick}>
-                      {plan.button}
-                    </button>
+                  <div key={plan.id} className={`pricing-card ${plan.type === "popular" ? "popular-card" : "white-card"}`}>
+                    {plan.type === "popular" && <span className="popular-badge">Populaire</span>}
+                    <div className="plan-icon-container">{plan.icon}</div>
+                    <h4 className="plan-name blue-text">{plan.name}</h4>
+                    <p className="plan-price-label">{plan.price}</p>
+                    <div className="plan-details-box">
+                       <p className="plan-desc">{plan.desc}</p>
+                       {plan.features.map((f, i) => (
+                         <p key={i} className="plan-feature">{f}</p>
+                       ))}
+                    </div>
+                    <button className="plan-btn" onClick={handleClick}>{plan.button}</button>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Droite 1/3 : blanc */}
-          <div className="card-right white">
-            <div className="text-card expedition-card">
-              <h4 className="text-card-title"></h4>
-              <p className="text-card-desc">
-                Envoyez vos colis depuis la France vers le Sénégal (vice-versa) avec collecte ou dépôt en point relais.
-              </p>
-              <button className="text-card-btn" onClick={handleClick}>En savoir plus →</button>
+          <div className="card-right white-bg promo-side">
+            <div className="promo-box expedition-gradient">
+              <p className="promo-desc">Envoyez vos colis depuis la France vers le Sénégal avec collecte à domicile ou dépôt en point relais.</p>
+              <button className="promo-btn" onClick={handleClick}>En savoir plus →</button>
             </div>
           </div>
         </div>
 
-        {/* ===== CARTE BOUTIQUE : 1/3 blanc gauche + 2/3 bleu droite ===== */}
-        <div className="service-card-wrapper boutique-wrapper" style={{ marginTop: "100px" }}>
-
-          {/* Gauche 1/3 : blanc */}
-          <div className="card-right white boutique-left">
-            <div className="text-card boutique-card">
-              <h4 className="text-card-title boutique-card-title"></h4>
-              <p className="text-card-desc boutique-card-desc">
-                Achetez en France ou au Sénégal et recevez vos produits authentiques à prix discount. Vente en détail &amp; vente en gros.
+        {/* ===== CARTE BOUTIQUE (BLANC & BLEU) ===== */}
+        <div className="service-card-wrapper boutique-wrapper" style={{ marginTop: "60px" }}>
+          <div className="card-right white-bg promo-side">
+            <div className="promo-box boutique-gradient">
+              <p className="promo-desc dark-blue">
+                Achetez en France ou au Sénégal et recevez vos produits authentiques à prix discount. 
+                <br /><strong>Vente au détail & vente en gros.</strong>
               </p>
-              <button className="text-card-btn boutique-card-btn" onClick={() => scrollTo("apps")}>Explorer →</button>
+              <button className="promo-btn dark-blue-btn" onClick={() => scrollTo("apps")}>Explorer →</button>
             </div>
           </div>
 
-          {/* Droite 2/3 : bleu */}
           <div className="card-left blue-dark-bg">
             <div className="card-title-row">
-              <div className="card-icon-circle yellow-circle">
+              <div className="card-icon-circle yellow-bg">
                 <span>🛍️</span>
               </div>
               <h3 className="card-main-title white-text">Boutique en ligne</h3>
             </div>
 
-            {/* Catégories */}
+            {/* Catégories Boutique */}
             <div className="inner-section">
-              <div className="inner-tag white-tag">
-                <span className="inner-tag-line yellow-line"></span>
-                Nos catégories
+              <div className="inner-tag white-text">
+                <span className="inner-tag-line yellow-bg"></span>
+                NOS CATÉGORIES
               </div>
-
               <div className="categories-grid">
                 {CATEGORIES.map((cat, i) => (
-                  <div key={i} className="category-card">
+                  <div key={i} className="category-pill">
                     <span className="cat-icon">{cat.icon}</span>
                     <span className="cat-label">{cat.label}</span>
                   </div>
@@ -209,475 +202,115 @@ const Services = ({ scrollTo }) => {
               </div>
             </div>
 
-            {/* Comment ça marche boutique */}
+            {/* Comment ça marche Boutique */}
             <div className="inner-section">
-              <div className="inner-tag white-tag">
-                <span className="inner-tag-line yellow-line"></span>
-                Comment ça marche
+              <div className="inner-tag white-text">
+                <span className="inner-tag-line yellow-bg"></span>
+                COMMENT ACHETER ?
               </div>
-
               <div className="steps-row">
-                {BOUTIQUE_STEPS.map((step, i, arr) => (
+                {BOUTIQUE_STEPS.map((step, i) => (
                   <div key={i} className="step-wrapper">
-                    <div className="step-card dark-card">
-                      <div className="step-num yellow-num">{step.num}</div>
+                    <div className="step-card glass-card">
+                      <div className="step-num yellow-bg dark-blue">{step.num}</div>
                       <p className="step-title white-text">{step.title}</p>
-                      <p className="step-desc light-text">{step.desc}</p>
+                      <p className="step-desc light-blue-text">{step.desc}</p>
                     </div>
-                    {i < arr.length - 1 && (
-                      <div className="step-arrow yellow-text">→</div>
-                    )}
+                    {i < BOUTIQUE_STEPS.length - 1 && <div className="step-arrow yellow-text">→</div>}
                   </div>
                 ))}
               </div>
             </div>
-
-            <button className="boutique-btn" onClick={() => scrollTo("apps")}>
-              Explorer la boutique →
-            </button>
           </div>
         </div>
-
       </div>
 
       <style jsx>{`
-        .section {
-          padding: 80px 0;
-          background: var(--white);
-        }
+        .section { padding: 80px 0; background: #fafafa; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #1a3a8f; }
+        .tag-line { width: 30px; height: 2px; background: #faf066; }
+        .section-title { font-size: clamp(26px, 4vw, 40px); color: #1a3a8f; font-weight: 800; }
 
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 24px;
-        }
+        /* Wrappers */
+        .service-card-wrapper { display: grid; grid-template-columns: 2.2fr 1fr; border-radius: 30px; overflow: hidden; background: white; }
+        .boutique-wrapper { grid-template-columns: 1fr 2.2fr; }
+        .shadow-lg { box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
 
-        .section-header {
-          text-align: center;
-          margin-bottom: 48px;
-        }
-
-        .section-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          margin-bottom: 12px;
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          color: var(--blue-dark);
-        }
-
-        .tag-line {
-          width: 24px;
-          height: 2px;
-          background: var(--yellow);
-        }
-
-        .section-title {
-          font-size: clamp(28px, 4vw, 42px);
-          color: var(--blue-dark);
-          line-height: 1.3;
-        }
-
-        /* ===== WRAPPER ===== */
-        .service-card-wrapper {
-          display: grid;
-          grid-template-columns: 2fr 1fr;
-          border-radius: 24px;
-          overflow: hidden;
-          border: 1px solid #e5e7eb;
-        }
-
-        .boutique-wrapper {
-          grid-template-columns: 1fr 2fr;
-        }
-
-        /* ===== GAUCHE ===== */
-        .card-left {
-          padding: 2rem;
-          display: flex;
-          flex-direction: column;
-          gap: 28px;
-        }
-
-        .yellow { background: #faf066; }
+        .card-left { padding: 40px; display: flex; flex-direction: column; gap: 35px; }
+        .card-right { padding: 40px; display: flex; align-items: center; justify-content: center; }
+        .yellow-main { background: #faf066; }
         .blue-dark-bg { background: #1a3a8f; }
+        .white-bg { background: #ffffff; }
 
-        /* ===== DROITE ===== */
-        .card-right {
-          padding: 2.5rem 2rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          gap: 16px;
-          border-left: 1px solid #e5e7eb;
-        }
-
-        .white { background: #ffffff; }
-
-        .boutique-left {
-          border-left: none;
-          border-right: 1px solid #e5e7eb;
-        }
-
-        /* ===== TITLE ROW ===== */
-        .card-title-row {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-        }
-
-        .card-icon-circle {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          flex-shrink: 0;
-        }
-
-        .blue-circle { background: #1a3a8f; }
-        .yellow-circle { background: #faf066; }
-
-        .card-main-title {
-          font-size: 22px;
-          font-weight: 700;
-          margin: 0;
-        }
-
-        /* ===== INNER SECTION ===== */
-        .inner-section {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .inner-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 11px;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          color: #1a3a8f;
-        }
-
-        .white-tag {
-          color: rgb(248, 244, 244);
-        }
-
-        .inner-tag-line {
-          width: 18px;
-          height: 2px;
-          background: #1a3a8f;
-        }
-
-        .yellow-line { background: #faf066 !important; }
-
-        .inner-subtitle {
-          font-size: 15px;
-          font-weight: 600;
-          margin: 0;
-        }
-
-        /* ===== STEPS ===== */
-        .steps-row {
-          display: flex;
-          align-items: stretch;
-          gap: 6px;
-        }
-
-        .step-wrapper {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          flex: 1;
-        }
-
-        .step-card {
-          flex: 1;
-          border-radius: 14px;
-          padding: 14px 12px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 6px;
-        }
-
-        .white-card { background: #ffffff; }
-
-        .dark-card {
-          background: rgba(255, 255, 255, 0.99);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .step-num {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background: #1a3a8f;
-          color: #faf066;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          font-weight: 700;
-          flex-shrink: 0;
-        }
-
-        .yellow-num {
-          background: #faf066;
-          color: #1a3a8f;
-        }
-
-        .step-title {
-          margin: 0;
-          font-size: 12px;
-          font-weight: 600;
-          line-height: 1.4;
-        }
-
-        .step-desc {
-          margin: 0;
-          font-size: 11px;
-          color: #ece7e7;
-          line-height: 1.4;
-        }
-
-        .step-arrow {
-          font-size: 18px;
-          flex-shrink: 0;
-        }
-
-        /* ===== PRICING ===== */
-        .pricing-row {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10px;
-        }
-
-        .pricing-card {
-          border-radius: 14px;
-          padding: 14px 10px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 4px;
-          position: relative;
-          border: 1px solid #e5e7eb;
-        }
-
-        .popular-card {
-          border: 2px solid #faf066;
-          background: #fffbe6;
-        }
-
-        .popular-badge {
-          position: absolute;
-          top: -10px;
-          background: #faf066;
-          color: #1a3a8f;
-          font-size: 10px;
-          font-weight: 700;
-          padding: 2px 10px;
-          border-radius: 20px;
-        }
-
-        .plan-icon { font-size: 24px; margin-bottom: 2px; }
-        .plan-name { margin: 0; font-size: 13px; font-weight: 700; }
-        .plan-price { margin: 0; font-size: 11px; font-weight: 600; color: #444; }
-        .plan-desc { margin: 0; font-size: 10px; color: #666; line-height: 1.4; }
-        .plan-feature { margin: 0; font-size: 10px; color: #888; }
-
-        .plan-btn {
-          margin-top: 6px;
-          background: #1a3a8f;
-          color: #faf066;
-          border: none;
-          padding: 6px 14px;
-          border-radius: 30px;
-          font-size: 10px;
-          font-weight: 600;
-          cursor: pointer;
-        }
-
-        .plan-btn:hover { background: #0f2a66; }
-
-        /* ===== CATEGORIES ===== */
-        .categories-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10px;
-        }
-
-        .category-card {
-          background: rgba(255, 255, 255, 0.12);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 12px;
-          padding: 12px 8px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 6px;
-          text-align: center;
-        }
-
-        .cat-icon { font-size: 22px; }
-        .cat-label { font-size: 12px; font-weight: 600; color: #ffffff; }
-
-        /* ===== BOUTIQUE BTN ===== */
-        .boutique-btn {
-          align-self: flex-start;
-          background: #faf066;
-          color: #1a3a8f;
-          border: none;
-          padding: 10px 24px;
-          border-radius: 40px;
-          font-size: 13px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: opacity 0.2s;
-        }
-
-        .boutique-btn:hover { opacity: 0.9; }
-
-        /* ===== TEXT CARDS ===== */
-        .text-card {
-          border-radius: 20px;
-          padding: 28px 22px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 14px;
-          width: 100%;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .expedition-card {
-          background: linear-gradient(135deg, #1a3a8f 0%, #2a5abf 50%, #1a3a8f 100%);
-          box-shadow: 0 8px 30px rgba(26, 58, 143, 0.35);
-        }
-
-        .boutique-card {
-          background: linear-gradient(135deg, #faf066 0%, #faf066 50%, #faf066 100%);
-          box-shadow: 0 8px 30px rgba(255, 199, 44, 0.4);
-        }
-
-        .text-card-title {
-          font-size: 18px;
-          font-weight: 700;
-          margin: 0;
-          color: #faf066;
-        }
-
-        .boutique-card-title {
-          color: #1a3a8f;
-        }
-
-        .text-card-desc {
-          font-size: 14px;
-          line-height: 1.7;
-          margin: 0;
-          color: rgba(255, 255, 255, 0.95);
-        }
-
-        .boutique-card-desc {
-          color: #1a3a8f;
-        }
-
-        .text-card-btn {
-          background: #faf066;
-          color: #1a3a8f;
-          border: none;
-          padding: 10px 24px;
-          border-radius: 40px;
-          font-size: 13px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.2s;
-          margin-top: 4px;
-        }
-
-        .text-card-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-        }
-
-        .boutique-card-btn {
-          background: #1a3a8f;
-          color: #faf066;
-        }
-
-        /* ===== RIGHT PANEL TEXT ===== */
-        .right-big-text {
-          font-size: 28px;
-          font-weight: 700;
-          line-height: 1.4;
-          margin: 0;
-        }
-
-        .yellow-on-white { color: #faf066; }
-
-        .boutique-sub-text {
-          font-size: 15px;
-          font-weight: 500;
-          color: #1a3a8f;
-          line-height: 1.7;
-          margin: 0;
-        }
-
-        /* ===== COLORS ===== */
+        /* Typography & Colors */
         .blue-text { color: #1a3a8f; }
         .white-text { color: #ffffff; }
         .yellow-text { color: #faf066; }
-        .light-text { color: rgba(255, 255, 255, 0.8); }
+        .blue-bg { background: #1a3a8f; }
+        .yellow-bg { background: #faf066; }
+        .dark-blue { color: #1a3a8f !important; }
+        .light-blue-text { color: rgba(255, 255, 255, 0.75); }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-          .service-card-wrapper,
-          .boutique-wrapper {
-            grid-template-columns: 1fr;
-          }
+        .card-title-row { display: flex; align-items: center; gap: 15px; }
+        .card-icon-circle { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .card-main-title { font-size: 26px; font-weight: 800; }
 
-          .boutique-left {
-            border-right: none;
-            border-bottom: 1px solid #e5e7eb;
-          }
+        .inner-section { display: flex; flex-direction: column; gap: 18px; }
+        .inner-tag { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+        .inner-tag-line { width: 20px; height: 2px; }
 
-          .card-right {
-            border-left: none;
-            border-top: 1px solid #e5e7eb;
-          }
+        /* Steps */
+        .steps-row { display: flex; gap: 10px; align-items: stretch; }
+        .step-wrapper { display: flex; align-items: center; gap: 10px; flex: 1; }
+        .step-card { flex: 1; padding: 25px 15px; border-radius: 20px; text-align: center; }
+        .white-card { background: #ffffff; }
+        .glass-card { background: rgba(255, 255, 255, 0.97); border: 1px solid rgba(255,255,255,0.1); }
+        .step-num { width: 30px; height: 30px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; }
+        .step-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+        .step-desc { font-size: 11px; line-height: 1.5; margin: 0; }
 
-          .steps-row {
-            flex-direction: column;
-          }
+        /* PRICING (MATCH IMAGE) */
+        .pricing-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .pricing-card { padding: 40px 15px; border-radius: 24px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; border: none; }
+        .popular-card { background: #FFFBE6; }
+        .popular-badge { position: absolute; top: -12px; background: #faf066; color: #1a3a8f; font-size: 10px; font-weight: 800; padding: 4px 15px; border-radius: 20px; }
+        .plan-icon-container { font-size: 32px; margin-bottom: 15px; }
+        .plan-name { font-size: 18px; font-weight: 800; margin: 0; }
+        .plan-price-label { font-size: 14px; font-weight: 700; color: #333; margin: 8px 0 15px; }
+        .plan-details-box { min-height: 85px; margin-bottom: 20px; }
+        .plan-desc { font-size: 12px; color: #f7eeee; line-height: 1.6; margin: 0; }
+        .plan-feature { font-size: 12px; color: #888; margin-top: 5px; font-weight: 600; }
+        .plan-btn { background: #1a3a8f; color: #fff; border: none; padding: 12px 20px; border-radius: 50px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; max-width: 180px; }
 
-          .step-arrow {
-            transform: rotate(90deg);
-            align-self: center;
-          }
+        /* Categories */
+        .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .category-pill { background: rgba(233, 224, 224, 0.08); padding: 15px 10px; border-radius: 15px; display: flex; flex-direction: column; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .cat-icon { font-size: 24px; }
+        .cat-label { font-size: 12px; font-weight: 600; color: #fff; }
 
-          .pricing-row {
-            grid-template-columns: 1fr;
-          }
+        /* Promo Side */
+        .promo-box { padding: 40px 25px; border-radius: 25px; text-align: center; width: 100%; }
+        .expedition-gradient { background: linear-gradient(135deg, #1a3a8f 0%, #3b82f6 100%); color: #fff; }
+        .boutique-gradient { background: #faf066; color: #1a3a8f; }
+        .promo-desc { font-size: 15px; font-weight: 500; line-height: 1.6; margin-bottom: 25px; }
+        .promo-btn { padding: 12px 25px; border-radius: 50px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; background: #FFC72C; color: #1a3a8f; transition: 0.2s; }
+        .promo-btn:hover { transform: scale(1.05); }
+        .dark-blue-btn { background: #1a3a8f; color: #fff; }
 
-          .categories-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+        @media (max-width: 1024px) {
+          .service-card-wrapper, .boutique-wrapper { grid-template-columns: 1fr; }
+          .promo-side { grid-row: 2; }
         }
 
-        @media (max-width: 600px) {
-          .card-left, .card-right {
-            padding: 1.5rem;
-          }
+        @media (max-width: 768px) {
+          .steps-row { flex-direction: column; }
+          .step-arrow { transform: rotate(90deg); margin: 5px 0; }
+          .pricing-row { grid-template-columns: 1fr; }
+          .categories-grid { grid-template-columns: repeat(2, 1fr); }
+          .card-left { padding: 30px 20px; }
         }
       `}</style>
     </section>
