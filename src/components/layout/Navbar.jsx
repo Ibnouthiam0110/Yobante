@@ -7,8 +7,6 @@ const Navbar = ({ scrolled, scrollTo }) => {
 
   const navItems = [
     { label: 'Services', id: 'services' },
-    { label: 'Process', id: 'process' },
-    { label: 'Tarifs', id: 'tarifs' },
     { label: 'Applications', id: 'apps' },
     { label: 'FAQ', id: 'faq' },
   ];

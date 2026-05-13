@@ -53,7 +53,8 @@ const Hero = ({ scrollTo }) => {
   const current = slides[currentSlide];
 
   return (
-    <section className="hero">
+    // ✅ FIX : id="hero" ajouté ici
+    <section className="hero" id="hero">
       {/* Background Layer */}
       <div 
         className="hero-bg" 
@@ -438,7 +439,7 @@ const Hero = ({ scrollTo }) => {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
           }
-          .tab-label { display: none; } /* On ne garde que l'icône sur mini écrans */
+          .tab-label { display: none; }
           .tab-btn { padding: 10px 15px; }
           .shipping-methods { grid-template-columns: 1fr; }
           .store-btn { width: 100%; }
