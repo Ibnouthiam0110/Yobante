@@ -1,5 +1,7 @@
 // src/components/layout/Navbar.jsx
 import { useState } from 'react';
+import logo from '../../assets/images/logo.png';
+
 const Navbar = ({ scrolled, scrollTo }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -14,8 +16,13 @@ const Navbar = ({ scrolled, scrollTo }) => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
+
         <button className="logo" onClick={() => scrollTo('hero')}>
-          
+          <img
+            src={logo}
+            alt="Logo"
+            className="logo-img"
+          />
         </button>
 
         <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
@@ -34,7 +41,6 @@ const Navbar = ({ scrolled, scrollTo }) => {
           <span></span><span></span><span></span>
         </button>
       </div>
-
     </nav>
   );
 };

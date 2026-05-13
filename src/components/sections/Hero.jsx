@@ -27,12 +27,12 @@ const Hero = ({ scrollTo }) => {
       buttonLink: "services",
       image: deliveryPhone2,
       bgColor: "#faf066",
-      textColor: "#1a3a8f",
-      statColor: "#1a3a8f",
+      textColor: "#2418d1",
+      statColor: "#2418d1",
       badgeBg: "#f0f0f0",
-      badgeTextColor: "#1a3a8f",
+      badgeTextColor: "#2418d1",
       dotColor: "rgba(0, 0, 0, 0.2)",
-      dotActiveColor: "#1a3a8f",
+      dotActiveColor: "#2418d1",
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ const Hero = ({ scrollTo }) => {
       statColor: "#ffffff",
       badgeBg: "rgba(0, 0, 0, 0.4)",
       badgeTextColor: "#ffffff",
-      dotColor: "rgba(255, 255, 255, 0.4)",
+      dotColor: "rgba(255, 255, 255, 0.99)",
       dotActiveColor: "#faf066",
     }
   ];
@@ -243,7 +243,7 @@ const Hero = ({ scrollTo }) => {
 
         .tab-active {
           background: #ffffff;
-          color: #1a3a8f;
+          color: #2418d1;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
@@ -346,7 +346,7 @@ const Hero = ({ scrollTo }) => {
 
         .btn-primary {
           background: #faf066;
-          color: #1a3a8f;
+          color: #2418d1;
           border: none;
           padding: 14px 32px;
           border-radius: 50px;
@@ -355,7 +355,7 @@ const Hero = ({ scrollTo }) => {
           transition: transform 0.2s;
         }
 
-        .btn-expedition { background: #1a3a8f; color: #faf066; }
+        .btn-expedition { background: #2418d1; color: #faf066; }
 
         .store-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
         .store-btn {
@@ -369,8 +369,8 @@ const Hero = ({ scrollTo }) => {
         }
 
         .appstore { background: #000; color: white; }
-        .googleplay { background: #faf066; color: #1a3a8f; }
-        .googleplay.btn-expedition-gp { background: #1a3a8f; color: #faf066; }
+        .googleplay { background: #faf066; color: #2418d1; }
+        .googleplay.btn-expedition-gp { background: #2418d1; color: #faf066; }
 
         .store-text span { font-size: 9px; display: block; opacity: 0.8; }
         .store-text strong { font-size: 14px; display: block; }
@@ -378,7 +378,7 @@ const Hero = ({ scrollTo }) => {
         /* ===== STATS ===== */
         .hero-stats { display: flex; gap: 32px; }
         .stat-number { font-size: 24px; font-weight: 800; display: block; }
-        .stat-label { font-size: 12px; opacity: 0.7; color: inherit; }
+        .stat-label { font-size: 12px; opacity: 0.7; color:#000 ; }
 
         /* ===== IMAGE ===== */
         .hero-image {

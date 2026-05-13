@@ -70,7 +70,7 @@ const TrustBar = () => {
           width: 22px;
           height: 22px;
           background-color: #e0f2fe;
-          color: #1a3a8f;
+          color: #2418d1;
           border-radius: 50%;
           font-size: 12px;
           font-weight: bold;

@@ -129,6 +129,8 @@ h1, h2, h3 {
   cursor: pointer;
   background: none;
   border: none;
+  padding: 0;          /* ← ajoute ça */
+  outline: none;       /* ← ajoute ça */
 }
 
 .logo-icon {
@@ -142,6 +144,13 @@ h1, h2, h3 {
   color: var(--yellow);
   font-weight: 800;
   font-size: 18px;
+}
+
+.logo-img {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .logo-text {
