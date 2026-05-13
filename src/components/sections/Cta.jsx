@@ -30,9 +30,9 @@ const Cta = ({ scrollTo }) => {
           </div>
           
           <div className="cta-trust">
-            <span className="trust-item">⭐ Plus de 5000 colis livrés</span>
+            <span className="trust-item"> Plus de 500 colis livrés</span>
             <span className="trust-divider">|</span>
-            <span className="trust-item">🛡️ Envois sécurisés</span>
+            <span className="trust-item"> Envois sécurisés</span>
           </div>
         </div>
       </div>
