@@ -182,36 +182,36 @@ const Contact = ({ scrollTo }) => {
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
 
-        .section-tag { display: flex; align-items: center; gap: 12px; color: #2418d1; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 14px; margin-bottom: 20px; }
+        .section-tag { display: flex; align-items: center; gap: 12px; color: #0059ff; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; font-size: 14px; margin-bottom: 20px; }
         .tag-line { width: 30px; height: 2px; background: #faf066; }
-        .contact-title { font-size: 36px; color: #2418d1; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .contact-title { font-size: 36px; color: #0059ff; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
         .contact-description { font-size: 16px; color: #64748b; line-height: 1.6; margin-bottom: 40px; }
 
         .contact-info-list { display: flex; flex-direction: column; gap: 24px; }
         .contact-item { display: flex; gap: 16px; align-items: flex-start; }
         .contact-icon { font-size: 24px; background: white; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .contact-text { display: flex; flex-direction: column; }
-        .contact-text strong { color: #2418d1; font-size: 14px; }
+        .contact-text strong { color: #0059ff; font-size: 14px; }
         .contact-text a, .contact-text span { color: #475569; text-decoration: none; font-size: 16px; margin-top: 2px; }
-        .contact-text a:hover { color: #2418d1; text-decoration: underline; }
+        .contact-text a:hover { color: #0059ff; text-decoration: underline; }
 
         .form-container { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
         .form-header { margin-bottom: 30px; }
-        .form-header h3 { font-size: 22px; color: #2418d1; margin-bottom: 8px; }
+        .form-header h3 { font-size: 22px; color: #0059ff; margin-bottom: 8px; }
         .form-header p { color: #94a3b8; font-size: 14px; }
 
         .form-group { margin-bottom: 16px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
 
         input, select, textarea { width: 100%; padding: 14px 20px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 15px; background: #fdfdfd; transition: all 0.3s; outline: none; font-family: inherit; }
-        input:focus, select:focus, textarea:focus { border-color: #2418d1; box-shadow: 0 0 0 4px rgba(26,58,143,0.05); background: white; }
+        input:focus, select:focus, textarea:focus { border-color: #0059ff; box-shadow: 0 0 0 4px rgba(0,89,255,0.05); background: white; }
 
         .feedback { padding: 12px 16px; border-radius: 10px; font-size: 14px; font-weight: 500; margin-bottom: 16px; }
         .feedback.success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
         .feedback.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
-        .submit-btn { width: 100%; padding: 16px; background: #2418d1; color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; }
-        .submit-btn:hover:not(:disabled) { background: #2418d1; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26,58,143,0.2); }
+        .submit-btn { width: 100%; padding: 16px; background: #0059ff; color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s; }
+        .submit-btn:hover:not(:disabled) { background: #0059ff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,89,255,0.2); }
         .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
 
         @media (max-width: 968px) {

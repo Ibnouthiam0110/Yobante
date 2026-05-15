@@ -96,7 +96,7 @@ const Applications = () => {
           align-items: center;
           gap: 12px;
           margin-bottom: 16px;
-          color: #2418d1;
+          color: #0059ff;
           font-size: 14px;
           font-weight: 700;
           text-transform: uppercase;
@@ -112,7 +112,7 @@ const Applications = () => {
         .section-title {
           font-size: clamp(28px, 4vw, 42px);
           line-height: 1.2;
-          color: #2418d1;
+          color: #0059ff;
           font-weight: 800;
         }
         
@@ -158,7 +158,7 @@ const Applications = () => {
         .app-card h3 {
           font-size: 24px;
           margin-bottom: 16px;
-          color: #2418d1;
+          color: #0059ff;
           font-weight: 700;
         }
         
@@ -195,7 +195,7 @@ const Applications = () => {
           width: 20px;
           height: 20px;
           background: rgba(26, 58, 143, 0.1);
-          color: #2418d1;
+          color: #0059ff;
           border-radius: 50%;
           font-size: 12px;
           font-weight: 900;
@@ -222,13 +222,13 @@ const Applications = () => {
         }
         
         .download-btn.ios {
-          background: #2418d1;
+          background: #0059ff;
           color: #ffffff;
         }
         
         .download-btn.android {
           background: #f7fa66;
-          color: #2418d1;
+          color: #0059ff;
         }
         
         .download-btn:hover {

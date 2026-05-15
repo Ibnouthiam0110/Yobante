@@ -27,12 +27,12 @@ const Hero = ({ scrollTo }) => {
       buttonLink: "services",
       image: deliveryPhone2,
       bgColor: "#faf066",
-      textColor: "#2418d1",
-      statColor: "#2418d1",
+      textColor: "#0059ff",
+      statColor: "#0059ff",
       badgeBg: "#f0f0f0",
-      badgeTextColor: "#2418d1",
+      badgeTextColor: "#0059ff",
       dotColor: "rgba(0, 0, 0, 0.2)",
-      dotActiveColor: "#2418d1",
+      dotActiveColor: "#0059ff",
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ const Hero = ({ scrollTo }) => {
       buttonText: "Explorer",
       buttonLink: "apps",
       image: deliveryPhone,
-      bgColor: "#2418d1",
+      bgColor: "#0059ff",
       textColor: "#ffffff",
       statColor: "#ffffff",
       badgeBg: "rgba(0, 0, 0, 0.4)",
@@ -244,7 +244,7 @@ const Hero = ({ scrollTo }) => {
 
         .tab-active {
           background: #ffffff;
-          color: #2418d1;
+          color: #0059ff;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
@@ -347,7 +347,7 @@ const Hero = ({ scrollTo }) => {
 
         .btn-primary {
           background: #faf066;
-          color: #2418d1;
+          color: #0059ff;
           border: none;
           padding: 14px 32px;
           border-radius: 50px;
@@ -356,7 +356,7 @@ const Hero = ({ scrollTo }) => {
           transition: transform 0.2s;
         }
 
-        .btn-expedition { background: #2418d1; color: #faf066; }
+        .btn-expedition { background: #0059ff; color: #faf066; }
 
         .store-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
         .store-btn {
@@ -370,8 +370,8 @@ const Hero = ({ scrollTo }) => {
         }
 
         .appstore { background: #000; color: white; }
-        .googleplay { background: #faf066; color: #2418d1; }
-        .googleplay.btn-expedition-gp { background: #2418d1; color: #faf066; }
+        .googleplay { background: #faf066; color: #0059ff; }
+        .googleplay.btn-expedition-gp { background: #0059ff; color: #faf066; }
 
         .store-text span { font-size: 9px; display: block; opacity: 0.8; }
         .store-text strong { font-size: 14px; display: block; }

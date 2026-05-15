@@ -229,9 +229,9 @@ const Services = ({ scrollTo }) => {
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         
         .section-header { text-align: center; margin-bottom: 50px; }
-        .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #2418d1; }
+        .section-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; text-transform: uppercase; color: #0059ff; }
         .tag-line { width: 30px; height: 2px; background: #faf066; }
-        .section-title { font-size: clamp(26px, 4vw, 40px); color: #2418d1; font-weight: 800; }
+        .section-title { font-size: clamp(26px, 4vw, 40px); color: #0059ff; font-weight: 800; }
 
         /* Wrappers */
         .service-card-wrapper { display: grid; grid-template-columns: 2fr 1fr; border-radius: 30px; overflow: hidden; background: white; align-items: stretch; }
@@ -241,15 +241,15 @@ const Services = ({ scrollTo }) => {
         .card-left { padding: 40px; display: flex; flex-direction: column; gap: 30px; }
         .card-right { padding: 0; display: flex; align-items: center; justify-content: center; }
         .yellow-main { background: #faf066; }
-        .blue-dark-bg { background: #2418d1; }
+        .blue-dark-bg { background: #0059ff; }
         .white-bg { background: #ffffff; }
 
         /* Typography & Colors */
-        .blue-text { color: #2418d1; }
+        .blue-text { color: #0059ff; }
         .white-text { color: #ffffff; }
         .yellow-text { color: #faf066; }
         .dark-text { color: #444444; }
-        .blue-bg { background: #2418d1; }
+        .blue-bg { background: #0059ff; }
         .yellow-bg { background: #faf066; }
         .dark-blue { color: #f1e645 !important; }
 
@@ -273,7 +273,7 @@ const Services = ({ scrollTo }) => {
           border: none;
         }
         .boutique-step-title {
-          color: #2418d1;
+          color: #0059ff;
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 6px;
@@ -286,7 +286,7 @@ const Services = ({ scrollTo }) => {
         }
 
         .step-num { width: 30px; height: 30px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; }
-        .step-num-dark { color: #2418d1 !important; }
+        .step-num-dark { color: #0059ff !important; }
         .step-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
         .step-desc { font-size: 11px; line-height: 1.5; margin: 0; }
 
@@ -294,14 +294,14 @@ const Services = ({ scrollTo }) => {
         .pricing-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items: start; }
         .pricing-card { padding: 16px 10px; border-radius: 16px; text-align: center; position: relative; display: flex; flex-direction: column; align-items: center; border: none; aspect-ratio: 1 / 1; justify-content: center; overflow: hidden; }
         .popular-card { background: #FFFBE6; }
-        .popular-badge { position: absolute; top: -10px; background: #faf066; color: #2418d1; font-size: 9px; font-weight: 800; padding: 3px 10px; border-radius: 20px; }
+        .popular-badge { position: absolute; top: -10px; background: #faf066; color: #0059ff; font-size: 9px; font-weight: 800; padding: 3px 10px; border-radius: 20px; }
         .plan-icon-container { font-size: 22px; margin-bottom: 6px; }
         .plan-name { font-size: 13px; font-weight: 800; margin: 0; }
         .plan-price-label { font-size: 11px; font-weight: 700; color: #333333; margin: 4px 0 6px; }
         .plan-details-box { margin-bottom: 8px; }
         .plan-desc { font-size: 10px; color: #555555; line-height: 1.4; margin: 0; }
-        .plan-feature { font-size: 10px; color: #2418d1; margin-top: 4px; font-weight: 600; }
-        .plan-btn { background: #2418d1; color: #fff; border: none; padding: 7px 10px; border-radius: 50px; font-size: 10px; font-weight: 700; cursor: pointer; width: 100%; }
+        .plan-feature { font-size: 10px; color: #0059ff; margin-top: 4px; font-weight: 600; }
+        .plan-btn { background: #0059ff; color: #fff; border: none; padding: 7px 10px; border-radius: 50px; font-size: 10px; font-weight: 700; cursor: pointer; width: 100%; }
 
         /* Categories */
         .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -312,8 +312,8 @@ const Services = ({ scrollTo }) => {
         /* Promo Side — fills full height */
         .promo-side { padding: 24px; display: flex; align-items: center; justify-content: center; }
         .promo-box { padding: 30px 20px; border-radius: 25px; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
-        .expedition-gradient { background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%); color: #2418d1; }
-        .boutique-gradient { background: #ffffff; color: #2418d1; }
+        .expedition-gradient { background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%); color: #0059ff; }
+        .boutique-gradient { background: #ffffff; color: #0059ff; }
         .promo-desc { font-size: 30px; font-weight: 500; line-height: 1.6; margin-bottom: 20px; }
         .promo-btn { padding: 11px 22px; border-radius: 50px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; background: #000000; color: #ffffff; transition: 0.2s; }
         .promo-btn:hover { transform: scale(1.05); }
