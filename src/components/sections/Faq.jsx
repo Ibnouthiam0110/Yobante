@@ -111,7 +111,7 @@ const Faq = () => {
           font-weight: 700;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #0059ff;
+          color: #00BFFF;
           margin-bottom: 16px;
         }
 
@@ -125,14 +125,14 @@ const Faq = () => {
         .faq-title {
           font-size: clamp(28px, 5vw, 42px);
           font-weight: 800;
-          color: #0059ff;
+          color: #00BFFF;
           line-height: 1.2;
           margin: 0 0 48px;
         }
 
         .faq-title em {
           font-style: normal;
-          color: #0059ff;
+          color: #00BFFF;
         }
 
         .faq-list {
@@ -176,7 +176,7 @@ const Faq = () => {
           flex: 1;
           font-size: 17px;
           font-weight: 700;
-          color: #0059ff;
+          color: #00BFFF;
           line-height: 1.4;
           transition: color 0.2s ease;
         }
@@ -191,12 +191,12 @@ const Faq = () => {
           justify-content: center;
           background: #ffffff;
           transition: all 0.3s ease;
-          color: #0059ff;
+          color: #00BFFF;
         }
 
         .faq-arrow.open {
-          background: #0059ff;
-          border-color: #0059ff;
+          background: #00BFFF;
+          border-color: #00BFFF;
           color: #ffffff;
         }
 

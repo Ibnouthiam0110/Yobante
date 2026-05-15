@@ -41,13 +41,12 @@ const Cta = ({ scrollTo }) => {
         .cta-section {
           position: relative;
           padding: 100px 0;
-          background: linear-gradient(135deg, #0059ff 0%, #0059ff 100%);
+          background: linear-gradient(135deg, #00BFFF 0%, #00BFFF 100%);
           color: white;
           overflow: hidden;
           text-align: center;
         }
 
-        /* Petit effet de cercles décoratifs en arrière-plan */
         .cta-section::before {
           content: "";
           position: absolute;
@@ -110,7 +109,7 @@ const Cta = ({ scrollTo }) => {
 
         .cta-primary {
           background-color: #faf066;
-          color: #0059ff;
+          color: #00BFFF;
         }
 
         .cta-primary:hover {

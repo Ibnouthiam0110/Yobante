@@ -27,12 +27,12 @@ const Hero = ({ scrollTo }) => {
       buttonLink: "services",
       image: deliveryPhone2,
       bgColor: "#faf066",
-      textColor: "#0059ff",
-      statColor: "#0059ff",
+      textColor: "#00BFFF",
+      statColor: "#00BFFF",
       badgeBg: "#f0f0f0",
-      badgeTextColor: "#0059ff",
+      badgeTextColor: "#00BFFF",
       dotColor: "rgba(0, 0, 0, 0.2)",
-      dotActiveColor: "#0059ff",
+      dotActiveColor: "#00BFFF",
     },
     {
       id: 2,
@@ -40,7 +40,7 @@ const Hero = ({ scrollTo }) => {
       buttonText: "Explorer",
       buttonLink: "apps",
       image: deliveryPhone,
-      bgColor: "#0059ff",
+      bgColor: "#00BFFF",
       textColor: "#ffffff",
       statColor: "#ffffff",
       badgeBg: "rgba(0, 0, 0, 0.4)",
@@ -53,7 +53,6 @@ const Hero = ({ scrollTo }) => {
   const current = slides[currentSlide];
 
   return (
-    // ✅ FIX : id="hero" ajouté ici
     <section className="hero" id="hero">
       {/* Background Layer */}
       <div 
@@ -69,14 +68,14 @@ const Hero = ({ scrollTo }) => {
             onClick={() => setCurrentSlide(0)}
           >
             <span className="tab-icon">📦</span>
-            <span className="tab-label">Yobante Expédition</span>
+            <span className="tab-label">Service Expédition</span>
           </button>
           <button
             className={`tab-btn ${currentSlide === 1 ? 'tab-active' : 'tab-inactive'}`}
             onClick={() => setCurrentSlide(1)}
           >
             <span className="tab-icon">🛍️</span>
-            <span className="tab-label">Yobante Boutique</span>
+            <span className="tab-label">Votre Boutique</span>
           </button>
         </div>
       </div>
@@ -244,7 +243,7 @@ const Hero = ({ scrollTo }) => {
 
         .tab-active {
           background: #ffffff;
-          color: #0059ff;
+          color: #00BFFF;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
@@ -339,7 +338,7 @@ const Hero = ({ scrollTo }) => {
         }
 
         .method-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-        .method-name { font-weight: 700; font-size: 13px; color: #1a3a8f; display: block; }
+        .method-name { font-weight: 700; font-size: 13px; color: #00BFFF; display: block; }
         .method-desc { font-size: 10px; color: #64748b; }
 
         /* ===== BUTTONS ===== */
@@ -347,7 +346,7 @@ const Hero = ({ scrollTo }) => {
 
         .btn-primary {
           background: #faf066;
-          color: #0059ff;
+          color: #00BFFF;
           border: none;
           padding: 14px 32px;
           border-radius: 50px;
@@ -356,7 +355,7 @@ const Hero = ({ scrollTo }) => {
           transition: transform 0.2s;
         }
 
-        .btn-expedition { background: #0059ff; color: #faf066; }
+        .btn-expedition { background: #00BFFF; color: #faf066; }
 
         .store-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
         .store-btn {
@@ -370,8 +369,8 @@ const Hero = ({ scrollTo }) => {
         }
 
         .appstore { background: #000; color: white; }
-        .googleplay { background: #faf066; color: #0059ff; }
-        .googleplay.btn-expedition-gp { background: #0059ff; color: #faf066; }
+        .googleplay { background: #faf066; color: #00BFFF; }
+        .googleplay.btn-expedition-gp { background: #00BFFF; color: #faf066; }
 
         .store-text span { font-size: 9px; display: block; opacity: 0.8; }
         .store-text strong { font-size: 14px; display: block; }
@@ -379,7 +378,7 @@ const Hero = ({ scrollTo }) => {
         /* ===== STATS ===== */
         .hero-stats { display: flex; gap: 32px; }
         .stat-number { font-size: 24px; font-weight: 800; display: block; }
-        .stat-label { font-size: 12px; opacity: 0.7; color:#000 ; }
+        .stat-label { font-size: 12px; opacity: 0.7; color:#000; }
 
         /* ===== IMAGE ===== */
         .hero-image {
@@ -439,8 +438,8 @@ const Hero = ({ scrollTo }) => {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
           }
-          .tab-label { display: none; }
-          .tab-btn { padding: 10px 15px; }
+          .tab-label { display: inline; }
+          .tab-btn { padding: 8px 10px; font-size: 11px; }
           .shipping-methods { grid-template-columns: 1fr; }
           .store-btn { width: 100%; }
         }
