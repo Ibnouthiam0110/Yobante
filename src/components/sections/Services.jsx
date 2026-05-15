@@ -159,7 +159,7 @@ const Services = ({ scrollTo }) => {
 
           <div className="card-right white-bg promo-side">
             <div className="promo-box expedition-gradient">
-              <p className="promo-desc">Envoyez vos colis depuis la France vers le Sénégal avec collecte à domicile ou dépôt en point relais.</p>
+              <p className="promo-desc"> Envoyez vos colis depuis la France vers le Sénégal (vice-versa) avec collecte à domicile ou dépôt en point relais.</p>
               <button className="promo-btn" onClick={handleClick}>En savoir plus →</button>
             </div>
           </div>
@@ -251,7 +251,7 @@ const Services = ({ scrollTo }) => {
         .dark-text { color: #444444; }
         .blue-bg { background: #2418d1; }
         .yellow-bg { background: #faf066; }
-        .dark-blue { color: #2418d1 !important; }
+        .dark-blue { color: #f1e645 !important; }
 
         .card-title-row { display: flex; align-items: center; gap: 15px; }
         .card-icon-circle { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; }
@@ -312,12 +312,12 @@ const Services = ({ scrollTo }) => {
         /* Promo Side — fills full height */
         .promo-side { padding: 24px; display: flex; align-items: center; justify-content: center; }
         .promo-box { padding: 30px 20px; border-radius: 25px; text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
-        .expedition-gradient { background: linear-gradient(135deg, #2418d1 0%, #2418d1 100%); color: #fff; }
-        .boutique-gradient { background: #faf066; color: #2418d1; }
-        .promo-desc { font-size: 14px; font-weight: 500; line-height: 1.6; margin-bottom: 20px; }
-        .promo-btn { padding: 11px 22px; border-radius: 50px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; background: #FFC72C; color: #1a3a8f; transition: 0.2s; }
+        .expedition-gradient { background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%); color: #2418d1; }
+        .boutique-gradient { background: #ffffff; color: #2418d1; }
+        .promo-desc { font-size: 30px; font-weight: 500; line-height: 1.6; margin-bottom: 20px; }
+        .promo-btn { padding: 11px 22px; border-radius: 50px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; background: #000000; color: #ffffff; transition: 0.2s; }
         .promo-btn:hover { transform: scale(1.05); }
-        .dark-blue-btn { background: #2418d1; color: #fff; }
+        .dark-blue-btn { background: #0b0a16; color: #fff; }
 
         @media (max-width: 1024px) {
           .service-card-wrapper, .boutique-wrapper { grid-template-columns: 1fr; }
