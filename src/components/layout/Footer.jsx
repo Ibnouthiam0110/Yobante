@@ -1,6 +1,9 @@
 // src/components/layout/Footer.jsx
 import React from 'react';
 
+// IMPORTANT : Remplace le chemin ci-dessous par le vrai chemin de ton logo
+import yobanteLogo from '../../assets/images/logo5.jpeg'; 
+
 const Footer = ({ scrollTo }) => {
   return (
     <footer className="footer">
@@ -12,29 +15,15 @@ const Footer = ({ scrollTo }) => {
         <div className="footer-top">
           {/* BRAND */}
           <div className="footer-brand">
+            {/* LOGO REMPLACÉ PAR L'IMAGE */}
             <div className="footer-logo">
-              YOBAN<span>TÉ</span>
+              <img src={yobanteLogo} alt="Yobanté Logo" className="logo-img" />
             </div>
 
             <p className="footer-description">
               Votre spécialiste de l'expédition de colis et du e-commerce
               entre la France et le Sénégal.
             </p>
-
-            <div className="socials">
-              <a href="#">
-                <span>Facebook</span>
-              </a>
-              <a href="#">
-                <span>Instagram</span>
-              </a>
-              <a href="#">
-                <span>WhatsApp</span>
-              </a>
-              <a href="#">
-                <span>TikTok</span>
-              </a>
-            </div>
           </div>
 
           {/* LINKS */}
@@ -42,63 +31,27 @@ const Footer = ({ scrollTo }) => {
             <div className="footer-column">
               <h4>Services</h4>
               <ul>
-                <li>
-                  <button onClick={() => scrollTo('services')}>
-                    Expédition
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollTo('services')}>
-                    Boutique
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollTo('services')}>
-                    Tarifs
-                  </button>
-                </li>
+                <li><button onClick={() => scrollTo('services')}>Expédition</button></li>
+                <li><button onClick={() => scrollTo('services')}>Boutique</button></li>
+                <li><button onClick={() => scrollTo('services')}>Tarifs</button></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4>Entreprise</h4>
               <ul>
-                <li>
-                  <button onClick={() => scrollTo('faq')}>
-                    FAQ
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollTo('contact')}>
-                    Contact
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    Recrutement
-                  </button>
-                </li>
+                <li><button onClick={() => scrollTo('faq')}>FAQ</button></li>
+                <li><button onClick={() => scrollTo('contact')}>Contact</button></li>
+                <li><button>Recrutement</button></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4>Légal</h4>
               <ul>
-                <li>
-                  <button>
-                    Mentions légales
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    CGV
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    Confidentialité
-                  </button>
-                </li>
+                <li><button>Mentions légales</button></li>
+                <li><button>CGV</button></li>
+                <li><button>Confidentialité</button></li>
               </ul>
             </div>
           </div>
@@ -106,18 +59,10 @@ const Footer = ({ scrollTo }) => {
 
         {/* TRUST BAR */}
         <div className="footer-trust">
-          <div className="trust-item">
-            Livraison rapide
-          </div>
-          <div className="trust-item">
-            Paiement sécurisé
-          </div>
-          <div className="trust-item">
-            Support 24/7
-          </div>
-          <div className="trust-item">
-            Apps iOS & Android
-          </div>
+          <div className="trust-item">Livraison rapide</div>
+          <div className="trust-item">Paiement sécurisé</div>
+          <div className="trust-item">Support 24/7</div>
+          <div className="trust-item">Apps iOS & Android</div>
         </div>
 
         {/* BOTTOM */}
@@ -127,15 +72,9 @@ const Footer = ({ scrollTo }) => {
           </span>
 
           <div className="footer-bottom-links">
-            <button>
-              Mentions légales
-            </button>
-            <button>
-              CGV
-            </button>
-            <button>
-              Confidentialité
-            </button>
+            <button>Mentions légales</button>
+            <button>CGV</button>
+            <button>Confidentialité</button>
           </div>
         </div>
       </div>
@@ -143,6 +82,8 @@ const Footer = ({ scrollTo }) => {
       <style jsx>{`
         * {
           box-sizing: border-box;
+          transition: none !important; 
+          -webkit-transition: none !important;
         }
 
         .footer {
@@ -202,16 +143,17 @@ const Footer = ({ scrollTo }) => {
           max-width: 360px;
         }
 
+        /* AJUSTEMENT DU CONTENEUR DU LOGO ET DE L'IMAGE */
         .footer-logo {
-          font-size: 42px;
-          font-weight: 900;
-          letter-spacing: -1px;
           margin-bottom: 20px;
-          color: white;
+          display: flex;
+          align-items: center;
         }
 
-        .footer-logo span {
-          color: #faf066;
+        .logo-img {
+          height: auto;
+          max-width: 180px; /* Ajuste cette valeur selon la taille désirée pour ton logo */
+          object-fit: contain;
         }
 
         .footer-description {
@@ -219,27 +161,6 @@ const Footer = ({ scrollTo }) => {
           line-height: 1.8;
           font-size: 15px;
           margin-bottom: 30px;
-        }
-
-        /* SOCIALS */
-        .socials {
-          display: flex;
-          gap: 14px;
-        }
-
-        .socials a {
-          padding: 10px 16px;
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          text-decoration: none;
-          font-size: 13px;
-          font-weight: 600;
-          color: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(10px);
         }
 
         /* LINKS */
@@ -349,6 +270,14 @@ const Footer = ({ scrollTo }) => {
             padding-top: 70px;
           }
 
+          .footer-logo {
+            justify-content: center; /* Centre le logo sur mobile */
+          }
+
+          .logo-img {
+            max-width: 150px; /* Légèrement plus petit sur mobile */
+          }
+
           .footer-links-grid {
             grid-template-columns: 1fr;
             gap: 30px;
@@ -363,13 +292,18 @@ const Footer = ({ scrollTo }) => {
             justify-content: center;
           }
 
-          .footer-logo {
-            font-size: 34px;
-          }
-
           .trust-item {
             width: 100%;
             justify-content: center;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0s !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0s !important;
+            scroll-behavior: auto !important;
           }
         }
       `}</style>

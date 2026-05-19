@@ -119,6 +119,7 @@ const Faq = () => {
 
       </div>
 
+      {/* Le bloc style est désormais bien englobé par le parent unique <section> */}
       <style jsx>{`
         .faq-section {
           position: relative;
@@ -196,6 +197,7 @@ const Faq = () => {
           overflow: hidden;
           border: 1px solid rgba(0, 0, 0, 0.06);
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .faq-item.open {
@@ -247,6 +249,14 @@ const Faq = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Animation de rotation du plus en croix */
+        .faq-item.open .faq-icon {
+          transform: rotate(135deg);
+          background: #00BFFF;
+          color: white;
         }
 
         /* ===== ANSWER ===== */

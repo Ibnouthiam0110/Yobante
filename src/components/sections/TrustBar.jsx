@@ -69,7 +69,7 @@ const TrustBar = () => {
             linear-gradient(
               180deg,
               #ffffff 0%,
-              #f8fafc 100%
+              #f8fafc 100__
             );
           overflow: hidden;
         }
@@ -143,10 +143,6 @@ const TrustBar = () => {
           animation: scroll 24s linear infinite;
         }
 
-        .trust-bar:hover .trust-track {
-          animation-play-state: paused;
-        }
-
         @keyframes scroll {
           from {
             transform: translateX(0);
@@ -168,14 +164,7 @@ const TrustBar = () => {
           border: 1px solid rgba(255,255,255,0.5);
           backdrop-filter: blur(10px);
           white-space: nowrap;
-          transition: all 0.3s ease;
           margin-left: 20px;
-        }
-
-        .trust-item:hover {
-          transform: translateY(-4px);
-          box-shadow:
-            0 12px 25px rgba(0,0,0,0.08);
         }
 
         .icon-box {

@@ -1,5 +1,4 @@
 // src/components/sections/Applications.jsx
-import { useEffect } from "react";
 import expeditionLogo from '../../assets/images/logo.png';
 import boutiqueLogo from '../../assets/images/logo.png';
 
@@ -9,9 +8,9 @@ const appsData = [
     logo: expeditionLogo,
     alt: "Yobanté Expédition",
     chipText: "📦 Expédition Internationale",
-    chipClass: "",
+    chipClass: "expedition",
     title: "YOBANTÉ Expédition",
-    description: "Gérez vos envois entre la France et le Sénégal de manière rapide, sécurisée et transparente.",
+    description: "Gerez vos envois entre la France et le Sénégal de manière rapide, sécurisée et transparente.",
     features: [
       "Créer et gérer vos expéditions",
       "Paiement sécurisé en ligne",
@@ -39,25 +38,6 @@ const appsData = [
 ];
 
 const Applications = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.05 } // Seuil abaissé pour éviter les déclenchements tardifs qui font sauter la page
-    );
-
-    document
-      .querySelectorAll("#apps .fade-in")
-      .forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="apps" className="apps-section">
       {/* BACKGROUND GLOW */}
@@ -65,8 +45,8 @@ const Applications = () => {
       <div className="bg-glow glow-2"></div>
 
       <div className="container">
-        {/* HEADER */}
-        <div className="section-header fade-in">
+        {/* HEADER (Statique) */}
+        <div className="section-header">
           <div className="section-badge">
             <span className="tag-line"></span>
             Applications mobiles
@@ -85,14 +65,10 @@ const Applications = () => {
 
         {/* CARDS GRID */}
         <div className="apps-grid">
-          {appsData.map((app, index) => (
-            <div 
-              key={app.id} 
-              className={`app-card fade-in fade-in-delay-${index + 1}`}
-            >
+          {appsData.map((app) => (
+            <div key={app.id} className="app-card">
               <div className="card-glow"></div>
 
-              {/* CONTENEUR À TAILLE STRICTEMENT FIXE POUR CRÉER UN ANCRAGE */}
               <div className="app-logo-container">
                 <img
                   src={app.logo}
@@ -131,7 +107,10 @@ const Applications = () => {
                   aria-label={`Télécharger ${app.title} sur Google Play`}
                 >
                   <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style={{ marginRight: '8px', verticalAlign: 'middle' }}>
-                    <path d="M5,20V4X M5,3.23c0.41,-0.41 1.07,-0.41 1.48,0L17.5,14.25l-3.56,3.56L5,3.23z M19,15.75L6.48,22.01c-0.41,0.2 -0.91,0.2 -1.32,-0.02L14,13.13L19,15.75z M20.5,12c0,0.46 -0.23,0.89 -0.63,1.13l-1.87,-0.98l1.87,-0.98C20.27,11.41 20.5,11.54 20.5,12z" />
+                    <path d="M3,5.27V18.73c0,0.59,0.34,1.13,0.88,1.38L13.12,12l-9.24-8.11C3.34,4.14,3,4.68,3,5.27Z" opacity="0.15"/>
+                    <path d="M17.85,9.5L4.76,3.12C4.42,2.95,4.03,3,3.88,3.14L13.12,12Z" />
+                    <path d="M13.12,12l4.73-2.5L20.4,11c0.41,0.22,0.6,0.69,0.44,1.12c-0.11,0.31-0.4,0.53-0.74,0.53c-0.09,0-0.18-0.02-0.26-0.05l-2.13-1.1Z" />
+                    <path d="M13.12,12l-9.24,8.86c0.15,0.14,0.54,0.19,0.88,0.02l13.09-6.38Z" />
                   </svg>
                   Google Play
                 </button>
@@ -142,27 +121,10 @@ const Applications = () => {
       </div>
 
       <style jsx>{`
-        /* ===== FADE-IN STABILISÉ ===== */
-        .fade-in {
-          opacity: 0;
-          /* On utilise translate3d pour forcer l'accélération matérielle et éviter les micro-sauts */
-          transform: translate3d(0, 20px, 0);
-          transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-          will-change: opacity, transform;
-        }
-
-        .fade-in.visible {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
-        }
-
-        .fade-in-delay-1 { transition-delay: 0.1s; }
-        .fade-in-delay-2 { transition-delay: 0.2s; }
-
         /* ===== SECTION ===== */
         .apps-section {
           position: relative;
-          overflow: hidden; /* Empêche les lueurs de créer des barres de scroll fantômes */
+          overflow: hidden;
           padding: 120px 0;
           background: #f8fbff;
         }
@@ -181,7 +143,7 @@ const Applications = () => {
           border-radius: 50%;
           filter: blur(120px);
           opacity: .35;
-          pointer-events: none; /* Évite les interactions physiques invisibles */
+          pointer-events: none;
         }
 
         .glow-1 {
@@ -245,7 +207,7 @@ const Applications = () => {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 35px;
-        }
+         }
 
         /* ===== CARD ===== */
         .app-card {
@@ -257,15 +219,8 @@ const Applications = () => {
           padding: 50px 38px;
           border: 1px solid rgba(255,255,255,.6);
           box-shadow: 0 10px 40px rgba(0,0,0,.06);
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-          will-change: transform;
           display: flex;
           flex-direction: column;
-        }
-
-        .app-card:hover {
-          transform: translate3d(0, -10px, 0);
-          box-shadow: 0 25px 60px rgba(0,0,0,.12);
         }
 
         .card-glow {
@@ -280,44 +235,38 @@ const Applications = () => {
           pointer-events: none;
         }
 
-        /* ===== LOGO ANCHOR FIX ===== */
+        /* ===== LOGO COMPLETEMENT STATIQUE ===== */
         .app-logo-container {
           display: flex;
           justify-content: center;
           align-items: center;
           margin-bottom: 24px;
-          height: 80px; /* Hauteur fixe stricte pour empêcher le layout de bouger */
+          height: 80px;
           width: 100%;
-          overflow: hidden;
         }
 
         .app-logo {
           max-width: 220px;
           height: 80px;
           object-fit: contain;
-          /* Utilisation exclusive de translate3d pour une animation fluide sans impact sur la page */
-          animation: floatLogo 4s ease-in-out infinite;
-          will-change: transform;
         }
 
-        @keyframes floatLogo {
-          0%   { transform: translate3d(0, 0, 0); }
-          50%  { transform: translate3d(0, -6px, 0); }
-          100% { transform: translate3d(0, 0, 0); }
-        }
-
+        /* ===== CHIPS ===== */
         .app-chip {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(0,191,255,.1);
-          color: #00BFFF;
           padding: 10px 16px;
           border-radius: 999px;
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 24px;
           align-self: flex-start;
+        }
+
+        .app-chip.expedition {
+          background: rgba(0,191,255,.1);
+          color: #00BFFF;
         }
 
         .app-chip.boutique {
@@ -370,7 +319,7 @@ const Applications = () => {
           flex-shrink: 0;
         }
 
-        /* ===== BUTTONS ===== */
+        /* ===== BOUTONS SANS EFFET DE DEPLACEMENT ===== */
         .download-buttons {
           display: flex;
           gap: 14px;
@@ -385,27 +334,21 @@ const Applications = () => {
           font-size: 15px;
           font-weight: 800;
           cursor: pointer;
-          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          will-change: transform;
           display: inline-flex;
           align-items: center;
           justify-content: center;
         }
 
-        .download-btn:hover {
-          transform: translate3d(0, -3px, 0);
-        }
-
         .ios {
           background: #00BFFF;
           color: white;
-          box-shadow: 0 10px 20px rgba(0,191,255,.25);
+          box-shadow: 0 8px 20px rgba(0,191,255,.15);
         }
 
         .android {
           background: #faf066;
           color: #00BFFF;
-          box-shadow: 0 10px 20px rgba(250,240,102,.35);
+          box-shadow: 0 8px 20px rgba(250,240,102,.2);
         }
 
         /* ===== RESPONSIVE ===== */

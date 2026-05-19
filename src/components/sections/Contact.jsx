@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-const Contact = ({ scrollTo }) => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     prenom: '',
     nom: '',
@@ -133,6 +133,7 @@ const Contact = ({ scrollTo }) => {
                 <div className="form-group">
                   <input
                     type="text"
+                    id="prenom"
                     name="prenom"
                     placeholder="Prénom"
                     value={formData.prenom}
@@ -144,6 +145,7 @@ const Contact = ({ scrollTo }) => {
                 <div className="form-group">
                   <input
                     type="text"
+                    id="nom"
                     name="nom"
                     placeholder="Nom"
                     value={formData.nom}
@@ -157,6 +159,7 @@ const Contact = ({ scrollTo }) => {
               <div className="form-group">
                 <input
                   type="email"
+                  id="email"
                   name="email"
                   placeholder="Votre adresse email"
                   value={formData.email}
@@ -168,12 +171,13 @@ const Contact = ({ scrollTo }) => {
               {/* SUBJECT */}
               <div className="form-group">
                 <select
+                  id="sujet"
                   name="sujet"
                   value={formData.sujet}
                   onChange={handleChange}
                   required
                 >
-                  <option value="" disabled>
+                  <option value="" disabled hidden>
                     Sélectionner un sujet
                   </option>
                   <option value="Demande de devis - Colis -10kg">
@@ -191,6 +195,7 @@ const Contact = ({ scrollTo }) => {
               {/* MESSAGE */}
               <div className="form-group">
                 <textarea
+                  id="message"
                   name="message"
                   rows="5"
                   placeholder="Décrivez votre demande..."
@@ -226,6 +231,7 @@ const Contact = ({ scrollTo }) => {
         </div>
       </div>
 
+      {/* Le bloc style est maintenant bien à l'intérieur du parent unique <section> */}
       <style jsx>{`
         .contact-section {
           position: relative;
@@ -251,7 +257,6 @@ const Contact = ({ scrollTo }) => {
           border-radius: 50%;
           filter: blur(120px);
           opacity: 0.35;
-          /* Animation supprimée ici */
         }
         .glow-1 {
           width: 450px;
@@ -289,7 +294,7 @@ const Contact = ({ scrollTo }) => {
           color: #00bfff;
           font-weight: 900;
           margin-bottom: 22px;
-        }
+                }
         .contact-description {
           color: #64748b;
           font-size: 17px;

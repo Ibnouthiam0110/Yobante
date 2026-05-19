@@ -1,6 +1,6 @@
 // src/components/sections/Hero.jsx
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import deliveryPhone from '../../assets/images/mockeup.png';
@@ -54,13 +54,8 @@ const Hero = ({ scrollTo }) => {
 
   const current = slides[currentSlide];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [slides.length]);
+  // Le useEffect avec le setInterval a été complètement retiré ici.
+  // Le changement de slide ne se fait désormais que sur action de l'utilisateur.
 
   return (
     <section id="hero" className="hero">
@@ -77,27 +72,28 @@ const Hero = ({ scrollTo }) => {
       {/* GLOW */}
       <div className="hero-glow"></div>
 
-      {/* TABS */}
-      <div className="hero-tabs">
-        <div className="tabs-wrapper">
-          <button
-            className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(0)}
-          >
-            📦 Expédition
-          </button>
-
-          <button
-            className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(1)}
-          >
-            🛍️ Boutique
-          </button>
-        </div>
-      </div>
-
       {/* CONTENT */}
       <div className="hero-container">
+        
+        {/* TABS */}
+        <div className="hero-tabs">
+          <div className="tabs-wrapper">
+            <button
+              className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(0)}
+            >
+              📦 Expédition
+            </button>
+
+            <button
+              className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(1)}
+            >
+              🛍️ Boutique
+            </button>
+          </div>
+        </div>
+
         <AnimatePresence mode="wait">
           <motion.div
             key={current.id}
@@ -336,7 +332,7 @@ const Hero = ({ scrollTo }) => {
           z-index: 5;
           width: 100%;
           max-width: 1250px;
-          padding: 200px 32px 100px;
+          padding: 220px 32px 100px;
         }
 
         .hero-content {
@@ -349,6 +345,10 @@ const Hero = ({ scrollTo }) => {
         .hero-text {
           flex: 1;
           max-width: 560px;
+          min-height: 520px; /* Conserve une hauteur stable entre les deux slides */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
         .hero-badge {
@@ -360,6 +360,7 @@ const Hero = ({ scrollTo }) => {
           margin-bottom: 28px;
           backdrop-filter: blur(10px);
           font-size: 14px;
+          width: fit-content;
           font-weight: 600;
         }
 
@@ -424,6 +425,7 @@ const Hero = ({ scrollTo }) => {
           font-size: 16px;
           font-weight: 800;
           cursor: pointer;
+          width: fit-content;
           margin-bottom: 28px;
           transition: 0.3s;
           background: #faf066;
@@ -537,10 +539,10 @@ const Hero = ({ scrollTo }) => {
           width: 34px;
         }
 
-        /* ===== RESPONSIVE DESKTOP PETIT / TABLETTE ===== */
+        /* ===== RESPONSIVE TABLETTE / PETIT DESKTOP ===== */
         @media (max-width: 1024px) {
           .hero-container {
-            padding: 180px 24px 80px;
+            padding: 200px 24px 80px;
           }
           
           .hero-content {
@@ -555,15 +557,21 @@ const Hero = ({ scrollTo }) => {
         @media (max-width: 980px) {
           .hero {
             min-height: auto;
-            padding-top: 40px;
           }
 
           .hero-tabs {
-            top: 90px;
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
           }
 
           .hero-container {
-            padding: 170px 24px 80px;
+            padding: 100px 24px 80px;
           }
 
           .hero-content {
@@ -574,9 +582,11 @@ const Hero = ({ scrollTo }) => {
 
           .hero-text {
             max-width: 640px;
+            min-height: 580px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
           }
 
           .hero-title {
@@ -589,7 +599,6 @@ const Hero = ({ scrollTo }) => {
             max-width: 500px;
           }
 
-          /* Pour centrer la 3ème carte sur 2 colonnes */
           .shipping-methods .method-card:last-child {
             grid-column: span 2;
             max-width: calc(50% - 7px);
@@ -612,13 +621,10 @@ const Hero = ({ scrollTo }) => {
           }
         }
 
-        /* ===== RESPONSIVE MOBILE ACCESSIBLE ===== */
+        /* ===== RESPONSIVE MOBILE FIXES ===== */
         @media (max-width: 520px) {
           .hero-tabs {
-            top: 85px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
+            margin-bottom: 24px;
             padding: 0 16px;
           }
 
@@ -634,12 +640,16 @@ const Hero = ({ scrollTo }) => {
           }
 
           .hero-container {
-            padding: 160px 16px 60px;
+            padding: 80px 16px 60px;
+          }
+
+          .hero-text {
+            min-height: 610px;
           }
 
           .hero-title {
-            font-size: 34px;
-            line-height: 1.15;
+            font-size: 32px;
+            line-height: 1.2;
             margin-bottom: 24px;
           }
 
@@ -699,21 +709,15 @@ const Hero = ({ scrollTo }) => {
           }
 
           .hero-image img {
-            max-width: 240px;
+            max-width: 220px;
           }
         }
 
-        /* ===== DESACTIVATION DES ANIMATIONS SUR MOBILE ===== */
+        /* ===== DESACTIVATION DES ANIMATIONS POUR LA PERFORMANCE MOBILE ===== */
         @media (max-width: 768px) {
-          .hero-content,
-          .hero-image,
-          .method-card,
-          .store-btn,
-          .hero-btn,
-          .hero-glow {
+          .hero-image {
             animation: none !important;
             transform: none !important;
-            transition: none !important;
           }
           
           .method-card:hover,

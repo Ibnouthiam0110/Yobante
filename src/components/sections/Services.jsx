@@ -1,5 +1,5 @@
 // src/components/sections/Services.jsx
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 
 const STEPS = [
   {
@@ -87,25 +87,6 @@ const Services = ({ scrollTo }) => {
     scrollTo("contact");
   }, [scrollTo]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    document
-      .querySelectorAll("#services .fade-in")
-      .forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="services" className="section">
       <div className="bg-shape bg1"></div>
@@ -114,7 +95,7 @@ const Services = ({ scrollTo }) => {
       <div className="container">
 
         {/* HEADER */}
-        <div className="section-header fade-in">
+        <div className="section-header">
           <div className="section-tag">
             <span className="tag-line"></span>
             Nos services
@@ -125,12 +106,12 @@ const Services = ({ scrollTo }) => {
         </div>
 
         {/* ===== EXPEDITION ===== */}
-        <div className="service-card-wrapper glass-card fade-in">
+        <div className="service-card-wrapper glass-card">
 
           <div className="card-left yellow-main">
 
             <div className="card-title-row">
-              <div className="card-icon-circle blue-bg floating">
+              <div className="card-icon-circle blue-bg">
                 📦
               </div>
               <div>
@@ -149,8 +130,8 @@ const Services = ({ scrollTo }) => {
               </div>
               <div className="steps-row">
                 {STEPS.map((step, i) => (
-                  <div key={step.id} className={`step-wrapper fade-in fade-in-delay-${i + 1}`}>
-                    <div className="step-card white-card hover-card">
+                  <div key={step.id} className="step-wrapper">
+                    <div className="step-card white-card">
                       <div className="step-num blue-bg">{step.num}</div>
                       <p className="step-title blue-text">{step.title}</p>
                       <p className="step-desc dark-text">{step.desc}</p>
@@ -170,10 +151,10 @@ const Services = ({ scrollTo }) => {
                 TARIFICATION
               </div>
               <div className="pricing-row">
-                {PRICING_PLANS.map((plan, i) => (
+                {PRICING_PLANS.map((plan) => (
                   <div
                     key={plan.id}
-                    className={`pricing-card fade-in fade-in-delay-${i + 1} ${
+                    className={`pricing-card ${
                       plan.type === "popular" ? "popular-card" : "white-card"
                     }`}
                   >
@@ -199,7 +180,7 @@ const Services = ({ scrollTo }) => {
           </div>
 
           {/* RIGHT */}
-          <div className="card-right white-bg promo-side fade-in fade-in-delay-2">
+          <div className="card-right white-bg promo-side">
             <div className="promo-box expedition-gradient">
               <p className="promo-desc">
                 Envoyez vos colis depuis la France vers le Sénégal (vice-versa)
@@ -214,10 +195,10 @@ const Services = ({ scrollTo }) => {
 
         {/* ===== BOUTIQUE ===== */}
         <div
-          className="service-card-wrapper boutique-wrapper glass-card fade-in"
+          className="service-card-wrapper boutique-wrapper glass-card"
           style={{ marginTop: "70px" }}
         >
-          <div className="card-right white-bg promo-side fade-in fade-in-delay-1">
+          <div className="card-right white-bg promo-side">
             <div className="promo-box boutique-gradient">
               <p className="promo-desc dark-blue">
                 Achetez vos marques préférées et recevez-les directement au Sénégal.
@@ -234,7 +215,7 @@ const Services = ({ scrollTo }) => {
           <div className="card-left blue-dark-bg">
 
             <div className="card-title-row">
-              <div className="card-icon-circle yellow-bg floating">🛍️</div>
+              <div className="card-icon-circle yellow-bg">🛍️</div>
               <div>
                 <span className="mini-label yellow-text">BOUTIQUE</span>
                 <h3 className="card-main-title white-text">Boutique en ligne</h3>
@@ -249,7 +230,7 @@ const Services = ({ scrollTo }) => {
               </div>
               <div className="categories-grid">
                 {CATEGORIES.map((cat, i) => (
-                  <div key={i} className={`category-pill fade-in fade-in-delay-${(i % 3) + 1}`}>
+                  <div key={i} className="category-pill">
                     <span className="cat-icon">{cat.icon}</span>
                     <span className="cat-label">{cat.label}</span>
                   </div>
@@ -265,7 +246,7 @@ const Services = ({ scrollTo }) => {
               </div>
               <div className="steps-row">
                 {BOUTIQUE_STEPS.map((step, i) => (
-                  <div key={i} className={`step-wrapper fade-in fade-in-delay-${i + 1}`}>
+                  <div key={i} className="step-wrapper">
                     <div className="step-card boutique-step-card">
                       <div className="step-num yellow-bg step-num-dark">{step.num}</div>
                       <p className="step-title boutique-step-title">{step.title}</p>
@@ -288,23 +269,6 @@ const Services = ({ scrollTo }) => {
           box-sizing: border-box;
         }
 
-        /* ===== FADE-IN ===== */
-        .fade-in {
-          opacity: 0;
-          transform: translateY(28px);
-          transition: opacity 0.7s ease, transform 0.7s ease;
-          will-change: opacity, transform;
-        }
-
-        .fade-in.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .fade-in-delay-1 { transition-delay: 0.1s; }
-        .fade-in-delay-2 { transition-delay: 0.2s; }
-        .fade-in-delay-3 { transition-delay: 0.3s; }
-
         /* ===== SECTION ===== */
         .section {
           position: relative;
@@ -323,7 +287,6 @@ const Services = ({ scrollTo }) => {
           filter: blur(120px);
           opacity: 0.3;
           z-index: 0;
-          will-change: transform;
         }
 
         .bg1 {
@@ -447,18 +410,6 @@ const Services = ({ scrollTo }) => {
           justify-content: center;
           font-size: 30px;
           box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-          will-change: transform;
-        }
-
-        .floating {
-          animation: floating 4s ease-in-out infinite;
-          will-change: transform;
-        }
-
-        @keyframes floating {
-          0%   { transform: translateY(0px); }
-          50%  { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
         }
 
         .mini-label {
@@ -523,16 +474,6 @@ const Services = ({ scrollTo }) => {
           height: 100%;
           text-align: center;
           box-sizing: border-box;
-        }
-
-        .hover-card {
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          will-change: transform;
-        }
-
-        .hover-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 18px 30px rgba(0,0,0,0.08);
         }
 
         .white-card {
@@ -606,13 +547,7 @@ const Services = ({ scrollTo }) => {
           border-radius: 24px;
           padding: 24px 16px;
           text-align: center;
-          transition: transform 0.35s ease;
           overflow: hidden;
-          will-change: transform;
-        }
-
-        .pricing-card:hover {
-          transform: translateY(-10px);
         }
 
         .popular-card {
@@ -673,12 +608,6 @@ const Services = ({ scrollTo }) => {
           font-size: 12px;
           font-weight: 800;
           cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .plan-btn:hover {
-          transform: scale(1.03);
-          background: #0284c7;
         }
 
         /* ===== CATEGORIES ===== */
@@ -694,14 +623,7 @@ const Services = ({ scrollTo }) => {
           border-radius: 20px;
           padding: 18px 12px;
           text-align: center;
-          transition: transform 0.3s ease, background 0.3s ease;
           backdrop-filter: blur(12px);
-          will-change: transform;
-        }
-
-        .category-pill:hover {
-          transform: translateY(-6px);
-          background: rgba(255,255,255,0.18);
         }
 
         .cat-icon {
@@ -775,14 +697,8 @@ const Services = ({ scrollTo }) => {
           padding: 15px 24px;
           font-weight: 800;
           cursor: pointer;
-          transition: transform 0.3s ease;
           background: white;
           color: #00BFFF;
-          will-change: transform;
-        }
-
-        .promo-btn:hover {
-          transform: translateY(-4px);
         }
 
         .dark-blue-btn {

@@ -51,6 +51,7 @@ const Cta = ({ scrollTo }) => {
         </div>
       </div>
 
+      {/* Déplacé à l'intérieur de la balise <section> pour corriger l'erreur de parent unique */}
       <style jsx>{`
         .cta-section {
           position: relative;
