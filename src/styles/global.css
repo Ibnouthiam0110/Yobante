@@ -1255,3 +1255,59 @@ input, textarea {
 button, a, .clickable {
   cursor: pointer;
 }
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .app-card:hover,
+  .pricing-card:hover,
+  .cta-btn:hover,
+  .promo-btn:hover,
+  .download-btn:hover,
+  .faq-btn:hover,
+  .submit-btn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .step-card,
+  .pricing-card,
+  .app-card,
+  .faq-item {
+    transform: none !important;
+  }
+}
+
+/* Empêche la page de bouger */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Desktop = stable */
+@media (min-width: 1024px) {
+
+  /* Stop animation flottante */
+  .floating {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Supprime le déplacement au hover */
+  .hover-card:hover,
+  .pricing-card:hover,
+  .promo-btn:hover,
+  .category-pill:hover {
+    transform: none !important;
+  }
+}

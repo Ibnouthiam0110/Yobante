@@ -1,5 +1,5 @@
 // src/components/sections/Services.jsx
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 const STEPS = [
   {
@@ -87,6 +87,25 @@ const Services = ({ scrollTo }) => {
     scrollTo("contact");
   }, [scrollTo]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document
+      .querySelectorAll("#services .fade-in")
+      .forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="services" className="section">
       <div className="bg-shape bg1"></div>
@@ -94,21 +113,19 @@ const Services = ({ scrollTo }) => {
 
       <div className="container">
 
-        <div className="section-header">
+        {/* HEADER */}
+        <div className="section-header fade-in">
           <div className="section-tag">
             <span className="tag-line"></span>
             Nos services
           </div>
-
           <h2 className="section-title">
             Des solutions modernes pour vos besoins
           </h2>
-
-       
         </div>
 
         {/* ===== EXPEDITION ===== */}
-        <div className="service-card-wrapper glass-card">
+        <div className="service-card-wrapper glass-card fade-in">
 
           <div className="card-left yellow-main">
 
@@ -116,7 +133,6 @@ const Services = ({ scrollTo }) => {
               <div className="card-icon-circle blue-bg floating">
                 📦
               </div>
-
               <div>
                 <span className="mini-label">SERVICE EXPRESS</span>
                 <h3 className="card-main-title blue-text">
@@ -125,37 +141,23 @@ const Services = ({ scrollTo }) => {
               </div>
             </div>
 
+            {/* Comment ça marche */}
             <div className="inner-section">
-
               <div className="inner-tag blue-text">
                 <span className="inner-tag-line blue-bg"></span>
                 COMMENT ÇA MARCHE
               </div>
-
               <div className="steps-row">
                 {STEPS.map((step, i) => (
-                  <div key={step.id} className="step-wrapper">
-
+                  <div key={step.id} className={`step-wrapper fade-in fade-in-delay-${i + 1}`}>
                     <div className="step-card white-card hover-card">
-
-                      <div className="step-num blue-bg">
-                        {step.num}
-                      </div>
-
-                      <p className="step-title blue-text">
-                        {step.title}
-                      </p>
-
-                      <p className="step-desc dark-text">
-                        {step.desc}
-                      </p>
-
+                      <div className="step-num blue-bg">{step.num}</div>
+                      <p className="step-title blue-text">{step.title}</p>
+                      <p className="step-desc dark-text">{step.desc}</p>
                     </div>
-
                     {i < STEPS.length - 1 && (
                       <div className="step-arrow blue-text">→</div>
                     )}
-
                   </div>
                 ))}
               </div>
@@ -163,60 +165,33 @@ const Services = ({ scrollTo }) => {
 
             {/* Tarification */}
             <div className="inner-section">
-
               <div className="inner-tag blue-text">
                 <span className="inner-tag-line blue-bg"></span>
                 TARIFICATION
               </div>
-
               <div className="pricing-row">
-                {PRICING_PLANS.map((plan) => (
+                {PRICING_PLANS.map((plan, i) => (
                   <div
                     key={plan.id}
-                    className={`pricing-card ${
-                      plan.type === "popular"
-                        ? "popular-card"
-                        : "white-card"
+                    className={`pricing-card fade-in fade-in-delay-${i + 1} ${
+                      plan.type === "popular" ? "popular-card" : "white-card"
                     }`}
                   >
-
                     {plan.type === "popular" && (
-                      <div className="popular-badge">
-                        POPULAIRE
-                      </div>
+                      <div className="popular-badge">POPULAIRE</div>
                     )}
-
-                    <div className="plan-icon-container">
-                      {plan.icon}
-                    </div>
-
-                    <h4 className="plan-name blue-text">
-                      {plan.name}
-                    </h4>
-
-                    <p className="plan-price-label">
-                      {plan.price}
-                    </p>
-
+                    <div className="plan-icon-container">{plan.icon}</div>
+                    <h4 className="plan-name blue-text">{plan.name}</h4>
+                    <p className="plan-price-label">{plan.price}</p>
                     <div className="plan-details-box">
-                      <p className="plan-desc">
-                        {plan.desc}
-                      </p>
-
+                      <p className="plan-desc">{plan.desc}</p>
                       {plan.features.map((f, i) => (
-                        <p key={i} className="plan-feature">
-                          {f}
-                        </p>
+                        <p key={i} className="plan-feature">{f}</p>
                       ))}
                     </div>
-
-                    <button
-                      className="plan-btn"
-                      onClick={handleClick}
-                    >
+                    <button className="plan-btn" onClick={handleClick}>
                       {plan.button}
                     </button>
-
                   </div>
                 ))}
               </div>
@@ -224,127 +199,81 @@ const Services = ({ scrollTo }) => {
           </div>
 
           {/* RIGHT */}
-          <div className="card-right white-bg promo-side">
+          <div className="card-right white-bg promo-side fade-in fade-in-delay-2">
             <div className="promo-box expedition-gradient">
-
-             
               <p className="promo-desc">
-                 Envoyez vos colis depuis la France vers le Sénégal (vice-versa) avec collecte à domicile ou dépôt en point relais.
+                Envoyez vos colis depuis la France vers le Sénégal (vice-versa)
+                avec collecte à domicile ou dépôt en point relais.
               </p>
-
-              <button
-                className="promo-btn"
-                onClick={handleClick}
-              >
+              <button className="promo-btn" onClick={handleClick}>
                 En savoir plus →
               </button>
-
             </div>
           </div>
         </div>
 
         {/* ===== BOUTIQUE ===== */}
         <div
-          className="service-card-wrapper boutique-wrapper glass-card"
+          className="service-card-wrapper boutique-wrapper glass-card fade-in"
           style={{ marginTop: "70px" }}
         >
-
-          <div className="card-right white-bg promo-side">
-
+          <div className="card-right white-bg promo-side fade-in fade-in-delay-1">
             <div className="promo-box boutique-gradient">
-
-             
-
               <p className="promo-desc dark-blue">
                 Achetez vos marques préférées et recevez-les directement au Sénégal.
               </p>
-
               <button
                 className="promo-btn dark-blue-btn"
                 onClick={() => scrollTo("apps")}
               >
                 Explorer →
               </button>
-
             </div>
           </div>
 
           <div className="card-left blue-dark-bg">
 
             <div className="card-title-row">
-
-              <div className="card-icon-circle yellow-bg floating">
-                🛍️
-              </div>
-
+              <div className="card-icon-circle yellow-bg floating">🛍️</div>
               <div>
-                <span className="mini-label yellow-text">
-                  BOUTIQUE
-                </span>
-
-                <h3 className="card-main-title white-text">
-                  Boutique en ligne
-                </h3>
+                <span className="mini-label yellow-text">BOUTIQUE</span>
+                <h3 className="card-main-title white-text">Boutique en ligne</h3>
               </div>
             </div>
 
             {/* Categories */}
             <div className="inner-section">
-
               <div className="inner-tag white-text">
                 <span className="inner-tag-line yellow-bg"></span>
                 NOS CATÉGORIES
               </div>
-
               <div className="categories-grid">
                 {CATEGORIES.map((cat, i) => (
-                  <div key={i} className="category-pill">
-                    <span className="cat-icon">
-                      {cat.icon}
-                    </span>
-
-                    <span className="cat-label">
-                      {cat.label}
-                    </span>
+                  <div key={i} className={`category-pill fade-in fade-in-delay-${(i % 3) + 1}`}>
+                    <span className="cat-icon">{cat.icon}</span>
+                    <span className="cat-label">{cat.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Steps */}
+            {/* Steps boutique */}
             <div className="inner-section">
-
               <div className="inner-tag white-text">
                 <span className="inner-tag-line yellow-bg"></span>
                 COMMENT ACHETER ?
               </div>
-
               <div className="steps-row">
                 {BOUTIQUE_STEPS.map((step, i) => (
-                  <div key={i} className="step-wrapper">
-
+                  <div key={i} className={`step-wrapper fade-in fade-in-delay-${i + 1}`}>
                     <div className="step-card boutique-step-card">
-
-                      <div className="step-num yellow-bg step-num-dark">
-                        {step.num}
-                      </div>
-
-                      <p className="step-title boutique-step-title">
-                        {step.title}
-                      </p>
-
-                      <p className="step-desc boutique-step-desc">
-                        {step.desc}
-                      </p>
-
+                      <div className="step-num yellow-bg step-num-dark">{step.num}</div>
+                      <p className="step-title boutique-step-title">{step.title}</p>
+                      <p className="step-desc boutique-step-desc">{step.desc}</p>
                     </div>
-
                     {i < BOUTIQUE_STEPS.length - 1 && (
-                      <div className="step-arrow yellow-text">
-                        →
-                      </div>
+                      <div className="step-arrow yellow-text">→</div>
                     )}
-
                   </div>
                 ))}
               </div>
@@ -359,6 +288,24 @@ const Services = ({ scrollTo }) => {
           box-sizing: border-box;
         }
 
+        /* ===== FADE-IN ===== */
+        .fade-in {
+          opacity: 0;
+          transform: translateY(28px);
+          transition: opacity 0.7s ease, transform 0.7s ease;
+          will-change: opacity, transform;
+        }
+
+        .fade-in.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        /* ===== SECTION ===== */
         .section {
           position: relative;
           padding: 120px 0;
@@ -367,6 +314,7 @@ const Services = ({ scrollTo }) => {
             radial-gradient(circle at bottom right, #bae6fd 0%, transparent 35%),
             #f8fafc;
           overflow: hidden;
+          overflow-x: hidden;
         }
 
         .bg-shape {
@@ -375,6 +323,7 @@ const Services = ({ scrollTo }) => {
           filter: blur(120px);
           opacity: 0.3;
           z-index: 0;
+          will-change: transform;
         }
 
         .bg1 {
@@ -401,6 +350,7 @@ const Services = ({ scrollTo }) => {
           padding: 0 24px;
         }
 
+        /* ===== HEADER ===== */
         .section-header {
           text-align: center;
           margin-bottom: 70px;
@@ -432,25 +382,16 @@ const Services = ({ scrollTo }) => {
           margin-bottom: 16px;
         }
 
-        .section-subtitle {
-          max-width: 650px;
-          margin: 0 auto;
-          color: #64748b;
-          font-size: 18px;
-          line-height: 1.7;
-        }
-
-        /* WRAPPERS */
-
+        /* ===== WRAPPERS ===== */
         .service-card-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  border-radius: 34px;
-  overflow: hidden;
-  align-items: start; /* IMPORTANT */
-  position: relative;
-  gap: 24px;
-}
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          border-radius: 34px;
+          overflow: hidden;
+          align-items: center;
+          position: relative;
+          gap: 24px;
+        }
 
         .glass-card {
           background: rgba(255,255,255,0.65);
@@ -471,48 +412,26 @@ const Services = ({ scrollTo }) => {
         }
 
         .yellow-main {
-          background: linear-gradient(135deg,#faf066 0%, #fff8b3 100%);
+          background: linear-gradient(135deg, #faf066 0%, #fff8b3 100%);
         }
 
         .blue-dark-bg {
-          background:
-            linear-gradient(
-              135deg,
-              #00BFFF 0%,
-              #0284c7 100%
-            );
+          background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
         }
 
         .white-bg {
           background: #ffffff;
         }
 
-        /* TYPO */
+        /* ===== TYPO ===== */
+        .blue-text   { color: #00BFFF; }
+        .white-text  { color: white; }
+        .yellow-text { color: #faf066; }
+        .dark-text   { color: #475569; }
+        .blue-bg     { background: #00BFFF; }
+        .yellow-bg   { background: #faf066; }
 
-        .blue-text {
-          color: #00BFFF;
-        }
-
-        .white-text {
-          color: white;
-        }
-
-        .yellow-text {
-          color: #faf066;
-        }
-
-        .dark-text {
-          color: #475569;
-        }
-
-        .blue-bg {
-          background: #00BFFF;
-        }
-
-        .yellow-bg {
-          background: #faf066;
-        }
-
+        /* ===== CARD TITLE ===== */
         .card-title-row {
           display: flex;
           align-items: center;
@@ -528,15 +447,17 @@ const Services = ({ scrollTo }) => {
           justify-content: center;
           font-size: 30px;
           box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+          will-change: transform;
         }
 
         .floating {
           animation: floating 4s ease-in-out infinite;
+          will-change: transform;
         }
 
         @keyframes floating {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+          0%   { transform: translateY(0px); }
+          50%  { transform: translateY(-10px); }
           100% { transform: translateY(0px); }
         }
 
@@ -555,8 +476,7 @@ const Services = ({ scrollTo }) => {
           line-height: 1.1;
         }
 
-        /* INNER */
-
+        /* ===== INNER ===== */
         .inner-section {
           display: flex;
           flex-direction: column;
@@ -577,51 +497,38 @@ const Services = ({ scrollTo }) => {
           height: 2px;
         }
 
-        /* STEPS */
+        /* ===== STEPS ===== */
+        .steps-row {
+          display: flex;
+          gap: 20px;
+          align-items: stretch;
+        }
 
-       .steps-row {
-  display: flex;
-  gap: 20px;
-  align-items: stretch;
-}
+        .step-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex: 1;
+        }
 
-.step-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-}
+        .step-card {
+          flex: 1;
+          padding: 24px 18px;
+          border-radius: 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          min-height: 230px;
+          height: 100%;
+          text-align: center;
+          box-sizing: border-box;
+        }
 
-.step-card {
-  flex: 1;
-  background: #ffffff;
-  padding: 24px 18px;
-  border-radius: 24px;
-
-.step-title {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 10px;
-
-  min-height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  min-height: 230px; /* même hauteur */
-  height: 100%;
-
-  text-align: center;
-  box-sizing: border-box;
-}
+        .hover-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          will-change: transform;
+        }
 
         .hover-card:hover {
           transform: translateY(-8px);
@@ -659,6 +566,11 @@ const Services = ({ scrollTo }) => {
           font-size: 14px;
           font-weight: 800;
           margin-bottom: 8px;
+          min-height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
         .step-desc {
@@ -666,22 +578,23 @@ const Services = ({ scrollTo }) => {
           line-height: 1.6;
         }
 
+        .boutique-step-card .step-title,
         .boutique-step-title {
-      color: #ffffff;
-      font-weight: 800;
-    }
+          color: #ffffff !important;
+          font-weight: 800;
+        }
 
-    .boutique-step-desc {
-      color: #ebf0f5; /* bleu très clair */
-    }
+        .boutique-step-card .step-desc,
+        .boutique-step-desc {
+          color: #ffffff !important;
+        }
 
         .step-arrow {
           font-size: 24px;
           font-weight: 800;
         }
 
-        /* PRICING */
-
+        /* ===== PRICING ===== */
         .pricing-row {
           display: grid;
           grid-template-columns: repeat(3,1fr);
@@ -693,8 +606,9 @@ const Services = ({ scrollTo }) => {
           border-radius: 24px;
           padding: 24px 16px;
           text-align: center;
-          transition: all 0.35s ease;
+          transition: transform 0.35s ease;
           overflow: hidden;
+          will-change: transform;
         }
 
         .pricing-card:hover {
@@ -702,12 +616,7 @@ const Services = ({ scrollTo }) => {
         }
 
         .popular-card {
-          background:
-            linear-gradient(
-              135deg,
-              #ffffff 0%,
-              #fff8b3 100%
-            );
+          background: linear-gradient(135deg, #ffffff 0%, #fff8b3 100%);
           border: 2px solid #00BFFF;
         }
 
@@ -772,8 +681,7 @@ const Services = ({ scrollTo }) => {
           background: #0284c7;
         }
 
-        /* CATEGORIES */
-
+        /* ===== CATEGORIES ===== */
         .categories-grid {
           display: grid;
           grid-template-columns: repeat(3,1fr);
@@ -786,8 +694,9 @@ const Services = ({ scrollTo }) => {
           border-radius: 20px;
           padding: 18px 12px;
           text-align: center;
-          transition: all 0.3s ease;
+          transition: transform 0.3s ease, background 0.3s ease;
           backdrop-filter: blur(12px);
+          will-change: transform;
         }
 
         .category-pill:hover {
@@ -807,14 +716,14 @@ const Services = ({ scrollTo }) => {
           color: white;
         }
 
-        /* PROMO */
-
+        /* ===== PROMO ===== */
         .promo-side {
-  padding: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
+          padding: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          align-self: center;
+        }
 
         .promo-box {
           width: 100%;
@@ -841,40 +750,12 @@ const Services = ({ scrollTo }) => {
         }
 
         .expedition-gradient {
-          background:
-            linear-gradient(
-              135deg,
-              #00BFFF 0%,
-              #0284c7 100%
-            );
+          background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
           color: white;
         }
 
         .boutique-gradient {
-          background:
-            linear-gradient(
-              135deg,
-              #faf066 0%,
-              #fff8b3 100%
-            );
-        }
-
-        .promo-badge {
-          display: inline-flex;
-          align-self: center;
-          padding: 8px 16px;
-          border-radius: 50px;
-          background: rgba(255,255,255,0.18);
-          color: white;
-          font-size: 11px;
-          font-weight: 800;
-          margin-bottom: 20px;
-          backdrop-filter: blur(10px);
-        }
-
-        .blue-badge {
-          background: rgba(0,191,255,0.15);
-          color: #00BFFF;
+          background: linear-gradient(135deg, #faf066 0%, #fff8b3 100%);
         }
 
         .promo-desc {
@@ -894,9 +775,10 @@ const Services = ({ scrollTo }) => {
           padding: 15px 24px;
           font-weight: 800;
           cursor: pointer;
-          transition: all 0.3s ease;
+          transition: transform 0.3s ease;
           background: white;
           color: #00BFFF;
+          will-change: transform;
         }
 
         .promo-btn:hover {
@@ -908,10 +790,8 @@ const Services = ({ scrollTo }) => {
           color: white;
         }
 
-        /* RESPONSIVE */
-
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-
           .service-card-wrapper,
           .boutique-wrapper {
             grid-template-columns: 1fr;
@@ -923,7 +803,6 @@ const Services = ({ scrollTo }) => {
         }
 
         @media (max-width: 768px) {
-
           .section {
             padding: 90px 0;
           }
@@ -954,95 +833,89 @@ const Services = ({ scrollTo }) => {
           }
         }
 
-     @media (max-width: 480px) {
+        @media (max-width: 480px) {
+          .section {
+            padding: 70px 0;
+          }
 
-  .section {
-    padding: 70px 0;
-  }
+          .section-title {
+            font-size: 32px;
+            line-height: 1.15;
+          }
 
-  .section-title {
-    font-size: 32px;
-    line-height: 1.15;
-  }
+          .categories-grid {
+            grid-template-columns: 1fr;
+          }
 
-  .categories-grid {
-    grid-template-columns: 1fr;
-  }
+          .card-main-title {
+            font-size: 28px;
+          }
 
-  .card-main-title {
-    font-size: 28px;
-  }
+          .card-left {
+            padding: 24px 18px;
+            gap: 24px;
+          }
 
-  .card-left {
-    padding: 24px 18px;
-    gap: 24px;
-  }
+          .promo-side {
+            min-height: auto;
+            padding: 14px;
+          }
 
-  /* CARD PROMO MOBILE */
-  .promo-side {
-    min-height: auto;
-    padding: 14px;
-  }
+          .promo-box {
+            width: 100%;
+            max-width: 340px;
+            min-height: 420px;
+            margin: auto;
+            border-radius: 28px;
+            padding: 32px 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+          }
 
-  .promo-box {
-  width: 100%;
-  max-width: 340px; /* largeur compacte */
-  min-height: 420px; /* taille contrôlée */
-  margin: auto;
+          .promo-box::before {
+            width: 140px;
+            height: 140px;
+            top: -50px;
+            right: -50px;
+          }
 
-  border-radius: 28px;
-  padding: 32px 26px;
+          .promo-desc {
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 800;
+            margin-bottom: 22px;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+          }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+          .promo-btn {
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+            padding: 14px 22px;
+            border-radius: 999px;
+            font-size: 15px;
+          }
 
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
+          .step-card {
+            min-height: auto;
+            padding: 20px 16px;
+          }
 
-  .promo-box::before {
-    width: 140px;
-    height: 140px;
-    top: -50px;
-    right: -50px;
-  }
+          .step-title {
+            min-height: auto;
+            font-size: 14px;
+          }
 
-.promo-desc {
-  font-size: 16px; /* avant 22px */
-  line-height: 1.7;
-  font-weight: 800;
-  margin-bottom: 22px;
-  max-width: 280px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-  .promo-btn {
-  width: 100%;
-  max-width: 260px;
-  margin: 0 auto;
-
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-size: 15px;
-}
-
-  .step-card {
-    min-height: auto;
-    padding: 20px 16px;
-  }
-
-  .step-title {
-    min-height: auto;
-    font-size: 14px;
-  }
-
-  .step-desc {
-    font-size: 12px;
-  }
-}
+          .step-desc {
+            font-size: 12px;
+          }
+        }
       `}</style>
     </section>
   );

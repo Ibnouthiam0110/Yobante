@@ -57,7 +57,7 @@ const Hero = ({ scrollTo }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [slides.length]);
@@ -80,7 +80,6 @@ const Hero = ({ scrollTo }) => {
       {/* TABS */}
       <div className="hero-tabs">
         <div className="tabs-wrapper">
-
           <button
             className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`}
             onClick={() => setCurrentSlide(0)}
@@ -94,15 +93,12 @@ const Hero = ({ scrollTo }) => {
           >
             🛍️ Boutique
           </button>
-
         </div>
       </div>
 
       {/* CONTENT */}
       <div className="hero-container">
-
         <AnimatePresence mode="wait">
-
           <motion.div
             key={current.id}
             className="hero-content"
@@ -111,16 +107,13 @@ const Hero = ({ scrollTo }) => {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.7 }}
           >
-
             {/* TEXT */}
             <div className="hero-text">
-
               <div
                 className="hero-badge"
                 style={{ background: current.badgeBg }}
               >
                 <span className="badge-dot"></span>
-
                 <span style={{ color: current.badgeTextColor }}>
                   Service actif — France → Sénégal
                 </span>
@@ -135,7 +128,6 @@ const Hero = ({ scrollTo }) => {
 
               {current.id === 1 && (
                 <div className="shipping-methods">
-
                   <div className="method-card">
                     <span className="method-icon">✈️</span>
                     <span className="method-name">Fret Aérien</span>
@@ -153,7 +145,6 @@ const Hero = ({ scrollTo }) => {
                     <span className="method-name">Colis GP</span>
                     <span className="method-desc">7-14 jours</span>
                   </div>
-
                 </div>
               )}
 
@@ -169,7 +160,6 @@ const Hero = ({ scrollTo }) => {
 
               {/* STORES */}
               <div className="store-buttons">
-
                 <a
                   href="https://apps.apple.com"
                   target="_blank"
@@ -177,7 +167,6 @@ const Hero = ({ scrollTo }) => {
                   className="store-btn appstore"
                 >
                   <AppStoreIcon />
-
                   <div>
                     <small>Télécharger sur</small>
                     <strong>App Store</strong>
@@ -193,18 +182,15 @@ const Hero = ({ scrollTo }) => {
                   }`}
                 >
                   <PlayStoreIcon />
-
                   <div>
                     <small>Disponible sur</small>
                     <strong>Google Play</strong>
                   </div>
                 </a>
-
               </div>
 
               {/* STATS */}
               <div className="hero-stats">
-
                 <div className="stat">
                   <span
                     className="stat-number"
@@ -212,10 +198,7 @@ const Hero = ({ scrollTo }) => {
                   >
                     5k+
                   </span>
-
-                  <span className="stat-label">
-                    Colis livrés
-                  </span>
+                  <span className="stat-label">Colis livrés</span>
                 </div>
 
                 <div className="stat">
@@ -225,10 +208,7 @@ const Hero = ({ scrollTo }) => {
                   >
                     2-4j
                   </span>
-
-                  <span className="stat-label">
-                    Livraison
-                  </span>
+                  <span className="stat-label">Livraison</span>
                 </div>
 
                 <div className="stat">
@@ -238,14 +218,9 @@ const Hero = ({ scrollTo }) => {
                   >
                     24/7
                   </span>
-
-                  <span className="stat-label">
-                    Support
-                  </span>
+                  <span className="stat-label">Support</span>
                 </div>
-
               </div>
-
             </div>
 
             {/* IMAGE */}
@@ -260,23 +235,17 @@ const Hero = ({ scrollTo }) => {
                 ease: 'easeInOut',
               }}
             >
-
               <img
                 src={current.image}
                 alt="Application mobile"
               />
-
             </motion.div>
-
           </motion.div>
-
         </AnimatePresence>
-
       </div>
 
       {/* DOTS */}
       <div className="slide-dots">
-
         {slides.map((_, index) => (
           <button
             key={index}
@@ -292,338 +261,468 @@ const Hero = ({ scrollTo }) => {
             onClick={() => setCurrentSlide(index)}
           />
         ))}
-
       </div>
 
       <style jsx>{`
-
-        .hero{
-          position:relative;
-          width:100%;
-          min-height:100vh;
-          overflow:hidden;
-          display:flex;
-          justify-content:center;
-          align-items:center;
+        .hero {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
-        .hero-bg{
-          position:absolute;
-          inset:0;
-          z-index:0;
+        .hero-bg {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
         }
 
-        .hero-glow{
-          position:absolute;
-          width:700px;
-          height:700px;
-          background:rgba(255,255,255,.15);
-          filter:blur(120px);
-          border-radius:50%;
-          top:-150px;
-          right:-100px;
-          animation:floatGlow 8s ease-in-out infinite;
+        .hero-glow {
+          position: absolute;
+          width: 700px;
+          height: 700px;
+          background: rgba(255, 255, 255, 0.15);
+          filter: blur(120px);
+          border-radius: 50%;
+          top: -150px;
+          right: -100px;
+          animation: floatGlow 8s ease-in-out infinite;
         }
 
-        @keyframes floatGlow{
-          0%{transform:translate(0,0);}
-          50%{transform:translate(-60px,40px);}
-          100%{transform:translate(0,0);}
+        @keyframes floatGlow {
+          0% { transform: translate(0, 0); }
+          50% { transform: translate(-60px, 40px); }
+          100% { transform: translate(0, 0); }
         }
 
-        .hero-tabs{
-          position:absolute;
-          top:120px;
-          left:50%;
-          transform:translateX(-50%);
-          z-index:20;
+        .hero-tabs {
+          position: absolute;
+          top: 120px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 20;
         }
 
-        .tabs-wrapper{
-          display:flex;
-          gap:8px;
-          background:rgba(255,255,255,.15);
-          backdrop-filter:blur(14px);
-          padding:6px;
-          border-radius:18px;
+        .tabs-wrapper {
+          display: flex;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(14px);
+          padding: 6px;
+          border-radius: 18px;
         }
 
-        .tab-btn{
-          border:none;
-          padding:12px 18px;
-          border-radius:12px;
-          cursor:pointer;
-          font-weight:700;
-          background:transparent;
-          color:white;
-          transition:.3s;
+        .tab-btn {
+          border: none;
+          padding: 12px 18px;
+          border-radius: 12px;
+          cursor: pointer;
+          font-weight: 700;
+          background: transparent;
+          color: white;
+          transition: 0.3s;
         }
 
-        .tab-btn.active{
-          background:white;
-          color:#00BFFF;
+        .tab-btn.active {
+          background: white;
+          color: #00BFFF;
         }
 
-        .hero-container{
-          position:relative;
-          z-index:5;
-          width:100%;
-          max-width:1250px;
-           padding:180px 32px 80px;
+        .hero-container {
+          position: relative;
+          z-index: 5;
+          width: 100%;
+          max-width: 1250px;
+          padding: 200px 32px 100px;
         }
 
-        .hero-content{
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          gap:50px;
+        .hero-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 50px;
         }
 
-        .hero-text{
-          flex:1;
-          max-width:560px;
+        .hero-text {
+          flex: 1;
+          max-width: 560px;
         }
 
-        .hero-badge{
-          display:inline-flex;
-          align-items:center;
-          gap:10px;
-          padding:8px 18px;
-          border-radius:999px;
-          margin-bottom:28px;
-          backdrop-filter:blur(10px);
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 18px;
+          border-radius: 999px;
+          margin-bottom: 28px;
+          backdrop-filter: blur(10px);
+          font-size: 14px;
+          font-weight: 600;
         }
 
-        .badge-dot{
-          width:8px;
-          height:8px;
-          border-radius:50%;
-          background:#10b981;
-          box-shadow:0 0 10px #10b981;
+        .badge-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10b981;
+          box-shadow: 0 0 10px #10b981;
         }
 
-        .hero-title{
-          font-size:clamp(38px,5vw,70px);
-          line-height:1.05;
-          font-weight:900;
-          margin-bottom:30px;
+        .hero-title {
+          font-size: clamp(38px, 5vw, 70px);
+          line-height: 1.05;
+          font-weight: 900;
+          margin-bottom: 30px;
         }
 
-        .shipping-methods{
-          display:grid;
-          grid-template-columns:repeat(3,1fr);
-          gap:14px;
-          margin-bottom:32px;
+        .shipping-methods {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+          margin-bottom: 32px;
         }
 
-        .method-card{
-          background:white;
-          padding:16px;
-          border-radius:18px;
-          text-align:center;
-          transition:.35s ease;
-          box-shadow:0 10px 25px rgba(0,0,0,.08);
+        .method-card {
+          background: white;
+          padding: 16px;
+          border-radius: 18px;
+          text-align: center;
+          transition: 0.35s ease;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
 
-        .method-card:hover{
-          transform:translateY(-10px) scale(1.03);
+        .method-card:hover {
+          transform: translateY(-10px) scale(1.03);
         }
 
-        .method-icon{
-          display:block;
-          font-size:24px;
-          margin-bottom:8px;
+        .method-icon {
+          display: block;
+          font-size: 24px;
+          margin-bottom: 8px;
         }
 
-        .method-name{
-          display:block;
-          font-weight:800;
-          color:#00BFFF;
+        .method-name {
+          display: block;
+          font-weight: 800;
+          color: #00BFFF;
+          font-size: 14px;
         }
 
-        .method-desc{
-          font-size:12px;
-          color:#666;
+        .method-desc {
+          font-size: 12px;
+          color: #666;
+          margin-top: 2px;
         }
 
-        .hero-btn{
-          border:none;
-          padding:16px 34px;
-          border-radius:999px;
-          font-size:16px;
-          font-weight:800;
-          cursor:pointer;
-          margin-bottom:28px;
-          transition:.3s;
-          background:#faf066;
-          color:#00BFFF;
+        .hero-btn {
+          border: none;
+          padding: 16px 34px;
+          border-radius: 999px;
+          font-size: 16px;
+          font-weight: 800;
+          cursor: pointer;
+          margin-bottom: 28px;
+          transition: 0.3s;
+          background: #faf066;
+          color: #00BFFF;
         }
 
-        .hero-btn:hover{
-          transform:translateY(-4px);
+        .hero-btn:hover {
+          transform: translateY(-4px);
         }
 
-        .hero-btn.expedition{
-          background:#00BFFF;
-          color:#faf066;
+        .hero-btn.expedition {
+          background: #00BFFF;
+          color: #faf066;
         }
 
-        .store-buttons{
-          display:flex;
-          flex-wrap:wrap;
-          gap:14px;
-          margin-bottom:38px;
+        .store-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-bottom: 38px;
         }
 
-        .store-btn{
-          display:flex;
-          align-items:center;
-          gap:12px;
-          padding:12px 18px;
-          border-radius:14px;
-          text-decoration:none;
-          transition:.3s;
-          min-width:180px;
+        .store-btn {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 18px;
+          border-radius: 14px;
+          text-decoration: none;
+          transition: 0.3s;
+          min-width: 180px;
         }
 
-        .store-btn:hover{
-          transform:translateY(-4px);
+        .store-btn:hover {
+          transform: translateY(-4px);
         }
 
-        .appstore{
-          background:black;
-          color:white;
+        .appstore {
+          background: black;
+          color: white;
         }
 
-        .play-yellow{
-          background:#faf066;
-          color:#00BFFF;
+        .play-yellow {
+          background: #faf066;
+          color: #00BFFF;
         }
 
-        .play-blue{
-          background:white;
-          color:#00BFFF;
+        .play-blue {
+          background: white;
+          color: #00BFFF;
         }
 
-        .store-btn small{
-          display:block;
-          font-size:10px;
-          opacity:.8;
+        .store-btn small {
+          display: block;
+          font-size: 10px;
+          opacity: 0.8;
         }
 
-        .store-btn strong{
-          font-size:15px;
+        .store-btn strong {
+          font-size: 15px;
         }
 
-        .hero-stats{
-          display:flex;
-          gap:40px;
+        .hero-stats {
+          display: flex;
+          gap: 40px;
         }
 
-        .stat-number{
-          font-size:28px;
-          font-weight:900;
-          display:block;
+        .stat-number {
+          font-size: 28px;
+          font-weight: 900;
+          display: block;
         }
 
-        .stat-label{
-          color:#222;
-          font-size:13px;
+        .stat-label {
+          color: #222;
+          font-size: 13px;
         }
 
-        .hero-image{
-          flex:1;
-          display:flex;
-          justify-content:center;
+        .hero-image {
+          flex: 1;
+          display: flex;
+          justify-content: center;
         }
 
-        .hero-image img{
-          width:100%;
-          max-width:430px;
-          filter:drop-shadow(0 25px 45px rgba(0,0,0,.18));
+        .hero-image img {
+          width: 100%;
+          max-width: 430px;
+          filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.18));
         }
 
-        .slide-dots{
-          position:absolute;
-          bottom:40px;
-          left:50%;
-          transform:translateX(-50%);
-          display:flex;
-          gap:10px;
-          z-index:10;
+        .slide-dots {
+          position: absolute;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 10px;
+          z-index: 10;
         }
 
-        .dot{
-          width:10px;
-          height:10px;
-          border:none;
-          border-radius:999px;
-          transition:.3s;
-          cursor:pointer;
+        .dot {
+          width: 10px;
+          height: 10px;
+          border: none;
+          border-radius: 999px;
+          transition: 0.3s;
+          cursor: pointer;
         }
 
-        .dot.active{
-          width:34px;
+        .dot.active {
+          width: 34px;
         }
 
-        @media(max-width:980px){
+        /* ===== RESPONSIVE DESKTOP PETIT / TABLETTE ===== */
+        @media (max-width: 1024px) {
+          .hero-container {
+            padding: 180px 24px 80px;
+          }
+          
+          .hero-content {
+            gap: 30px;
+          }
+          
+          .hero-image img {
+            max-width: 340px;
+          }
+        }
 
-          .hero-content{
-            flex-direction:column;
-            text-align:center;
+        @media (max-width: 980px) {
+          .hero {
+            min-height: auto;
+            padding-top: 40px;
           }
 
-          .hero-text{
-            max-width:100%;
+          .hero-tabs {
+            top: 90px;
           }
 
-          .shipping-methods{
-            grid-template-columns:1fr;
+          .hero-container {
+            padding: 170px 24px 80px;
           }
 
-          .store-buttons{
-            justify-content:center;
+          .hero-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
           }
 
-          .hero-stats{
-            justify-content:center;
+          .hero-text {
+            max-width: 640px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           }
 
-          .hero-image img{
-            max-width:280px;
+          .hero-title {
+            font-size: 48px;
           }
 
+          .shipping-methods {
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            max-width: 500px;
+          }
+
+          /* Pour centrer la 3ème carte sur 2 colonnes */
+          .shipping-methods .method-card:last-child {
+            grid-column: span 2;
+            max-width: calc(50% - 7px);
+            margin: 0 auto;
+            width: 100%;
+          }
+
+          .store-buttons {
+            justify-content: center;
+            width: 100%;
+          }
+
+          .hero-stats {
+            justify-content: center;
+            width: 100%;
+          }
+
+          .hero-image img {
+            max-width: 300px;
+          }
         }
 
-        @media(max-width:520px){
-
-          .hero-tabs{
-            top:70px;
+        /* ===== RESPONSIVE MOBILE ACCESSIBLE ===== */
+        @media (max-width: 520px) {
+          .hero-tabs {
+            top: 85px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 16px;
           }
 
-          .tab-btn{
-            font-size:12px;
-            padding:10px 14px;
+          .tabs-wrapper {
+            width: 100%;
+            max-width: 340px;
           }
 
-          .hero-title{
-            font-size:42px;
+          .tab-btn {
+            flex: 1;
+            font-size: 13px;
+            padding: 10px 8px;
           }
 
-          .hero-stats{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:20px;
+          .hero-container {
+            padding: 160px 16px 60px;
           }
 
-          .store-btn{
-            width:100%;
+          .hero-title {
+            font-size: 34px;
+            line-height: 1.15;
+            margin-bottom: 24px;
           }
 
+          .shipping-methods {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+          }
+
+          .shipping-methods .method-card:last-child {
+            grid-column: span 2;
+            max-width: 100%;
+          }
+
+          .method-card {
+            padding: 12px 8px;
+          }
+
+          .method-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+          }
+
+          .method-name {
+            font-size: 13px;
+          }
+
+          .hero-btn {
+            width: 100%;
+            max-width: 340px;
+            padding: 14px 24px;
+            font-size: 15px;
+          }
+
+          .store-buttons {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+          }
+
+          .store-btn {
+            width: 100%;
+            max-width: 340px;
+            justify-content: center;
+          }
+
+          .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 340px;
+          }
+          
+          .hero-stats .stat:last-child {
+            grid-column: span 2;
+            text-align: center;
+          }
+
+          .hero-image img {
+            max-width: 240px;
+          }
         }
 
+        /* ===== DESACTIVATION DES ANIMATIONS SUR MOBILE ===== */
+        @media (max-width: 768px) {
+          .hero-content,
+          .hero-image,
+          .method-card,
+          .store-btn,
+          .hero-btn,
+          .hero-glow {
+            animation: none !important;
+            transform: none !important;
+            transition: none !important;
+          }
+          
+          .method-card:hover,
+          .store-btn:hover,
+          .hero-btn:hover {
+            transform: none !important;
+          }
+        }
       `}</style>
-
     </section>
   );
 };
