@@ -1,5 +1,8 @@
 // src/components/sections/Hero.jsx
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import deliveryPhone from '../../assets/images/mockeup.png';
 import deliveryPhone2 from '../../assets/images/mockeup2.png';
 
@@ -22,16 +25,15 @@ const Hero = ({ scrollTo }) => {
     {
       id: 1,
       title: "Expédiez vos colis depuis chez vous !",
-      subtitle: "Fret Aérien • Fret Maritime • Colis GP",
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
       bgColor: "#faf066",
       textColor: "#00BFFF",
       statColor: "#00BFFF",
-      badgeBg: "#f0f0f0",
+      badgeBg: "#ffffff",
       badgeTextColor: "#00BFFF",
-      dotColor: "rgba(0, 0, 0, 0.2)",
+      dotColor: "rgba(0,0,0,.2)",
       dotActiveColor: "#00BFFF",
     },
     {
@@ -43,407 +45,585 @@ const Hero = ({ scrollTo }) => {
       bgColor: "#00BFFF",
       textColor: "#ffffff",
       statColor: "#ffffff",
-      badgeBg: "rgba(0, 0, 0, 0.4)",
+      badgeBg: "rgba(255,255,255,.15)",
       badgeTextColor: "#ffffff",
-      dotColor: "rgba(255, 255, 255, 0.99)",
+      dotColor: "rgba(255,255,255,.3)",
       dotActiveColor: "#faf066",
-    }
+    },
   ];
 
   const current = slides[currentSlide];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   return (
-    <section className="hero" id="hero">
-      {/* Background Layer */}
-      <div 
-        className="hero-bg" 
-        style={{ background: current.bgColor }}
+    <section id="hero" className="hero">
+
+      {/* BACKGROUND */}
+      <motion.div
+        className="hero-bg"
+        animate={{
+          background: current.bgColor,
+        }}
+        transition={{ duration: 0.6 }}
       />
 
-      {/* Tabs Navigation */}
+      {/* GLOW */}
+      <div className="hero-glow"></div>
+
+      {/* TABS */}
       <div className="hero-tabs">
         <div className="tabs-wrapper">
+
           <button
-            className={`tab-btn ${currentSlide === 0 ? 'tab-active' : 'tab-inactive'}`}
+            className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`}
             onClick={() => setCurrentSlide(0)}
           >
-            <span className="tab-icon">📦</span>
-            <span className="tab-label">Service Expédition</span>
+            📦 Expédition
           </button>
+
           <button
-            className={`tab-btn ${currentSlide === 1 ? 'tab-active' : 'tab-inactive'}`}
+            className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`}
             onClick={() => setCurrentSlide(1)}
           >
-            <span className="tab-icon">🛍️</span>
-            <span className="tab-label">Votre Boutique</span>
+            🛍️ Boutique
           </button>
+
         </div>
       </div>
 
-      <div className="slides-container">
-        <div 
-          className="slides-track"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {slides.map((slide, index) => (
-            <div key={index} className="slide">
-              <div className="hero-content-wrapper">
-                <div className="hero-container">
-                  
-                  <div className="hero-text">
-                    <div className="hero-badge" style={{ background: slide.badgeBg }}>
-                      <span className="badge-dot"></span>
-                      <span style={{ color: slide.badgeTextColor }}>Service actif — France → Sénégal</span>
-                    </div>
-                    
-                    <h1 className="hero-title" style={{ color: slide.textColor }}>
-                      {slide.title}
-                    </h1>
-                    
-                    {slide.id === 1 && (
-                      <div className="shipping-methods">
-                        <div className="method-card">
-                          <span className="method-icon">✈️</span>
-                          <span className="method-name">Fret Aérien</span>
-                          <span className="method-desc">Rapide • 2-4 j</span>
-                        </div>
-                        <div className="method-card">
-                          <span className="method-icon">🚢</span>
-                          <span className="method-name">Fret Maritime</span>
-                          <span className="method-desc">Éco • 5-7 sem</span>
-                        </div>
-                        <div className="method-card">
-                          <span className="method-icon">📦</span>
-                          <span className="method-name">Colis GP</span>
-                          <span className="method-desc">Std • 7-14 j</span>
-                        </div>
-                      </div>
-                    )}
-                    
-                    <div className="hero-buttons">
-                      <button 
-                        className={`btn-primary ${slide.id === 1 ? 'btn-expedition' : ''}`}
-                        onClick={() => scrollTo(slide.buttonLink)}
-                      >
-                        {slide.buttonText} →
-                      </button>
-                    </div>
+      {/* CONTENT */}
+      <div className="hero-container">
 
-                    <div className="store-buttons">
-                      <a href="#" className="store-btn appstore" onClick={(e) => { e.preventDefault(); window.open('https://apps.apple.com', '_blank'); }}>
-                        <AppStoreIcon />
-                        <div className="store-text">
-                          <span>Télécharger sur l'</span>
-                          <strong>App Store</strong>
-                        </div>
-                      </a>
-                      <a href="#" className={`store-btn googleplay ${slide.id === 1 ? 'btn-expedition-gp' : ''}`} onClick={(e) => { e.preventDefault(); window.open('https://play.google.com', '_blank'); }}>
-                        <PlayStoreIcon />
-                        <div className="store-text">
-                          <span>Disponible sur</span>
-                          <strong>Google Play</strong>
-                        </div>
-                      </a>
-                    </div>
-                    
-                    <div className="hero-stats">
-                      <div className="stat">
-                        <span className="stat-number" style={{ color: slide.statColor }}>5k+</span>
-                        <span className="stat-label">Colis livrés</span>
-                      </div>
-                      <div className="stat">
-                        <span className="stat-number" style={{ color: slide.statColor }}>2-4j</span>
-                        <span className="stat-label">Par avion</span>
-                      </div>
-                      <div className="stat">
-                        <span className="stat-number" style={{ color: slide.statColor }}>24/7</span>
-                        <span className="stat-label">Support</span>
-                      </div>
-                    </div>
+        <AnimatePresence mode="wait">
+
+          <motion.div
+            key={current.id}
+            className="hero-content"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.7 }}
+          >
+
+            {/* TEXT */}
+            <div className="hero-text">
+
+              <div
+                className="hero-badge"
+                style={{ background: current.badgeBg }}
+              >
+                <span className="badge-dot"></span>
+
+                <span style={{ color: current.badgeTextColor }}>
+                  Service actif — France → Sénégal
+                </span>
+              </div>
+
+              <h1
+                className="hero-title"
+                style={{ color: current.textColor }}
+              >
+                {current.title}
+              </h1>
+
+              {current.id === 1 && (
+                <div className="shipping-methods">
+
+                  <div className="method-card">
+                    <span className="method-icon">✈️</span>
+                    <span className="method-name">Fret Aérien</span>
+                    <span className="method-desc">2-4 jours</span>
                   </div>
 
-                  <div className="hero-image">
-                    <div className="image-wrapper">
-                      <img src={slide.image} alt="Application mobile" />
-                    </div>
+                  <div className="method-card">
+                    <span className="method-icon">🚢</span>
+                    <span className="method-name">Fret Maritime</span>
+                    <span className="method-desc">5-7 semaines</span>
+                  </div>
+
+                  <div className="method-card">
+                    <span className="method-icon">📦</span>
+                    <span className="method-name">Colis GP</span>
+                    <span className="method-desc">7-14 jours</span>
                   </div>
 
                 </div>
+              )}
+
+              {/* BUTTON */}
+              <button
+                className={`hero-btn ${
+                  current.id === 1 ? 'expedition' : ''
+                }`}
+                onClick={() => scrollTo(current.buttonLink)}
+              >
+                {current.buttonText} →
+              </button>
+
+              {/* STORES */}
+              <div className="store-buttons">
+
+                <a
+                  href="https://apps.apple.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="store-btn appstore"
+                >
+                  <AppStoreIcon />
+
+                  <div>
+                    <small>Télécharger sur</small>
+                    <strong>App Store</strong>
+                  </div>
+                </a>
+
+                <a
+                  href="https://play.google.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`store-btn ${
+                    current.id === 1 ? 'play-yellow' : 'play-blue'
+                  }`}
+                >
+                  <PlayStoreIcon />
+
+                  <div>
+                    <small>Disponible sur</small>
+                    <strong>Google Play</strong>
+                  </div>
+                </a>
+
               </div>
+
+              {/* STATS */}
+              <div className="hero-stats">
+
+                <div className="stat">
+                  <span
+                    className="stat-number"
+                    style={{ color: current.statColor }}
+                  >
+                    5k+
+                  </span>
+
+                  <span className="stat-label">
+                    Colis livrés
+                  </span>
+                </div>
+
+                <div className="stat">
+                  <span
+                    className="stat-number"
+                    style={{ color: current.statColor }}
+                  >
+                    2-4j
+                  </span>
+
+                  <span className="stat-label">
+                    Livraison
+                  </span>
+                </div>
+
+                <div className="stat">
+                  <span
+                    className="stat-number"
+                    style={{ color: current.statColor }}
+                  >
+                    24/7
+                  </span>
+
+                  <span className="stat-label">
+                    Support
+                  </span>
+                </div>
+
+              </div>
+
             </div>
-          ))}
-        </div>
+
+            {/* IMAGE */}
+            <motion.div
+              className="hero-image"
+              animate={{
+                y: [0, -18, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+
+              <img
+                src={current.image}
+                alt="Application mobile"
+              />
+
+            </motion.div>
+
+          </motion.div>
+
+        </AnimatePresence>
+
       </div>
 
+      {/* DOTS */}
       <div className="slide-dots">
+
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`dot ${currentSlide === index ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(index)}
-            style={{ 
-              background: currentSlide === index ? slides[currentSlide].dotActiveColor : slides[currentSlide].dotColor 
+            className={`dot ${
+              currentSlide === index ? 'active' : ''
+            }`}
+            style={{
+              background:
+                currentSlide === index
+                  ? current.dotActiveColor
+                  : current.dotColor,
             }}
+            onClick={() => setCurrentSlide(index)}
           />
         ))}
+
       </div>
 
       <style jsx>{`
-        .hero {
-          position: relative;
-          width: 100%;
-          min-height: 100vh;
-          min-height: 100dvh;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
+
+        .hero{
+          position:relative;
+          width:100%;
+          min-height:100vh;
+          overflow:hidden;
+          display:flex;
+          justify-content:center;
+          align-items:center;
         }
 
-        .hero-bg {
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-          transition: background 0.6s ease;
+        .hero-bg{
+          position:absolute;
+          inset:0;
+          z-index:0;
         }
 
-        /* ===== TABS ===== */
-        .hero-tabs {
-          position: absolute;
-          top: 80px;
-          left: 0;
-          right: 0;
-          z-index: 10;
-          display: flex;
-          justify-content: center;
-          padding: 0 20px;
+        .hero-glow{
+          position:absolute;
+          width:700px;
+          height:700px;
+          background:rgba(255,255,255,.15);
+          filter:blur(120px);
+          border-radius:50%;
+          top:-150px;
+          right:-100px;
+          animation:floatGlow 8s ease-in-out infinite;
         }
 
-        .tabs-wrapper {
-          display: flex;
-          background: rgba(0, 0, 0, 0.1);
-          backdrop-filter: blur(12px);
-          border-radius: 16px;
-          padding: 4px;
-          gap: 4px;
+        @keyframes floatGlow{
+          0%{transform:translate(0,0);}
+          50%{transform:translate(-60px,40px);}
+          100%{transform:translate(0,0);}
         }
 
-        .tab-btn {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 12px;
-          font-size: 14px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          white-space: nowrap;
+        .hero-tabs{
+          position:absolute;
+          top:120px;
+          left:50%;
+          transform:translateX(-50%);
+          z-index:20;
         }
 
-        .tab-active {
-          background: #ffffff;
-          color: #00BFFF;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .tabs-wrapper{
+          display:flex;
+          gap:8px;
+          background:rgba(255,255,255,.15);
+          backdrop-filter:blur(14px);
+          padding:6px;
+          border-radius:18px;
         }
 
-        .tab-inactive {
-          background: transparent;
-          color: rgba(255, 255, 255, 0.9);
+        .tab-btn{
+          border:none;
+          padding:12px 18px;
+          border-radius:12px;
+          cursor:pointer;
+          font-weight:700;
+          background:transparent;
+          color:white;
+          transition:.3s;
         }
 
-        /* ===== SLIDER ===== */
-        .slides-container {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          z-index: 2;
+        .tab-btn.active{
+          background:white;
+          color:#00BFFF;
         }
 
-        .slides-track {
-          display: flex;
-          width: 100%;
-          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .hero-container{
+          position:relative;
+          z-index:5;
+          width:100%;
+          max-width:1250px;
+           padding:180px 32px 80px;
         }
 
-        .slide {
-          flex: 0 0 100%;
-          width: 100%;
-          display: flex;
-          justify-content: center;
+        .hero-content{
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          gap:50px;
         }
 
-        .hero-content-wrapper {
-          width: 100%;
-          padding: 140px 0 80px;
+        .hero-text{
+          flex:1;
+          max-width:560px;
         }
 
-        .hero-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 32px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 40px;
+        .hero-badge{
+          display:inline-flex;
+          align-items:center;
+          gap:10px;
+          padding:8px 18px;
+          border-radius:999px;
+          margin-bottom:28px;
+          backdrop-filter:blur(10px);
         }
 
-        /* ===== TEXT CONTENT ===== */
-        .hero-text {
-          flex: 1;
-          max-width: 550px;
-          text-align: left;
+        .badge-dot{
+          width:8px;
+          height:8px;
+          border-radius:50%;
+          background:#10b981;
+          box-shadow:0 0 10px #10b981;
         }
 
-        .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 6px 16px;
-          border-radius: 100px;
-          margin-bottom: 24px;
-          font-size: 13px;
-          font-weight: 500;
+        .hero-title{
+          font-size:clamp(38px,5vw,70px);
+          line-height:1.05;
+          font-weight:900;
+          margin-bottom:30px;
         }
 
-        .badge-dot {
-          width: 8px;
-          height: 8px;
-          background: #10b981;
-          border-radius: 50%;
-          box-shadow: 0 0 8px #10b981;
+        .shipping-methods{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:14px;
+          margin-bottom:32px;
         }
 
-        .hero-title {
-          font-size: clamp(32px, 5vw, 56px);
-          font-weight: 800;
-          line-height: 1.1;
-          margin-bottom: 24px;
+        .method-card{
+          background:white;
+          padding:16px;
+          border-radius:18px;
+          text-align:center;
+          transition:.35s ease;
+          box-shadow:0 10px 25px rgba(0,0,0,.08);
         }
 
-        /* ===== SHIPPING CARDS ===== */
-        .shipping-methods {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-          margin-bottom: 32px;
+        .method-card:hover{
+          transform:translateY(-10px) scale(1.03);
         }
 
-        .method-card {
-          background: white;
-          padding: 12px;
-          border-radius: 12px;
-          text-align: center;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .method-icon{
+          display:block;
+          font-size:24px;
+          margin-bottom:8px;
         }
 
-        .method-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-        .method-name { font-weight: 700; font-size: 13px; color: #00BFFF; display: block; }
-        .method-desc { font-size: 10px; color: #64748b; }
-
-        /* ===== BUTTONS ===== */
-        .hero-buttons { margin-bottom: 24px; }
-
-        .btn-primary {
-          background: #faf066;
-          color: #00BFFF;
-          border: none;
-          padding: 14px 32px;
-          border-radius: 50px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: transform 0.2s;
+        .method-name{
+          display:block;
+          font-weight:800;
+          color:#00BFFF;
         }
 
-        .btn-expedition { background: #00BFFF; color: #faf066; }
-
-        .store-buttons { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
-        .store-btn {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 8px 16px;
-          border-radius: 10px;
-          text-decoration: none;
-          min-width: 160px;
+        .method-desc{
+          font-size:12px;
+          color:#666;
         }
 
-        .appstore { background: #000; color: white; }
-        .googleplay { background: #faf066; color: #00BFFF; }
-        .googleplay.btn-expedition-gp { background: #00BFFF; color: #faf066; }
-
-        .store-text span { font-size: 9px; display: block; opacity: 0.8; }
-        .store-text strong { font-size: 14px; display: block; }
-
-        /* ===== STATS ===== */
-        .hero-stats { display: flex; gap: 32px; }
-        .stat-number { font-size: 24px; font-weight: 800; display: block; }
-        .stat-label { font-size: 12px; opacity: 0.7; color:#000; }
-
-        /* ===== IMAGE ===== */
-        .hero-image {
-          flex: 1;
-          display: flex;
-          justify-content: flex-end;
+        .hero-btn{
+          border:none;
+          padding:16px 34px;
+          border-radius:999px;
+          font-size:16px;
+          font-weight:800;
+          cursor:pointer;
+          margin-bottom:28px;
+          transition:.3s;
+          background:#faf066;
+          color:#00BFFF;
         }
 
-        .image-wrapper {
-          width: 100%;
-          max-width: 450px;
+        .hero-btn:hover{
+          transform:translateY(-4px);
         }
 
-        .image-wrapper img {
-          width: 100%;
-          height: auto;
-          filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));
+        .hero-btn.expedition{
+          background:#00BFFF;
+          color:#faf066;
         }
 
-        .slide-dots {
-          position: absolute;
-          bottom: 40px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 8px;
+        .store-buttons{
+          display:flex;
+          flex-wrap:wrap;
+          gap:14px;
+          margin-bottom:38px;
         }
 
-        .dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 4px;
-          border: none;
-          transition: all 0.3s;
-          cursor: pointer;
+        .store-btn{
+          display:flex;
+          align-items:center;
+          gap:12px;
+          padding:12px 18px;
+          border-radius:14px;
+          text-decoration:none;
+          transition:.3s;
+          min-width:180px;
         }
 
-        .dot.active { width: 24px; }
+        .store-btn:hover{
+          transform:translateY(-4px);
+        }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 968px) {
-          .hero-container {
-            flex-direction: column;
-            text-align: center;
-            padding-top: 40px;
+        .appstore{
+          background:black;
+          color:white;
+        }
+
+        .play-yellow{
+          background:#faf066;
+          color:#00BFFF;
+        }
+
+        .play-blue{
+          background:white;
+          color:#00BFFF;
+        }
+
+        .store-btn small{
+          display:block;
+          font-size:10px;
+          opacity:.8;
+        }
+
+        .store-btn strong{
+          font-size:15px;
+        }
+
+        .hero-stats{
+          display:flex;
+          gap:40px;
+        }
+
+        .stat-number{
+          font-size:28px;
+          font-weight:900;
+          display:block;
+        }
+
+        .stat-label{
+          color:#222;
+          font-size:13px;
+        }
+
+        .hero-image{
+          flex:1;
+          display:flex;
+          justify-content:center;
+        }
+
+        .hero-image img{
+          width:100%;
+          max-width:430px;
+          filter:drop-shadow(0 25px 45px rgba(0,0,0,.18));
+        }
+
+        .slide-dots{
+          position:absolute;
+          bottom:40px;
+          left:50%;
+          transform:translateX(-50%);
+          display:flex;
+          gap:10px;
+          z-index:10;
+        }
+
+        .dot{
+          width:10px;
+          height:10px;
+          border:none;
+          border-radius:999px;
+          transition:.3s;
+          cursor:pointer;
+        }
+
+        .dot.active{
+          width:34px;
+        }
+
+        @media(max-width:980px){
+
+          .hero-content{
+            flex-direction:column;
+            text-align:center;
           }
-          .hero-text { text-align: center; max-width: 100%; order: 2; }
-          .hero-image { order: 1; justify-content: center; }
-          .image-wrapper { max-width: 250px; }
-          .hero-badge, .hero-buttons, .store-buttons, .hero-stats { justify-content: center; }
-          .shipping-methods { max-width: 400px; margin: 0 auto 32px; }
+
+          .hero-text{
+            max-width:100%;
+          }
+
+          .shipping-methods{
+            grid-template-columns:1fr;
+          }
+
+          .store-buttons{
+            justify-content:center;
+          }
+
+          .hero-stats{
+            justify-content:center;
+          }
+
+          .hero-image img{
+            max-width:280px;
+          }
+
         }
 
-        @media (max-width: 480px) {
-          .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        @media(max-width:520px){
+
+          .hero-tabs{
+            top:70px;
           }
-          .tab-label { display: inline; }
-          .tab-btn { padding: 8px 10px; font-size: 11px; }
-          .shipping-methods { grid-template-columns: 1fr; }
-          .store-btn { width: 100%; }
+
+          .tab-btn{
+            font-size:12px;
+            padding:10px 14px;
+          }
+
+          .hero-title{
+            font-size:42px;
+          }
+
+          .hero-stats{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:20px;
+          }
+
+          .store-btn{
+            width:100%;
+          }
+
         }
+
       `}</style>
+
     </section>
   );
 };

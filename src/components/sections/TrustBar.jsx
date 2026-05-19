@@ -1,117 +1,246 @@
 // src/components/layout/TrustBar.jsx
 import React from 'react';
 
+const TRUST_ITEMS = [
+  {
+    icon: '🚚',
+    text: 'Livraison France → Sénégal',
+  },
+  {
+    icon: '💬',
+    text: 'Support WhatsApp 24/7',
+  },
+  {
+    icon: '🔒',
+    text: 'Paiement 100% sécurisé',
+  },
+  {
+    icon: '📱',
+    text: 'Application iOS & Android',
+  },
+  {
+    icon: '⚡',
+    text: 'Expédition rapide',
+  },
+];
+
 const TrustBar = () => {
   return (
-    <div className="trust-bar-container">
+    <section className="trust-wrapper">
+
+      <div className="top-gradient"></div>
+
       <div className="container">
-        <div className="trust-bar-content">
-          <div className="trust-item">
-            <span className="trust-icon">✓</span>
-            <span className="trust-text">Colis assurés</span>
+
+        <div className="trust-bar">
+
+          <div className="glow glow-left"></div>
+          <div className="glow glow-right"></div>
+
+          <div className="trust-track">
+            {[...TRUST_ITEMS, ...TRUST_ITEMS].map((item, index) => (
+              <div className="trust-item" key={index}>
+
+                <div className="icon-box">
+                  <span>{item.icon}</span>
+                </div>
+
+                <span className="trust-text">
+                  {item.text}
+                </span>
+
+              </div>
+            ))}
           </div>
-          
-          <div className="trust-sep"></div>
-          
-          <div className="trust-item">
-            <span className="trust-icon">✓</span>
-            <span className="trust-text">Support WhatsApp 24/7</span>
-          </div>
-          
-          <div className="trust-sep"></div>
-          
-          <div className="trust-item">
-            <span className="trust-icon">✓</span>
-            <span className="trust-text">Paiement sécurisé</span>
-          </div>
-          
-          <div className="trust-sep"></div>
-          
-          <div className="trust-item">
-            <span className="trust-icon">✓</span>
-            <span className="trust-text">App iOS & Android</span>
-          </div>
+
         </div>
+
       </div>
 
       <style jsx>{`
-        .trust-bar-container {
-          background-color: #ffffff;
-          border-top: 1px solid #f1f5f9;
-          border-bottom: 1px solid #f1f5f9;
-          padding: 20px 0;
+        * {
+          box-sizing: border-box;
+        }
+
+        .trust-wrapper {
+          position: relative;
+          padding: 26px 0;
+          background:
+            linear-gradient(
+              180deg,
+              #ffffff 0%,
+              #f8fafc 100%
+            );
           overflow: hidden;
         }
 
+        .top-gradient {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background:
+            linear-gradient(
+              90deg,
+              transparent,
+              #00BFFF,
+              #faf066,
+              #00BFFF,
+              transparent
+            );
+          opacity: 0.8;
+        }
+
         .container {
-          max-width: 1200px;
+          max-width: 1250px;
           margin: 0 auto;
           padding: 0 24px;
         }
 
-        .trust-bar-content {
+        .trust-bar {
+          position: relative;
+          overflow: hidden;
+          border-radius: 24px;
+          background:
+            rgba(255,255,255,0.7);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255,255,255,0.4);
+          box-shadow:
+            0 10px 30px rgba(0,0,0,0.06);
+          padding: 18px 0;
+        }
+
+        .glow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          filter: blur(80px);
+          opacity: 0.2;
+          z-index: 0;
+        }
+
+        .glow-left {
+          left: -80px;
+          background: #00BFFF;
+        }
+
+        .glow-right {
+          right: -80px;
+          background: #faf066;
+        }
+
+        .trust-track {
+          position: relative;
+          z-index: 2;
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          gap: 20px;
+          gap: 22px;
+          width: max-content;
+          animation: scroll 24s linear infinite;
+        }
+
+        .trust-bar:hover .trust-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-50%);
+          }
         }
 
         .trust-item {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 14px;
+          padding: 10px 18px;
+          border-radius: 18px;
+          background:
+            rgba(255,255,255,0.65);
+          border: 1px solid rgba(255,255,255,0.5);
+          backdrop-filter: blur(10px);
           white-space: nowrap;
+          transition: all 0.3s ease;
+          margin-left: 20px;
         }
 
-        .trust-icon {
+        .trust-item:hover {
+          transform: translateY(-4px);
+          box-shadow:
+            0 12px 25px rgba(0,0,0,0.08);
+        }
+
+        .icon-box {
+          width: 42px;
+          height: 42px;
+          border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 22px;
-          height: 22px;
-          background-color: #e0f2fe;
-          color: #00BFFF;
-          border-radius: 50%;
-          font-size: 12px;
-          font-weight: bold;
+          background:
+            linear-gradient(
+              135deg,
+              #00BFFF,
+              #0284c7
+            );
+          color: white;
+          font-size: 18px;
+          box-shadow:
+            0 8px 18px rgba(0,191,255,0.25);
+          flex-shrink: 0;
         }
 
         .trust-text {
           font-size: 14px;
-          font-weight: 600;
-          color: #475569;
-          letter-spacing: 0.3px;
+          font-weight: 700;
+          color: #334155;
+          letter-spacing: 0.2px;
         }
 
-        .trust-sep {
-          width: 1px;
-          height: 24px;
-          background-color: #e2e8f0;
-        }
+        /* MOBILE */
 
-        /* Responsive : Défilement horizontal sur mobile */
         @media (max-width: 768px) {
-          .trust-bar-content {
-            justify-content: flex-start;
-            overflow-x: auto;
-            padding-bottom: 5px;
-            scrollbar-width: none; /* Firefox */
+
+          .trust-wrapper {
+            padding: 18px 0;
           }
-          
-          .trust-bar-content::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+
+          .trust-bar {
+            border-radius: 18px;
+            padding: 14px 0;
+          }
+
+          .trust-track {
+            gap: 14px;
+            animation-duration: 18s;
           }
 
           .trust-item {
-            padding-right: 10px;
+            padding: 10px 14px;
+            margin-left: 12px;
           }
 
-          .trust-sep {
-            flex-shrink: 0;
+          .icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            font-size: 16px;
+          }
+
+          .trust-text {
+            font-size: 13px;
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 
