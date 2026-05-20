@@ -71,7 +71,7 @@ const Hero = ({ scrollTo }) => {
 
       {/* CONTENT */}
       <div className="hero-container">
-        
+
         {/* TABS */}
         <div className="hero-tabs">
           <div className="tabs-wrapper">
@@ -160,7 +160,8 @@ const Hero = ({ scrollTo }) => {
                   className="store-btn appstore"
                 >
                   <AppStoreIcon />
-                  <div>
+
+                  <div className="store-text">
                     <small>Télécharger sur</small>
                     <strong>App Store</strong>
                   </div>
@@ -175,7 +176,8 @@ const Hero = ({ scrollTo }) => {
                   }`}
                 >
                   <PlayStoreIcon />
-                  <div>
+
+                  <div className="store-text">
                     <small>Disponible sur</small>
                     <strong>Google Play</strong>
                   </div>
@@ -358,7 +360,7 @@ const Hero = ({ scrollTo }) => {
           backdrop-filter: blur(10px);
           font-size: 14px;
           font-weight: 600;
-          width: fit-content; /* Correction de la taille */
+          width: fit-content;
         }
 
         .badge-dot {
@@ -426,7 +428,7 @@ const Hero = ({ scrollTo }) => {
           transition: 0.3s;
           background: #faf066;
           color: #00BFFF;
-          width: fit-content; /* Correction de la taille */
+          width: fit-content;
         }
 
         .hero-btn:hover {
@@ -456,6 +458,12 @@ const Hero = ({ scrollTo }) => {
           min-width: 180px;
         }
 
+        .store-text {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.1;
+        }
+
         .store-btn:hover {
           transform: translateY(-4px);
         }
@@ -479,10 +487,12 @@ const Hero = ({ scrollTo }) => {
           display: block;
           font-size: 10px;
           opacity: 0.8;
+          white-space: nowrap;
         }
 
         .store-btn strong {
           font-size: 15px;
+          white-space: nowrap;
         }
 
         .hero-stats {
@@ -540,9 +550,11 @@ const Hero = ({ scrollTo }) => {
           .hero-container {
             padding: 200px 24px 80px;
           }
+
           .hero-content {
             gap: 30px;
           }
+
           .hero-image img {
             max-width: 340px;
           }
@@ -676,18 +688,45 @@ const Hero = ({ scrollTo }) => {
             font-size: 15px;
           }
 
+          /* ===== FIX MOBILE STORE BUTTONS ===== */
+
           .store-buttons {
-            flex-direction: column;
-            align-items: center;
             width: 100%;
-            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
           }
 
           .store-btn {
             width: 100%;
             max-width: 340px;
-            justify-content: center;
+            margin: 0 auto;
+            justify-content: flex-start;
+            padding: 14px 16px;
+            gap: 14px;
           }
+
+          .store-text {
+            flex: 1;
+            text-align: left;
+          }
+
+          .store-btn small {
+            font-size: 11px;
+          }
+
+          .store-btn strong {
+            font-size: 16px;
+          }
+
+          .store-btn svg {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+          }
+
+          /* ================================ */
 
           .hero-stats {
             display: grid;
@@ -695,7 +734,7 @@ const Hero = ({ scrollTo }) => {
             gap: 16px;
             max-width: 340px;
           }
-          
+
           .hero-stats .stat:last-child {
             grid-column: span 2;
             text-align: center;
@@ -711,7 +750,7 @@ const Hero = ({ scrollTo }) => {
             animation: none !important;
             transform: none !important;
           }
-          
+
           .method-card:hover,
           .store-btn:hover,
           .hero-btn:hover {
