@@ -627,123 +627,201 @@ const Hero = ({ scrollTo }) => {
           }
         }
 
-        @media (max-width: 520px) {
-          .hero-tabs {
-            margin-bottom: 24px;
-            padding: 0 16px;
-          }
+   @media (max-width: 520px) {
 
-          .tabs-wrapper {
-            width: 100%;
-            max-width: 340px;
-          }
+  /* =========================
+     HERO
+  ========================== */
 
-          .tab-btn {
-            flex: 1;
-            font-size: 13px;
-            padding: 10px 8px;
-          }
+  .hero-container {
+    padding: 80px 16px 60px;
+  }
 
-          .hero-container {
-            padding: 80px 16px 60px;
-          }
+  .hero-text {
+    min-height: auto;
+    align-items: center;
+  }
 
-          .hero-text {
-            min-height: 610px;
-          }
+  .hero-title {
+    font-size: 32px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    text-align: center;
+  }
 
-          .hero-title {
-            font-size: 32px;
-            line-height: 1.2;
-            margin-bottom: 24px;
-          }
+  /* =========================
+     SHIPPING METHODS
+  ========================== */
 
-          .shipping-methods {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-          }
+  .shipping-methods {
+    width: 100%;
+    max-width: 340px;
 
-          .shipping-methods .method-card:last-child {
-            grid-column: span 2;
-            max-width: 100%;
-          }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 
-          .method-card {
-            padding: 12px 8px;
-          }
+    margin-bottom: 24px;
+  }
 
-          .method-icon {
-            font-size: 20px;
-            margin-bottom: 4px;
-          }
+  .method-card {
+    padding: 14px 10px;
+    border-radius: 18px;
 
-          .method-name {
-            font-size: 13px;
-          }
+    min-height: 110px;
 
-          .hero-btn {
-            width: 100%;
-            max-width: 340px;
-            padding: 14px 24px;
-            font-size: 15px;
-          }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-          /* ===== FIX MOBILE STORE BUTTONS ===== */
+    box-sizing: border-box;
+  }
 
-          .store-buttons {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
-          }
+  .shipping-methods .method-card:last-child {
+    grid-column: span 2;
 
-          .store-btn {
-            width: 100%;
-            max-width: 340px;
-            margin: 0 auto;
-            justify-content: flex-start;
-            padding: 14px 16px;
-            gap: 14px;
-          }
+    max-width: 100%;
+    min-height: 100px;
+  }
 
-          .store-text {
-            flex: 1;
-            text-align: left;
-          }
+  .method-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
 
-          .store-btn small {
-            font-size: 11px;
-          }
+  .method-name {
+    font-size: 14px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    text-align: center;
+  }
 
-          .store-btn strong {
-            font-size: 16px;
-          }
+  .method-desc {
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+  }
 
-          .store-btn svg {
-            flex-shrink: 0;
-            width: 22px;
-            height: 22px;
-          }
+  /* =========================
+     CTA BUTTON
+  ========================== */
 
-          /* ================================ */
+  .hero-btn {
+    width: 100%;
+    max-width: 340px;
 
-          .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            max-width: 340px;
-          }
+    padding: 14px 20px;
 
-          .hero-stats .stat:last-child {
-            grid-column: span 2;
-            text-align: center;
-          }
+    font-size: 16px;
+    margin-bottom: 22px;
+  }
 
-          .hero-image img {
-            max-width: 220px;
-          }
-        }
+  /* =========================
+     STORE BUTTONS
+  ========================== */
+
+  .store-buttons {
+    width: 100%;
+    max-width: 340px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .store-btn {
+    width: 100%;
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    padding: 12px 16px;
+
+    border-radius: 16px;
+
+    box-sizing: border-box;
+  }
+
+  .store-btn svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .store-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    line-height: 1.05;
+    text-align: left;
+  }
+
+  .store-btn small {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .store-btn strong {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  /* GOOGLE PLAY EN BLANC */
+
+  .play-yellow {
+    background: white;
+    color: #00BFFF;
+  }
+
+  /* =========================
+     STATS
+  ========================== */
+
+  .hero-stats {
+    width: 100%;
+    max-width: 340px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 0;
+
+    margin-top: 10px;
+  }
+
+  .stat {
+    flex: 1;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  /* =========================
+     IMAGE
+  ========================== */
+
+  .hero-image img {
+    max-width: 220px;
+  }
+}
 
         @media (max-width: 768px) {
           .hero-image {
