@@ -1,6 +1,7 @@
 // src/components/sections/Hero.jsx
 
 import { useState } from 'react';
+import { Package, ShoppingBag, Plane, Ship, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import deliveryPhone from '../../assets/images/mockeup.png';
@@ -75,18 +76,14 @@ const Hero = ({ scrollTo }) => {
         {/* TABS */}
         <div className="hero-tabs">
           <div className="tabs-wrapper">
-            <button
-              className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(0)}
-            >
-              📦 Expédition
+            <button className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`} onClick={() => setCurrentSlide(0)}>
+              <Package size={15} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+               Expédition
             </button>
 
-            <button
-              className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(1)}
-            >
-              🛍️ Boutique
+            <button className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`} onClick={() => setCurrentSlide(1)}>
+              <ShoppingBag size={15} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+               Boutique
             </button>
           </div>
         </div>
@@ -122,19 +119,19 @@ const Hero = ({ scrollTo }) => {
               {current.id === 1 && (
                 <div className="shipping-methods">
                   <div className="method-card">
-                    <span className="method-icon">✈️</span>
+                    <span className="method-icon"><Plane size={24} strokeWidth={1.5} color="#00BFFF" /></span>
                     <span className="method-name">Fret Aérien</span>
                     <span className="method-desc">2-4 jours</span>
                   </div>
 
                   <div className="method-card">
-                    <span className="method-icon">🚢</span>
+                    <span className="method-icon"><Ship size={24} strokeWidth={1.5} color="#00BFFF" /></span>
                     <span className="method-name">Fret Maritime</span>
                     <span className="method-desc">5-7 semaines</span>
                   </div>
 
                   <div className="method-card">
-                    <span className="method-icon">📦</span>
+                    <span className="method-icon"><Package size={24} strokeWidth={1.5} color="#00BFFF" /></span>
                     <span className="method-name">Colis GP</span>
                     <span className="method-desc">7-14 jours</span>
                   </div>
@@ -148,7 +145,9 @@ const Hero = ({ scrollTo }) => {
                 }`}
                 onClick={() => scrollTo(current.buttonLink)}
               >
-                {current.buttonText} →
+                {current.buttonText}
+                <ArrowRight size={16} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
+
               </button>
 
               {/* STORES */}

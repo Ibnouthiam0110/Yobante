@@ -1,13 +1,15 @@
 // src/components/sections/Applications.jsx
 import expeditionLogo from '../../assets/images/logo.png';
 import boutiqueLogo from '../../assets/images/logo.png';
+import { Package, ShoppingBag } from 'lucide-react';
 
 const appsData = [
   {
     id: "expedition",
     logo: expeditionLogo,
     alt: "Yobanté Expédition",
-    chipText: "📦 Expédition Internationale",
+    chipIcon: <Package size={15} strokeWidth={1.8} />,
+    chipText: "Expédition Internationale",
     chipClass: "expedition",
     title: "YOBANTÉ Expédition",
     description: "Gerez vos envois entre la France et le Sénégal de manière rapide, sécurisée et transparente.",
@@ -23,7 +25,8 @@ const appsData = [
     id: "boutique",
     logo: boutiqueLogo,
     alt: "Yobanté Boutique",
-    chipText: "🛍️ Shopping & E-commerce",
+    chipIcon: <ShoppingBag size={15} strokeWidth={1.8} />,
+    chipText: "Shopping & E-commerce",
     chipClass: "boutique",
     title: "YOBANTÉ Boutique",
     description: "Achetez vos marques préférées et faites-vous livrer directement au Sénégal à prix réduit.",
@@ -78,8 +81,10 @@ const Applications = () => {
               </div>
 
               <div className={`app-chip ${app.chipClass}`}>
+                {app.chipIcon}
                 {app.chipText}
               </div>
+
 
               <h3>{app.title}</h3>
               <p>{app.description}</p>
@@ -255,13 +260,15 @@ const Applications = () => {
         .app-chip {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 8px;
           padding: 10px 16px;
           border-radius: 999px;
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 24px;
-          align-self: flex-start;
+          align-self: center;
+          text-align: center;
         }
 
         .app-chip.expedition {
