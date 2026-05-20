@@ -1,5 +1,6 @@
 // src/components/sections/Services.jsx
 import { useCallback } from "react";
+import React from "react";
 
 const STEPS = [
   {
@@ -179,14 +180,14 @@ const Services = ({ scrollTo }) => {
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="card-right white-bg promo-side">
+          {/* RIGHT — Expédition : fond bleu, texte blanc */}
+          <div className="card-right promo-side">
             <div className="promo-box expedition-gradient">
               <p className="promo-desc">
                 Envoyez vos colis depuis la France vers le Sénégal (vice-versa)
                 avec collecte à domicile ou dépôt en point relais.
               </p>
-              <button className="promo-btn" onClick={handleClick}>
+              <button className="promo-btn expedition-btn" onClick={handleClick}>
                 En savoir plus →
               </button>
             </div>
@@ -198,13 +199,14 @@ const Services = ({ scrollTo }) => {
           className="service-card-wrapper boutique-wrapper glass-card"
           style={{ marginTop: "70px" }}
         >
-          <div className="card-right white-bg promo-side">
+          {/* LEFT — Boutique promo : fond jaune, texte bleu */}
+          <div className="card-right promo-side">
             <div className="promo-box boutique-gradient">
-              <p className="promo-desc dark-blue">
+              <p className="promo-desc boutique-desc">
                 Achetez vos marques préférées et recevez-les directement au Sénégal.
               </p>
               <button
-                className="promo-btn dark-blue-btn"
+                className="promo-btn boutique-btn"
                 onClick={() => scrollTo("apps")}
               >
                 Explorer →
@@ -278,7 +280,6 @@ const Services = ({ scrollTo }) => {
             radial-gradient(circle at bottom right, #bae6fd 0%, transparent 35%),
             #f8fafc;
           overflow: hidden;
-          overflow-x: hidden;
         }
 
         .bg-shape {
@@ -351,9 +352,9 @@ const Services = ({ scrollTo }) => {
           grid-template-columns: 2fr 1fr;
           border-radius: 34px;
           overflow: hidden;
-          align-items: center;
+          align-items: stretch;
           position: relative;
-          gap: 24px;
+          gap: 0;
         }
 
         .glass-card {
@@ -380,10 +381,6 @@ const Services = ({ scrollTo }) => {
 
         .blue-dark-bg {
           background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
-        }
-
-        .white-bg {
-          background: #ffffff;
         }
 
         /* ===== TYPO ===== */
@@ -453,25 +450,27 @@ const Services = ({ scrollTo }) => {
           display: flex;
           gap: 20px;
           align-items: stretch;
+          width: 100%;
         }
 
         .step-wrapper {
           display: flex;
           align-items: center;
-          gap: 20px;
+          justify-content: center;
           flex: 1;
         }
 
         .step-card {
-          flex: 1;
-          padding: 24px 18px;
+          width: 100%;
+          height: 100%;
+          min-height: 250px;
+          background: #FFFDF9;
+          padding: 35px 20px;
           border-radius: 24px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
-          min-height: 230px;
-          height: 100%;
           text-align: center;
           box-sizing: border-box;
         }
@@ -497,6 +496,7 @@ const Services = ({ scrollTo }) => {
           font-size: 13px;
           font-weight: 900;
           color: white;
+          flex-shrink: 0;
         }
 
         .step-num-dark {
@@ -533,13 +533,17 @@ const Services = ({ scrollTo }) => {
         .step-arrow {
           font-size: 24px;
           font-weight: 800;
+          display: flex;
+          align-items: center;
+          user-select: none;
         }
 
         /* ===== PRICING ===== */
         .pricing-row {
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 14px;
+          align-items: stretch;
         }
 
         .pricing-card {
@@ -548,6 +552,9 @@ const Services = ({ scrollTo }) => {
           padding: 24px 16px;
           text-align: center;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
         }
 
         .popular-card {
@@ -584,10 +591,19 @@ const Services = ({ scrollTo }) => {
           color: #0f172a;
         }
 
+        .plan-details-box {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          margin-bottom: 16px;
+        }
+
         .plan-desc {
           font-size: 12px;
           line-height: 1.6;
           color: #475569;
+          margin: 0;
         }
 
         .plan-feature {
@@ -598,7 +614,7 @@ const Services = ({ scrollTo }) => {
         }
 
         .plan-btn {
-          margin-top: 18px;
+          margin-top: auto;
           width: 100%;
           border: none;
           padding: 12px;
@@ -608,6 +624,7 @@ const Services = ({ scrollTo }) => {
           font-size: 12px;
           font-weight: 800;
           cursor: pointer;
+          flex-shrink: 0;
         }
 
         /* ===== CATEGORIES ===== */
@@ -640,25 +657,28 @@ const Services = ({ scrollTo }) => {
 
         /* ===== PROMO ===== */
         .promo-side {
-          padding: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          align-self: center;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
 
         .promo-box {
-          width: 100%;
-          height: 100%;
-          border-radius: 28px;
-          padding: 40px 30px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
+  width: 100%;
+  max-width: 320px;
+  border-radius: 28px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
 
         .promo-box::before {
           content: "";
@@ -670,42 +690,70 @@ const Services = ({ scrollTo }) => {
           top: -80px;
           right: -80px;
         }
+          /* Carte bleue — fond bleu, texte blanc */
+.expedition-gradient {
+  background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
+}
 
-        .expedition-gradient {
-          background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
-          color: white;
+/* Carte jaune — fond jaune, texte bleu */
+.boutique-gradient {
+  background: linear-gradient(135deg, #faf066 0%, #faf066 100%);
+}
+        .boutique-promo-side {
+          display: flex;
+          align-items: stretch;
+          padding: 0;
+          background: #f8fafc;
         }
 
-        .boutique-gradient {
-          background: linear-gradient(135deg, #faf066 0%, #fff8b3 100%);
+        .boutique-promo-side .promo-box {
+          margin: 24px;
+          border-radius: 28px;
+          width: calc(100% - 48px);
         }
+
+       
 
         .promo-desc {
           font-size: 22px;
           line-height: 1.6;
           font-weight: 800;
-          margin-bottom: 30px;
+          margin: 0;
+          color: white; /* texte blanc sur fond bleu */
         }
 
-        .dark-blue {
-          color: #00BFFF;
+        /* Texte bleu pour la carte jaune */
+        .boutique-desc {
+          color: #00BFFF !important;
         }
 
+        /* Bouton blanc sur fond bleu */
         .promo-btn {
+          width: 100%;
+          max-width: 280px;
           border: none;
           border-radius: 50px;
-          padding: 15px 24px;
+          padding: 16px 24px;
+          font-size: 15px;
           font-weight: 800;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease;
+        }
+
+        .expedition-btn {
           background: white;
           color: #00BFFF;
         }
 
-        .dark-blue-btn {
+        /* Bouton bleu sur fond jaune */
+        .boutique-btn {
           background: #00BFFF;
           color: white;
         }
-
+        
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
           .service-card-wrapper,
@@ -713,8 +761,9 @@ const Services = ({ scrollTo }) => {
             grid-template-columns: 1fr;
           }
 
+          /* Sur tablette/mobile, la promo prend une hauteur auto agréable */
           .promo-side {
-            min-height: auto;
+            min-height: 320px;
           }
         }
 
@@ -722,6 +771,10 @@ const Services = ({ scrollTo }) => {
           .section {
             padding: 90px 0;
           }
+          .promo-box {
+            max-width: 100%; /* prend toute la largeur sur mobile */
+        }
+
 
           .card-left {
             padding: 30px 22px;
@@ -729,15 +782,34 @@ const Services = ({ scrollTo }) => {
 
           .steps-row {
             flex-direction: column;
+            align-items: center;
+          }
+
+          .step-wrapper {
+            width: 100%;
+            flex-direction: column;
+          }
+
+          .step-card {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            min-height: unset;
           }
 
           .step-arrow {
             transform: rotate(90deg);
-            align-self: center;
+            margin: 10px 0;
           }
 
           .pricing-row {
             grid-template-columns: 1fr;
+          }
+
+          .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
           }
 
           .categories-grid {
@@ -746,6 +818,10 @@ const Services = ({ scrollTo }) => {
 
           .promo-desc {
             font-size: 18px;
+          }
+
+          .promo-side {
+            min-height: 280px;
           }
         }
 
@@ -773,63 +849,23 @@ const Services = ({ scrollTo }) => {
           }
 
           .promo-side {
-            min-height: auto;
-            padding: 14px;
+            min-height: 260px;
           }
 
           .promo-box {
-            width: 100%;
-            max-width: 340px;
-            min-height: 420px;
-            margin: auto;
-            border-radius: 28px;
-            padding: 32px 26px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-          }
-
-          .promo-box::before {
-            width: 140px;
-            height: 140px;
-            top: -50px;
-            right: -50px;
+            padding: 40px 28px;
+            gap: 24px;
           }
 
           .promo-desc {
             font-size: 16px;
             line-height: 1.7;
-            font-weight: 800;
-            margin-bottom: 22px;
-            max-width: 280px;
-            margin-left: auto;
-            margin-right: auto;
           }
 
           .promo-btn {
-            width: 100%;
-            max-width: 260px;
-            margin: 0 auto;
-            padding: 14px 22px;
-            border-radius: 999px;
-            font-size: 15px;
-          }
-
-          .step-card {
-            min-height: auto;
-            padding: 20px 16px;
-          }
-
-          .step-title {
-            min-height: auto;
+            max-width: 240px;
             font-size: 14px;
-          }
-
-          .step-desc {
-            font-size: 12px;
+            padding: 14px 20px;
           }
         }
       `}</style>

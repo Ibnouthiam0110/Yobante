@@ -54,9 +54,6 @@ const Hero = ({ scrollTo }) => {
 
   const current = slides[currentSlide];
 
-  // Le useEffect avec le setInterval a été complètement retiré ici.
-  // Le changement de slide ne se fait désormais que sur action de l'utilisateur.
-
   return (
     <section id="hero" className="hero">
 
@@ -345,7 +342,7 @@ const Hero = ({ scrollTo }) => {
         .hero-text {
           flex: 1;
           max-width: 560px;
-          min-height: 520px; /* Conserve une hauteur stable entre les deux slides */
+          min-height: 520px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -360,8 +357,8 @@ const Hero = ({ scrollTo }) => {
           margin-bottom: 28px;
           backdrop-filter: blur(10px);
           font-size: 14px;
-          width: fit-content;
           font-weight: 600;
+          width: fit-content; /* Correction de la taille */
         }
 
         .badge-dot {
@@ -425,11 +422,11 @@ const Hero = ({ scrollTo }) => {
           font-size: 16px;
           font-weight: 800;
           cursor: pointer;
-          width: fit-content;
           margin-bottom: 28px;
           transition: 0.3s;
           background: #faf066;
           color: #00BFFF;
+          width: fit-content; /* Correction de la taille */
         }
 
         .hero-btn:hover {
@@ -539,16 +536,13 @@ const Hero = ({ scrollTo }) => {
           width: 34px;
         }
 
-        /* ===== RESPONSIVE TABLETTE / PETIT DESKTOP ===== */
         @media (max-width: 1024px) {
           .hero-container {
             padding: 200px 24px 80px;
           }
-          
           .hero-content {
             gap: 30px;
           }
-          
           .hero-image img {
             max-width: 340px;
           }
@@ -621,7 +615,6 @@ const Hero = ({ scrollTo }) => {
           }
         }
 
-        /* ===== RESPONSIVE MOBILE FIXES ===== */
         @media (max-width: 520px) {
           .hero-tabs {
             margin-bottom: 24px;
@@ -713,7 +706,6 @@ const Hero = ({ scrollTo }) => {
           }
         }
 
-        /* ===== DESACTIVATION DES ANIMATIONS POUR LA PERFORMANCE MOBILE ===== */
         @media (max-width: 768px) {
           .hero-image {
             animation: none !important;

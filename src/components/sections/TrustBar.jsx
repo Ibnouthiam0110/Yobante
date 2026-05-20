@@ -27,34 +27,27 @@ const TRUST_ITEMS = [
 const TrustBar = () => {
   return (
     <section className="trust-wrapper">
-
       <div className="top-gradient"></div>
 
       <div className="container">
-
         <div className="trust-bar">
-
           <div className="glow glow-left"></div>
           <div className="glow glow-right"></div>
 
+          {/* Doublement du tableau pour un effet infini parfait sans coupure */}
           <div className="trust-track">
             {[...TRUST_ITEMS, ...TRUST_ITEMS].map((item, index) => (
               <div className="trust-item" key={index}>
-
                 <div className="icon-box">
                   <span>{item.icon}</span>
                 </div>
-
                 <span className="trust-text">
                   {item.text}
                 </span>
-
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
 
       <style jsx>{`
@@ -65,12 +58,11 @@ const TrustBar = () => {
         .trust-wrapper {
           position: relative;
           padding: 26px 0;
-          background:
-            linear-gradient(
-              180deg,
-              #ffffff 0%,
-              #f8fafc 100__
-            );
+          background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f8fafc 100%
+          );
           overflow: hidden;
         }
 
@@ -80,15 +72,14 @@ const TrustBar = () => {
           left: 0;
           width: 100%;
           height: 2px;
-          background:
-            linear-gradient(
-              90deg,
-              transparent,
-              #00BFFF,
-              #faf066,
-              #00BFFF,
-              transparent
-            );
+          background: linear-gradient(
+            90deg,
+            transparent,
+            #00BFFF,
+            #faf066,
+            #00BFFF,
+            transparent
+          );
           opacity: 0.8;
         }
 
@@ -102,12 +93,10 @@ const TrustBar = () => {
           position: relative;
           overflow: hidden;
           border-radius: 24px;
-          background:
-            rgba(255,255,255,0.7);
+          background: rgba(255, 255, 255, 0.7);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255,255,255,0.4);
-          box-shadow:
-            0 10px 30px rgba(0,0,0,0.06);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
           padding: 18px 0;
         }
 
@@ -133,6 +122,7 @@ const TrustBar = () => {
           background: #faf066;
         }
 
+        /* ANIMATION ISOLÉE UNIQUEMENT POUR LA TRUSTBAR */
         .trust-track {
           position: relative;
           z-index: 2;
@@ -140,14 +130,13 @@ const TrustBar = () => {
           align-items: center;
           gap: 22px;
           width: max-content;
-          animation: scroll 24s linear infinite;
+          animation: trustScroll 24s linear infinite !important;
         }
 
-        @keyframes scroll {
+        @keyframes trustScroll {
           from {
             transform: translateX(0);
           }
-
           to {
             transform: translateX(-50%);
           }
@@ -159,9 +148,8 @@ const TrustBar = () => {
           gap: 14px;
           padding: 10px 18px;
           border-radius: 18px;
-          background:
-            rgba(255,255,255,0.65);
-          border: 1px solid rgba(255,255,255,0.5);
+          background: rgba(255, 255, 255, 0.65);
+          border: 1px solid rgba(255, 255, 255, 0.5);
           backdrop-filter: blur(10px);
           white-space: nowrap;
           margin-left: 20px;
@@ -174,16 +162,14 @@ const TrustBar = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background:
-            linear-gradient(
-              135deg,
-              #00BFFF,
-              #0284c7
-            );
+          background: linear-gradient(
+            135deg,
+            #00BFFF,
+            #0284c7
+          );
           color: white;
           font-size: 18px;
-          box-shadow:
-            0 8px 18px rgba(0,191,255,0.25);
+          box-shadow: 0 8px 18px rgba(0, 191, 255, 0.25);
           flex-shrink: 0;
         }
 
@@ -195,9 +181,7 @@ const TrustBar = () => {
         }
 
         /* MOBILE */
-
         @media (max-width: 768px) {
-
           .trust-wrapper {
             padding: 18px 0;
           }
@@ -209,7 +193,7 @@ const TrustBar = () => {
 
           .trust-track {
             gap: 14px;
-            animation-duration: 18s;
+            animation: trustScroll 18s linear infinite !important;
           }
 
           .trust-item {
