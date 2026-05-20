@@ -1,8 +1,14 @@
 // src/components/layout/Footer.jsx
 import React from 'react';
+import { Zap, Lock, HeadphonesIcon, Smartphone } from 'lucide-react';
+import yobanteLogo from '../../assets/images/logo5.jpeg';
 
-// IMPORTANT : Remplace le chemin ci-dessous par le vrai chemin de ton logo
-import yobanteLogo from '../../assets/images/logo5.jpeg'; 
+const trustItems = [
+  { icon: <Zap size={14} />, label: 'Livraison rapide' },
+  { icon: <Lock size={14} />, label: 'Paiement sécurisé' },
+  { icon: <HeadphonesIcon size={14} />, label: 'Support 24/7' },
+  { icon: <Smartphone size={14} />, label: 'iOS & Android' },
+];
 
 const Footer = ({ scrollTo }) => {
   return (
@@ -11,300 +17,176 @@ const Footer = ({ scrollTo }) => {
       <div className="footer-bg-glow glow-2"></div>
 
       <div className="container">
-        {/* TOP */}
-        <div className="footer-top">
-          {/* BRAND */}
+
+        {/* MAIN ROW */}
+        <div className="footer-main">
+
+          {/* GAUCHE : Brand */}
           <div className="footer-brand">
-            {/* LOGO REMPLACÉ PAR L'IMAGE */}
             <div className="footer-logo">
               <img src={yobanteLogo} alt="Yobanté Logo" className="logo-img" />
             </div>
-
             <p className="footer-description">
               Votre spécialiste de l'expédition de colis et du e-commerce
               entre la France et le Sénégal.
             </p>
           </div>
 
-          {/* LINKS */}
-          <div className="footer-links-grid">
-            <div className="footer-column">
-              <h4>Services</h4>
-              <ul>
-                <li><button onClick={() => scrollTo('services')}>Expédition</button></li>
-                <li><button onClick={() => scrollTo('services')}>Boutique</button></li>
-                <li><button onClick={() => scrollTo('services')}>Tarifs</button></li>
-              </ul>
+          {/* DROITE : Trust + Liens */}
+          <div className="footer-right">
+            <div className="footer-trust">
+              {trustItems.map(({ icon, label }) => (
+                <div className="trust-item" key={label}>
+                  <span className="trust-icon">{icon}</span>
+                  {label}
+                </div>
+              ))}
             </div>
-
-            <div className="footer-column">
-              <h4>Entreprise</h4>
-              <ul>
-                <li><button onClick={() => scrollTo('faq')}>FAQ</button></li>
-                <li><button onClick={() => scrollTo('contact')}>Contact</button></li>
-                <li><button>Recrutement</button></li>
-              </ul>
-            </div>
-
-            <div className="footer-column">
-              <h4>Légal</h4>
-              <ul>
-                <li><button>Mentions légales</button></li>
-                <li><button>CGV</button></li>
-                <li><button>Confidentialité</button></li>
-              </ul>
+            <div className="footer-links">
+              <button>Mentions légales</button>
+              <button>CGV</button>
+              <button>Confidentialité</button>
             </div>
           </div>
-        </div>
 
-        {/* TRUST BAR */}
-        <div className="footer-trust">
-          <div className="trust-item">Livraison rapide</div>
-          <div className="trust-item">Paiement sécurisé</div>
-          <div className="trust-item">Support 24/7</div>
-          <div className="trust-item">Apps iOS & Android</div>
         </div>
 
         {/* BOTTOM */}
         <div className="footer-bottom">
-          <span className="copyright">
-            © 2026 YOBANTÉ. Tous droits réservés.
-          </span>
-
-          <div className="footer-bottom-links">
-            <button>Mentions légales</button>
-            <button>CGV</button>
-            <button>Confidentialité</button>
-          </div>
+          <span className="copyright">© 2026 YOBANTÉ. Tous droits réservés.</span>
         </div>
+
       </div>
 
       <style jsx>{`
-        * {
-          box-sizing: border-box;
-          transition: none !important; 
-          -webkit-transition: none !important;
-        }
+        * { box-sizing: border-box; }
 
         .footer {
           position: relative;
           overflow: hidden;
-          background: linear-gradient(
-            135deg,
-            #02131d 0%,
-            #05273a 100%
-          );
+          background: linear-gradient(135deg, #02131d 0%, #05273a 100%);
           color: white;
-          padding-top: 90px;
+          padding-top: 40px;
         }
 
         .footer-bg-glow {
           position: absolute;
           border-radius: 50%;
           filter: blur(120px);
-          opacity: 0.15;
+          opacity: 0.13;
           z-index: 0;
         }
-
-        .glow-1 {
-          width: 350px;
-          height: 350px;
-          background: #00BFFF;
-          top: -120px;
-          right: -120px;
-        }
-
-        .glow-2 {
-          width: 300px;
-          height: 300px;
-          background: #faf066;
-          bottom: -100px;
-          left: -100px;
-        }
+        .glow-1 { width: 300px; height: 300px; background: #00BFFF; top: -100px; right: -100px; }
+        .glow-2 { width: 250px; height: 250px; background: #faf066; bottom: -80px; left: -80px; }
 
         .container {
           position: relative;
           z-index: 2;
-          max-width: 1200px;
+          max-width: 1100px;
           margin: 0 auto;
-          padding: 0 24px;
+          padding: 0 28px;
         }
 
-        /* TOP */
-        .footer-top {
+        .footer-main {
           display: flex;
           justify-content: space-between;
-          gap: 80px;
-          padding-bottom: 60px;
+          align-items: flex-start;
+          gap: 60px;
+          padding-bottom: 28px;
           border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .footer-brand {
-          max-width: 360px;
+          max-width: 300px;
+          flex-shrink: 0;
         }
 
-        /* AJUSTEMENT DU CONTENEUR DU LOGO ET DE L'IMAGE */
-        .footer-logo {
-          margin-bottom: 20px;
-          display: flex;
-          align-items: center;
-        }
+        .footer-logo { margin-bottom: 14px; }
 
         .logo-img {
           height: auto;
-          max-width: 180px; /* Ajuste cette valeur selon la taille désirée pour ton logo */
+          max-width: 150px;
           object-fit: contain;
         }
 
         .footer-description {
-          color: rgba(255, 255, 255, 0.72);
-          line-height: 1.8;
-          font-size: 15px;
-          margin-bottom: 30px;
-        }
-
-        /* LINKS */
-        .footer-links-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 60px;
-          flex: 1;
-        }
-
-        .footer-column h4 {
-          color: white;
-          font-size: 16px;
-          font-weight: 800;
-          margin-bottom: 22px;
-        }
-
-        .footer-column ul {
-          list-style: none;
-          padding: 0;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.7;
+          font-size: 13.5px;
           margin: 0;
+        }
+
+        .footer-right {
           display: flex;
           flex-direction: column;
-          gap: 14px;
+          align-items: flex-end;
+          gap: 20px;
         }
 
-        .footer-column button {
-          background: transparent;
-          border: none;
-          color: rgba(255, 255, 255, 0.68);
-          font-size: 15px;
-          cursor: pointer;
-          text-align: left;
-          padding: 0;
-        }
-
-        /* TRUST */
         .footer-trust {
           display: flex;
           flex-wrap: wrap;
-          gap: 18px;
-          justify-content: center;
-          padding: 40px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          gap: 10px;
+          justify-content: flex-end;
         }
 
         .trust-item {
           display: flex;
           align-items: center;
-          padding: 14px 18px;
-          border-radius: 18px;
+          gap: 7px;
+          padding: 7px 13px;
+          border-radius: 20px;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: rgba(255, 255, 255, 0.82);
-          font-size: 14px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 12px;
           font-weight: 700;
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(8px);
         }
 
-        /* BOTTOM */
-        .footer-bottom {
+        .trust-icon {
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          padding: 28px 0;
+          color: #00BFFF;
+        }
+
+        .footer-links {
+          display: flex;
           gap: 20px;
         }
 
-        .copyright {
-          color: rgba(255, 255, 255, 0.5);
-          font-size: 14px;
-        }
-
-        .footer-bottom-links {
-          display: flex;
-          gap: 18px;
-          flex-wrap: wrap;
-        }
-
-        .footer-bottom-links button {
+        .footer-links button {
           background: transparent;
           border: none;
           color: rgba(255, 255, 255, 0.55);
+          font-size: 13px;
           cursor: pointer;
+          padding: 0;
+        }
+
+        .footer-links button:hover {
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        .footer-bottom {
+          display: flex;
+          justify-content: center;
+          padding: 16px 0;
+        }
+
+        .copyright {
+          color: rgba(255, 255, 255, 0.4);
           font-size: 13px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 968px) {
-          .footer-top {
+        @media (max-width: 768px) {
+          .footer-main {
             flex-direction: column;
-            gap: 50px;
+            gap: 28px;
           }
-
-          .footer-links-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-          }
-
-          .footer-brand {
-            max-width: 100%;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .footer {
-            padding-top: 70px;
-          }
-
-          .footer-logo {
-            justify-content: center; /* Centre le logo sur mobile */
-          }
-
-          .logo-img {
-            max-width: 150px; /* Légèrement plus petit sur mobile */
-          }
-
-          .footer-links-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
-          }
-
-          .footer-bottom {
-            flex-direction: column;
-            text-align: center;
-          }
-
-          .footer-bottom-links {
-            justify-content: center;
-          }
-
-          .trust-item {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0s !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0s !important;
-            scroll-behavior: auto !important;
-          }
+          .footer-brand { max-width: 100%; }
+          .footer-right { align-items: flex-start; }
+          .footer-trust { justify-content: flex-start; }
         }
       `}</style>
     </footer>

@@ -1,6 +1,18 @@
 // src/components/sections/Services.jsx
 import { useCallback } from "react";
 import React from "react";
+import {
+  Mail,
+  Package,
+  Truck,
+  ShoppingBag,
+  Shirt,
+  Smartphone,
+  Sparkles,
+  Home,
+  Footprints,
+  Boxes,
+} from "lucide-react";
 
 const STEPS = [
   {
@@ -26,7 +38,7 @@ const STEPS = [
 const PRICING_PLANS = [
   {
     id: "docs",
-    icon: "📩",
+    icon: <Mail size={34} strokeWidth={1.5} color="#00BFFF" />,
     name: "Documents",
     price: "Tarif fixe",
     desc: "Lettres, documents administratifs, courriers",
@@ -36,7 +48,7 @@ const PRICING_PLANS = [
   },
   {
     id: "colis10",
-    icon: "📦",
+    icon: <Package size={34} strokeWidth={1.5} color="#00BFFF" />,
     name: "Colis -10kg",
     price: "Devis sous 24h",
     desc: "Vêtements, chaussures, électronique légère...",
@@ -46,7 +58,7 @@ const PRICING_PLANS = [
   },
   {
     id: "colis20",
-    icon: "🚚",
+    icon: <Truck size={34} strokeWidth={1.5} color="#00BFFF" />,
     name: "Colis +10kg",
     price: "Devis sous 24h",
     desc: "Gros colis, électroménagers, mobiliers...",
@@ -75,12 +87,12 @@ const BOUTIQUE_STEPS = [
 ];
 
 const CATEGORIES = [
-  { icon: "👕", label: "Mode & Textile" },
-  { icon: "📱", label: "Électronique" },
-  { icon: "💄", label: "Beauté & Soins" },
-  { icon: "🏠", label: "Maison & Déco" },
-  { icon: "👟", label: "Chaussures" },
-  { icon: "📦", label: "Vente en gros" },
+  { icon: <Shirt size={28} strokeWidth={1.5} color="white" />, label: "Mode & Textile" },
+  { icon: <Smartphone size={28} strokeWidth={1.5} color="white" />, label: "Électronique" },
+  { icon: <Sparkles size={28} strokeWidth={1.5} color="white" />, label: "Beauté & Soins" },
+  { icon: <Home size={28} strokeWidth={1.5} color="white" />, label: "Maison & Déco" },
+  { icon: <Footprints size={28} strokeWidth={1.5} color="white" />, label: "Chaussures" },
+  { icon: <Boxes size={28} strokeWidth={1.5} color="white" />, label: "Vente en gros" },
 ];
 
 const Services = ({ scrollTo }) => {
@@ -113,7 +125,7 @@ const Services = ({ scrollTo }) => {
 
             <div className="card-title-row">
               <div className="card-icon-circle blue-bg">
-                📦
+                <Package size={30} strokeWidth={1.5} color="white" />
               </div>
               <div>
                 <span className="mini-label">SERVICE EXPRESS</span>
@@ -217,7 +229,9 @@ const Services = ({ scrollTo }) => {
           <div className="card-left blue-dark-bg">
 
             <div className="card-title-row">
-              <div className="card-icon-circle yellow-bg">🛍️</div>
+              <div className="card-icon-circle yellow-bg">
+                <ShoppingBag size={30} strokeWidth={1.5} color="#00BFFF" />
+              </div>
               <div>
                 <span className="mini-label yellow-text">BOUTIQUE</span>
                 <h3 className="card-main-title white-text">Boutique en ligne</h3>
@@ -564,19 +578,29 @@ const Services = ({ scrollTo }) => {
 
         .popular-badge {
           position: absolute;
-          top: 14px;
-          right: 14px;
-          background: #00BFFF;
+          top: -1px;
+          left: 50%;
+          transform: translateX(-50%);
+
+          background: #12b5f5;
           color: white;
-          font-size: 9px;
+
+          padding: 3px 40px; /* box plus petit */
+          border-radius: 0 0 18px 18px;
+
+          font-size: 12px; /* texte plus petit */
           font-weight: 800;
-          padding: 5px 10px;
-          border-radius: 50px;
+          letter-spacing: .3px;
+
+          z-index: 10;
         }
 
         .plan-icon-container {
-          font-size: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-bottom: 10px;
+          height: 40px;
         }
 
         .plan-name {
@@ -644,9 +668,11 @@ const Services = ({ scrollTo }) => {
         }
 
         .cat-icon {
-          display: block;
-          font-size: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           margin-bottom: 10px;
+          height: 32px;
         }
 
         .cat-label {
@@ -657,28 +683,27 @@ const Services = ({ scrollTo }) => {
 
         /* ===== PROMO ===== */
         .promo-side {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+        }
 
         .promo-box {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 28px;
-  padding: 40px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  gap: 28px;
-  position: relative;
-  overflow: hidden;
-}
-
+          width: 100%;
+          max-width: 320px;
+          border-radius: 28px;
+          padding: 40px 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          box-sizing: border-box;
+          gap: 28px;
+          position: relative;
+          overflow: hidden;
+        }
 
         .promo-box::before {
           content: "";
@@ -690,15 +715,15 @@ const Services = ({ scrollTo }) => {
           top: -80px;
           right: -80px;
         }
-          /* Carte bleue — fond bleu, texte blanc */
-.expedition-gradient {
-  background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
-}
 
-/* Carte jaune — fond jaune, texte bleu */
-.boutique-gradient {
-  background: linear-gradient(135deg, #faf066 0%, #faf066 100%);
-}
+        .expedition-gradient {
+          background: linear-gradient(135deg, #00BFFF 0%, #0284c7 100%);
+        }
+
+        .boutique-gradient {
+          background: linear-gradient(135deg, #faf066 0%, #faf066 100%);
+        }
+
         .boutique-promo-side {
           display: flex;
           align-items: stretch;
@@ -719,7 +744,7 @@ const Services = ({ scrollTo }) => {
           line-height: 1.6;
           font-weight: 800;
           margin: 0;
-          color: white; /* texte blanc sur fond bleu */
+          color: white;
         }
 
         /* Texte bleu pour la carte jaune */
@@ -753,7 +778,7 @@ const Services = ({ scrollTo }) => {
           background: #00BFFF;
           color: white;
         }
-        
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
           .service-card-wrapper,
@@ -772,9 +797,8 @@ const Services = ({ scrollTo }) => {
             padding: 90px 0;
           }
           .promo-box {
-            max-width: 100%; /* prend toute la largeur sur mobile */
-        }
-
+            max-width: 100%;
+          }
 
           .card-left {
             padding: 30px 22px;

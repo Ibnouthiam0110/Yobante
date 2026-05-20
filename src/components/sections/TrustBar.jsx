@@ -1,25 +1,26 @@
 // src/components/layout/TrustBar.jsx
 import React from 'react';
+import { Truck, MessageCircle, Lock, Smartphone, Zap } from 'lucide-react';
 
 const TRUST_ITEMS = [
   {
-    icon: '🚚',
+    icon: <Truck size={18} strokeWidth={1.8} color="white" />,
     text: 'Livraison France → Sénégal',
   },
   {
-    icon: '💬',
+    icon: <MessageCircle size={18} strokeWidth={1.8} color="white" />,
     text: 'Support WhatsApp 24/7',
   },
   {
-    icon: '🔒',
+    icon: <Lock size={18} strokeWidth={1.8} color="white" />,
     text: 'Paiement 100% sécurisé',
   },
   {
-    icon: '📱',
+    icon: <Smartphone size={18} strokeWidth={1.8} color="white" />,
     text: 'Application iOS & Android',
   },
   {
-    icon: '⚡',
+    icon: <Zap size={18} strokeWidth={1.8} color="white" />,
     text: 'Expédition rapide',
   },
 ];
@@ -39,7 +40,7 @@ const TrustBar = () => {
             {[...TRUST_ITEMS, ...TRUST_ITEMS].map((item, index) => (
               <div className="trust-item" key={index}>
                 <div className="icon-box">
-                  <span>{item.icon}</span>
+                  {item.icon}
                 </div>
                 <span className="trust-text">
                   {item.text}

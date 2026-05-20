@@ -1,6 +1,7 @@
 // src/components/sections/Contact.jsx
 
 import React, { useState } from 'react';
+import { Mail, MessageCircle, Clock, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -85,8 +86,7 @@ const Contact = () => {
             {/* INFO CARDS */}
             <div className="contact-info-list">
               <div className="contact-item">
-                <div className="contact-icon">📧</div>
-                <div className="contact-text">
+              <div className="contact-icon"><Mail size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
                   <strong>Email</strong>
                   <a href="mailto:ibnouthiam69@gmail.com">
                     ibnouthiam69@gmail.com
@@ -95,8 +95,7 @@ const Contact = () => {
               </div>
 
               <div className="contact-item">
-                <div className="contact-icon">💬</div>
-                <div className="contact-text">
+              <div className="contact-icon"><MessageCircle size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
                   <strong>WhatsApp</strong>
                   <a
                     href="https://wa.me/33600000000"
@@ -109,8 +108,7 @@ const Contact = () => {
               </div>
 
               <div className="contact-item">
-                <div className="contact-icon">⏰</div>
-                <div className="contact-text">
+              <div className="contact-icon"><Clock size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
                   <strong>Disponibilité</strong>
                   <span>Lundi – Samedi • 8h – 20h</span>
                 </div>
@@ -208,13 +206,15 @@ const Contact = () => {
               {/* FEEDBACK */}
               {status === 'success' && (
                 <div className="feedback success">
-                  ✅ Message envoyé avec succès.
+                  <CheckCircle size={16} strokeWidth={2} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Message envoyé avec succès.
                 </div>
               )}
 
               {status === 'error' && (
                 <div className="feedback error">
-                  ❌ Une erreur s'est produite.
+                  <XCircle size={16} strokeWidth={2} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Une erreur s'est produite.
                 </div>
               )}
 
@@ -224,8 +224,7 @@ const Contact = () => {
                 className="submit-btn"
                 disabled={status === 'sending'}
               >
-                {status === 'sending' ? 'Envoi en cours...' : 'Envoyer le message →'}
-              </button>
+              {status === 'sending' ? 'Envoi en cours...' : (<>Envoyer le message<ArrowRight size={18} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} /></>)}              </button>
             </form>
           </div>
         </div>
