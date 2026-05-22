@@ -1,7 +1,7 @@
 // src/components/layout/Footer.jsx
 import React from 'react';
 import { Zap, Lock, HeadphonesIcon, Smartphone } from 'lucide-react';
-import yobanteLogo from '../../assets/images/logo5.jpeg';
+import yobanteLogo from '../../assets/images/logo.png';
 
 const trustItems = [
   { icon: <Zap size={13} />, label: 'Livraison rapide' },
@@ -22,7 +22,7 @@ const Footer = ({ scrollTo }) => {
           {/* BRAND */}
           <div className="footer-brand">
             <div className="footer-logo">
-              <img src={yobanteLogo} alt="Yobanté Logo" className="logo-img" />
+              <img src={yobanteLogo} alt="Yobanté Logo" className="logo-img" style={{ filter: 'brightness(0) invert(1)' }} />
             </div>
             <p className="footer-description">
               Votre spécialiste de l'expédition de colis et du e-commerce
@@ -84,7 +84,7 @@ const Footer = ({ scrollTo }) => {
         .footer-brand { max-width: 290px; flex-shrink: 0; }
         .footer-logo  { margin-bottom: 12px; }
 
-        .logo-img { height: auto; max-width: 140px; object-fit: contain; }
+        .logo-img { height: auto; max-width: 160px; object-fit: contain; }
 
         .footer-description {
           color: rgba(255,255,255,.58);

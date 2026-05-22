@@ -398,7 +398,7 @@ const Hero = ({ scrollTo }) => {
         }
 
         .appstore { background: #1E3A8A; color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.25); }
-        .play-gold { background: #D4A820; color: #1E3A8A; box-shadow: 0 4px 14px rgba(212,168,32,0.3); }
+        .play-gold { background: #ffffff; color: #1E3A8A; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
         .play-white { background: #D4A820; color: #1E3A8A; box-shadow: 0 4px 14px rgba(212,168,32,0.3); }
 
         .store-btn small { font-size: 10px; opacity: 0.7; }
