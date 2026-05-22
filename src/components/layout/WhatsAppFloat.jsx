@@ -23,7 +23,7 @@ const WhatsAppFloat = () => {
           z-index: 9999;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           text-decoration: none;
-          border: 2px solid #D4A820;
+          border: 2px solid #F5C518;
         }
 
         .whatsapp-float:hover {
@@ -45,3 +45,4 @@ const WhatsAppFloat = () => {
 };
 
 export default WhatsAppFloat;
+

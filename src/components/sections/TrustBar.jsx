@@ -77,7 +77,7 @@ const TrustBar = () => {
             90deg,
             transparent,
             #1E3A8A,
-            #D4A820,
+            #F5C518,
             #1E3A8A,
             transparent
           );
@@ -120,10 +120,10 @@ const TrustBar = () => {
 
         .glow-right {
           right: -80px;
-          background: #D4A820;
+          background: #F5C518;
         }
 
-        /* ANIMATION ISOLÉE UNIQUEMENT POUR LA TRUSTBAR */
+        /* ANIMATION ISOL�?E UNIQUEMENT POUR LA TRUSTBAR */
         .trust-track {
           position: relative;
           z-index: 2;

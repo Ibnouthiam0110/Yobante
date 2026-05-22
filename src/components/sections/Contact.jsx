@@ -82,7 +82,7 @@ const Contact = () => {
                 <div className="contact-icon"><Clock size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
                 <div className="contact-text">
                   <strong>Disponibilité</strong>
-                  <span>Lundi – Samedi • 8h – 20h</span>
+                  <span>Lundi – Samedi · 8h – 20h</span>
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@ const Contact = () => {
         }
 
         .glow-1 { width: 400px; height: 400px; background: #1e3a8a; top: -90px; left: -90px; }
-        .glow-2 { width: 320px; height: 320px; background: #D4A820; bottom: -90px; right: -70px; }
+        .glow-2 { width: 320px; height: 320px; background: #F5C518; bottom: -90px; right: -70px; }
 
         .section-tag {
           display: inline-flex; align-items: center; gap: 12px;
@@ -183,7 +183,7 @@ const Contact = () => {
           text-transform: uppercase; margin-bottom: 20px; font-size: 12px;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #D4A820; }
+        .tag-line { width: 28px; height: 2px; background: #F5C518; }
 
         .contact-title {
           font-size: clamp(32px, 4.5vw, 52px);
@@ -303,3 +303,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

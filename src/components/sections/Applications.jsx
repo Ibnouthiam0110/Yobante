@@ -129,7 +129,7 @@ const Applications = () => {
         }
 
         .glow-1 { width: 450px; height: 450px; background: #1E3A8A; top: -130px; left: -80px; }
-        .glow-2 { width: 380px; height: 380px; background: #D4A820; bottom: -100px; right: -80px; }
+        .glow-2 { width: 380px; height: 380px; background: #F5C518; bottom: -100px; right: -80px; }
 
         /* HEADER */
         .section-header { text-align: center; margin-bottom: 70px; }
@@ -141,7 +141,7 @@ const Applications = () => {
           letter-spacing: 1.5px; text-transform: uppercase;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #D4A820; }
+        .tag-line { width: 28px; height: 2px; background: #F5C518; }
 
         .section-title {
           font-size: clamp(30px, 4.5vw, 50px);
@@ -201,7 +201,7 @@ const Applications = () => {
         }
 
         .app-chip.expedition { background: rgba(30,58,138,.1); color: #1E3A8A; }
-        .app-chip.boutique   { background: rgba(212,168,32,.2); color: #B8900E; }
+        .app-chip.boutique   { background: rgba(245,197,24,.2); color: #B8900E; }
 
         .app-card h3 { font-size: 26px; color: #1E3A8A; margin-bottom: 14px; font-weight: 900; }
         .app-card p  { color: #64748b; line-height: 1.65; margin-bottom: 24px; font-size: 14px; }
@@ -235,7 +235,7 @@ const Applications = () => {
         .download-btn:hover { opacity: 0.88; }
 
         .ios     { background: #1E3A8A; color: white; box-shadow: 0 6px 18px rgba(30,58,138,.2); }
-        .android { background: #D4A820; color: #1E3A8A; box-shadow: 0 6px 18px rgba(212,168,32,.2); }
+        .android { background: #F5C518; color: #1E3A8A; box-shadow: 0 6px 18px rgba(245,197,24,.2); }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) { .container { padding: 0 28px; } .apps-grid { gap: 22px; } }
@@ -260,3 +260,4 @@ const Applications = () => {
 };
 
 export default Applications;
+

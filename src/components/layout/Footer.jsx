@@ -68,7 +68,7 @@ const Footer = ({ scrollTo }) => {
         }
 
         .glow-1 { width: 280px; height: 280px; background: #1E3A8A; top: -90px; right: -90px; }
-        .glow-2 { width: 230px; height: 230px; background: #D4A820; bottom: -70px; left: -70px; }
+        .glow-2 { width: 230px; height: 230px; background: #F5C518; bottom: -70px; left: -70px; }
 
         .container {
           position: relative; z-index: 2;
@@ -110,7 +110,7 @@ const Footer = ({ scrollTo }) => {
           backdrop-filter: blur(8px);
         }
 
-        .trust-icon { display: flex; align-items: center; color: #D4A820; }
+        .trust-icon { display: flex; align-items: center; color: #F5C518; }
 
         .footer-links { display: flex; gap: 18px; }
 
@@ -141,3 +141,4 @@ const Footer = ({ scrollTo }) => {
 };
 
 export default Footer;
+

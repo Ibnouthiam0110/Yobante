@@ -98,7 +98,7 @@ const Faq = () => {
 
         .faq-dot {
           width: 7px; height: 7px;
-          border-radius: 50%; background: #D4A820;
+          border-radius: 50%; background: #F5C518;
         }
 
         .faq-title {
@@ -192,3 +192,4 @@ const Faq = () => {
 };
 
 export default Faq;
+

@@ -29,7 +29,7 @@ const Hero = ({ scrollTo }) => {
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
-      bgColor: "#D4A820",
+      bgColor: "#F5C518",
       textColor: "#1E3A8A",
       statColor: "#1E3A8A",
       labelColor: "rgba(30,58,138,0.65)",
@@ -51,7 +51,7 @@ const Hero = ({ scrollTo }) => {
       badgeBg: "rgba(255,255,255,.15)",
       badgeTextColor: "#ffffff",
       dotColor: "rgba(255,255,255,.3)",
-      dotActiveColor: "#D4A820",
+      dotActiveColor: "#F5C518",
     },
   ];
 
@@ -357,17 +357,17 @@ const Hero = ({ scrollTo }) => {
           cursor: pointer;
           margin-bottom: 24px;
           transition: 0.25s;
-          background: #D4A820;
+          background: #F5C518;
           color: #1E3A8A;
           width: fit-content;
-          box-shadow: 0 8px 20px rgba(212,168,32,0.3);
+          box-shadow: 0 8px 20px rgba(245,197,24,0.3);
         }
 
         .hero-btn:hover { transform: translateY(-3px); }
 
         .hero-btn.expedition {
           background: #1E3A8A;
-          color: #D4A820;
+          color: #F5C518;
           box-shadow: 0 8px 20px rgba(30,58,138,0.25);
         }
 
@@ -399,7 +399,7 @@ const Hero = ({ scrollTo }) => {
 
         .appstore { background: #1E3A8A; color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.25); }
         .play-gold { background: #ffffff; color: #1E3A8A; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
-        .play-white { background: #D4A820; color: #1E3A8A; box-shadow: 0 4px 14px rgba(212,168,32,0.3); }
+        .play-white { background: #F5C518; color: #1E3A8A; box-shadow: 0 4px 14px rgba(245,197,24,0.3); }
 
         .store-btn small { font-size: 10px; opacity: 0.7; }
         .store-btn strong { font-size: 14px; }
@@ -447,7 +447,7 @@ const Hero = ({ scrollTo }) => {
 
         .dot.active { width: 30px; }
 
-        /* ─── RESPONSIVE ─────────────────────────────────────── */
+        /* �"?�"?�"? RESPONSIVE �"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"?�"? */
         @media (max-width: 1024px) {
           .hero-container { padding: 190px 24px 74px; }
           .hero-content { gap: 28px; }
@@ -540,3 +540,4 @@ const Hero = ({ scrollTo }) => {
 };
 
 export default Hero;
+

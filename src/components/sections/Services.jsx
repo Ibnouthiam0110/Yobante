@@ -2,7 +2,7 @@
 import { useCallback } from "react";
 import React from "react";
 import {
-  Mail, Package, Truck, ShoppingBag,
+  Mail, Package, Truck, ShoppingBag, ArrowRight,
   Shirt, Smartphone, Sparkles, Home, Footprints, Boxes,
 } from "lucide-react";
 
@@ -43,7 +43,7 @@ const PRICING_PLANS = [
     icon: <Package size={30} strokeWidth={1.5} color="#1E3A8A" />,
     name: "Colis -10kg",
     price: "Devis",
-    desc: "Vêtements, chaussures, électronique légère...",
+    desc: "Vêtements, chaussures, Électronique légère...",
     features: ["Jusqu'à 10 kg"],
     button: "Obtenir un devis",
     type: "popular"
@@ -80,7 +80,7 @@ const BOUTIQUE_STEPS = [
 
 const CATEGORIES = [
   { icon: <Shirt size={26} strokeWidth={1.5} color="white" />, label: "Mode & Textile" },
-  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />, label: "Électronique" },
+  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />, label: "�?lectronique" },
   { icon: <Sparkles size={26} strokeWidth={1.5} color="white" />, label: "Beauté & Soins" },
   { icon: <Home size={26} strokeWidth={1.5} color="white" />, label: "Maison & Déco" },
   { icon: <Footprints size={26} strokeWidth={1.5} color="white" />, label: "Chaussures" },
@@ -132,7 +132,7 @@ const Services = ({ scrollTo }) => {
                       <p className="step-title blue-text">{step.title}</p>
                       <p className="step-desc dark-text">{step.desc}</p>
                     </div>
-                    {i < STEPS.length - 1 && <div className="step-arrow blue-text">→</div>}
+                    {i < STEPS.length - 1 && <div className="step-arrow"><ArrowRight size={22} strokeWidth={2.5} className="blue-text" /></div>}
                   </div>
                 ))}
               </div>
@@ -237,7 +237,7 @@ const Services = ({ scrollTo }) => {
                       <p className="step-title boutique-step-title">{step.title}</p>
                       {step.desc && <p className="step-desc boutique-step-desc">{step.desc}</p>}
                     </div>
-                    {i < BOUTIQUE_STEPS.length - 1 && <div className="step-arrow gold-text">→</div>}
+                    {i < BOUTIQUE_STEPS.length - 1 && <div className="step-arrow"><ArrowRight size={22} strokeWidth={2.5} className="gold-text" /></div>}
                   </div>
                 ))}
               </div>
@@ -269,7 +269,7 @@ const Services = ({ scrollTo }) => {
         }
 
         .bg1 { width: 320px; height: 320px; background: #1E3A8A; top: -90px; right: -90px; }
-        .bg2 { width: 280px; height: 280px; background: #D4A820; bottom: -90px; left: -90px; }
+        .bg2 { width: 280px; height: 280px; background: #F5C518; bottom: -90px; left: -90px; }
 
         .container {
           position: relative;
@@ -293,7 +293,7 @@ const Services = ({ scrollTo }) => {
           letter-spacing: 1.5px;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #D4A820; }
+        .tag-line { width: 28px; height: 2px; background: #F5C518; }
 
         /* WRAPPERS */
         .service-card-wrapper {
@@ -321,16 +321,16 @@ const Services = ({ scrollTo }) => {
           gap: 28px;
         }
 
-        .yellow-main { background: linear-gradient(135deg, #D4A820 0%, #F8E98A 100%); }
+        .yellow-main { background: linear-gradient(135deg, #F5C518 0%, #F8E98A 100%); }
         .blue-dark-bg { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
 
         /* COLORS */
         .blue-text   { color: #1E3A8A; }
         .white-text  { color: white; }
-        .gold-text   { color: #D4A820; }
+        .gold-text   { color: #F5C518; }
         .dark-text   { color: #475569; }
         .blue-bg     { background: #1E3A8A; }
-        .gold-bg     { background: #D4A820; }
+        .gold-bg     { background: #F5C518; }
 
         /* CARD TITLE */
         .card-title-row { display: flex; align-items: center; gap: 16px; }
@@ -420,7 +420,7 @@ const Services = ({ scrollTo }) => {
         .boutique-step-desc { color: rgba(255,255,255,0.85) !important; }
 
         .step-arrow {
-          font-size: 20px; font-weight: 800;
+          font-size: 32px; font-weight: 800;
           display: flex; align-items: center;
           user-select: none; flex-shrink: 0;
         }
@@ -548,7 +548,7 @@ const Services = ({ scrollTo }) => {
         }
 
         .expedition-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
-        .boutique-gradient   { background: linear-gradient(135deg, #D4A820 0%, #D4A820 100%); }
+        .boutique-gradient   { background: linear-gradient(135deg, #F5C518 0%, #F5C518 100%); }
 
         .promo-desc {
           font-size: 20px; line-height: 1.55;
@@ -610,3 +610,4 @@ const Services = ({ scrollTo }) => {
 };
 
 export default Services;
+

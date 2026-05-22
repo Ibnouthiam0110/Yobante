@@ -68,7 +68,7 @@ const AboutSection = () => {
         }
 
         .glow-1 { width: 380px; height: 380px; background: #1E3A8A; top: -110px; right: -90px; }
-        .glow-2 { width: 320px; height: 320px; background: #D4A820; bottom: -90px; left: -70px; }
+        .glow-2 { width: 320px; height: 320px; background: #F5C518; bottom: -90px; left: -70px; }
 
         .container {
           position: relative; z-index: 2;
@@ -81,11 +81,11 @@ const AboutSection = () => {
 
         .section-tag {
           display: inline-flex; align-items: center; gap: 12px;
-          color: #D4A820; font-weight: 800; letter-spacing: 1.5px;
+          color: #F5C518; font-weight: 800; letter-spacing: 1.5px;
           text-transform: uppercase; margin-bottom: 18px; font-size: 12px;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #D4A820; }
+        .tag-line { width: 28px; height: 2px; background: #F5C518; }
 
         .about-title {
           font-size: clamp(30px, 4.5vw, 50px);
@@ -109,7 +109,7 @@ const AboutSection = () => {
         }
 
         .about-card:hover {
-          border-color: rgba(212,168,32,.3);
+          border-color: rgba(245,197,24,.3);
           background: rgba(255,255,255,.07);
         }
 
@@ -120,7 +120,7 @@ const AboutSection = () => {
         }
 
         .blue-icon { background: #1E3A8A; box-shadow: 0 8px 22px rgba(30,58,138,.35); }
-        .gold-icon { background: #D4A820; box-shadow: 0 8px 22px rgba(212,168,32,.3); }
+        .gold-icon { background: #F5C518; box-shadow: 0 8px 22px rgba(245,197,24,.3); }
 
         .about-card h3 { font-size: 20px; font-weight: 800; color: white; margin-bottom: 12px; }
         .about-card p  { color: rgba(255,255,255,.65); font-size: 14px; line-height: 1.75; margin: 0; }
@@ -141,3 +141,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+
