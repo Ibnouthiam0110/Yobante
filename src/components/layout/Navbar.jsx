@@ -10,6 +10,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
     { label: 'Applications', id: 'apps' },
     { label: 'FAQ', id: 'faq' },
     { label: 'Contact', id: 'contact' },
+    { label: 'Qui sommes-nous ?', id: 'about' },
   ];
 
   const handleScroll = (id) => {
@@ -90,9 +91,10 @@ const Navbar = ({ scrolled, scrollTo }) => {
   top: 0;
   left: 0;
   width: 100%;
+  height: 90px;
   z-index: 1000;
   transition: all 0.3s ease;
-  padding: 18px 0;
+  padding: 0px 0;
 
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(12px);
@@ -100,7 +102,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
 }
 
        .navbar.scrolled {
-  padding: 14px 0;
+  padding: 8px 0;
   box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
@@ -125,7 +127,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
         }
 
         .logo-img {
-          width: 170px;
+          width: 140px;
           height: auto;
           object-fit: contain;
         }
@@ -155,12 +157,12 @@ const Navbar = ({ scrolled, scrollTo }) => {
           bottom: -6px;
           width: 0%;
           height: 2px;
-          background: #00BFFF;
+          background: #1E3A8A;
           transition: width 0.3s ease;
         }
 
         .desktop-links button:hover {
-          color: #00BFFF;
+          color: #1E3A8A;
         }
 
         .desktop-links button:hover::after {
@@ -170,9 +172,9 @@ const Navbar = ({ scrolled, scrollTo }) => {
         /* CTA */
         .nav-cta {
           border: none;
-          background: #00BFFF;
+          background: #1E3A8A;
           color: white;
-          padding: 13px 22px;
+          padding: 8px 17px;
           border-radius: 50px;
           font-size: 14px;
           font-weight: 700;
@@ -183,7 +185,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
 
         .nav-cta:hover {
           transform: translateY(-2px);
-          background: #00a8e8;
+          background: #1A3278;
         }
 
         /* Burger */
@@ -260,14 +262,14 @@ const Navbar = ({ scrolled, scrollTo }) => {
         }
 
         .mobile-link:hover {
-          background: #e0f2fe;
-          color: #00BFFF;
+          background: #EEF2FF;
+          color: #1E3A8A;
         }
 
         .mobile-cta {
           margin-top: 8px;
           border: none;
-          background: #00BFFF;
+          background: #1E3A8A;
           color: white;
           padding: 16px;
           border-radius: 16px;
@@ -288,7 +290,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
           }
 
           .logo-img {
-            width: 145px;
+            width: 140px;
           }
         }
 

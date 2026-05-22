@@ -10,7 +10,7 @@ import Services from './components/sections/Services';
 import Applications from './components/sections/Applications';
 import Faq from './components/sections/Faq';
 import Contact from './components/sections/Contact';
-import Cta from './components/sections/Cta';
+import AboutSection from './components/sections/AboutSection';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,6 +19,23 @@ function App() {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sr-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -48px 0px' }
+    );
+    const els = document.querySelectorAll('.sr, .sr-l, .sr-r');
+    els.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (id) => {
@@ -37,7 +54,7 @@ function App() {
       <Applications />
       <Faq />
       <Contact scrollTo={scrollTo} />
-      <Cta scrollTo={scrollTo} />
+      <AboutSection />
       <Footer scrollTo={scrollTo} />
       <WhatsAppFloat />
     </div>

@@ -29,13 +29,14 @@ const Hero = ({ scrollTo }) => {
       buttonText: "En savoir plus",
       buttonLink: "services",
       image: deliveryPhone2,
-      bgColor: "#faf066",
-      textColor: "#00BFFF",
-      statColor: "#00BFFF",
+      bgColor: "#D4A820",
+      textColor: "#1E3A8A",
+      statColor: "#1E3A8A",
+      labelColor: "rgba(30,58,138,0.65)",
       badgeBg: "#ffffff",
-      badgeTextColor: "#00BFFF",
-      dotColor: "rgba(0,0,0,.2)",
-      dotActiveColor: "#00BFFF",
+      badgeTextColor: "#1E3A8A",
+      dotColor: "rgba(0,0,0,.15)",
+      dotActiveColor: "#1E3A8A",
     },
     {
       id: 2,
@@ -43,13 +44,14 @@ const Hero = ({ scrollTo }) => {
       buttonText: "Explorer",
       buttonLink: "apps",
       image: deliveryPhone,
-      bgColor: "#00BFFF",
+      bgColor: "#1E3A8A",
       textColor: "#ffffff",
       statColor: "#ffffff",
+      labelColor: "rgba(255,255,255,0.65)",
       badgeBg: "rgba(255,255,255,.15)",
       badgeTextColor: "#ffffff",
       dotColor: "rgba(255,255,255,.3)",
-      dotActiveColor: "#faf066",
+      dotActiveColor: "#D4A820",
     },
   ];
 
@@ -61,9 +63,7 @@ const Hero = ({ scrollTo }) => {
       {/* BACKGROUND */}
       <motion.div
         className="hero-bg"
-        animate={{
-          background: current.bgColor,
-        }}
+        animate={{ background: current.bgColor }}
         transition={{ duration: 0.6 }}
       />
 
@@ -77,12 +77,11 @@ const Hero = ({ scrollTo }) => {
         <div className="hero-tabs">
           <div className="tabs-wrapper">
             <button className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`} onClick={() => setCurrentSlide(0)}>
-              <Package size={15} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+              <Package size={14} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
                Expédition
             </button>
-
             <button className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`} onClick={() => setCurrentSlide(1)}>
-              <ShoppingBag size={15} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+              <ShoppingBag size={14} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
                Boutique
             </button>
           </div>
@@ -92,90 +91,66 @@ const Hero = ({ scrollTo }) => {
           <motion.div
             key={current.id}
             className="hero-content"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.7 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.55 }}
           >
             {/* TEXT */}
             <div className="hero-text">
-              <div
-                className="hero-badge"
-                style={{ background: current.badgeBg }}
-              >
+              <div className="hero-badge" style={{ background: current.badgeBg }}>
                 <span className="badge-dot"></span>
                 <span style={{ color: current.badgeTextColor }}>
-                  Service actif — France → Sénégal
+                  Expédition de colis - Boutique en ligne
                 </span>
               </div>
 
-              <h1
-                className="hero-title"
-                style={{ color: current.textColor }}
-              >
+              <h1 className="hero-title" style={{ color: current.textColor }}>
                 {current.title}
               </h1>
 
               {current.id === 1 && (
                 <div className="shipping-methods">
                   <div className="method-card">
-                    <span className="method-icon"><Plane size={24} strokeWidth={1.5} color="#00BFFF" /></span>
+                    <span className="method-icon"><Plane size={22} strokeWidth={1.5} color="#1E3A8A" /></span>
                     <span className="method-name">Fret Aérien</span>
-                    <span className="method-desc">2-4 jours</span>
                   </div>
-
                   <div className="method-card">
-                    <span className="method-icon"><Ship size={24} strokeWidth={1.5} color="#00BFFF" /></span>
+                    <span className="method-icon"><Ship size={22} strokeWidth={1.5} color="#1E3A8A" /></span>
                     <span className="method-name">Fret Maritime</span>
-                    <span className="method-desc">5-7 semaines</span>
                   </div>
-
                   <div className="method-card">
-                    <span className="method-icon"><Package size={24} strokeWidth={1.5} color="#00BFFF" /></span>
+                    <span className="method-icon"><Package size={22} strokeWidth={1.5} color="#1E3A8A" /></span>
                     <span className="method-name">Colis GP</span>
-                    <span className="method-desc">7-14 jours</span>
                   </div>
                 </div>
               )}
 
               {/* BUTTON */}
               <button
-                className={`hero-btn ${
-                  current.id === 1 ? 'expedition' : ''
-                }`}
+                className={`hero-btn ${current.id === 1 ? 'expedition' : ''}`}
                 onClick={() => scrollTo(current.buttonLink)}
               >
                 {current.buttonText}
-                <ArrowRight size={16} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
-
+                <ArrowRight size={15} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} />
               </button>
 
               {/* STORES */}
               <div className="store-buttons">
-                <a
-                  href="https://apps.apple.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="store-btn appstore"
-                >
+                <a href="https://apps.apple.com" target="_blank" rel="noreferrer" className="store-btn appstore">
                   <AppStoreIcon />
-
                   <div className="store-text">
                     <small>Télécharger sur</small>
                     <strong>App Store</strong>
                   </div>
                 </a>
-
                 <a
                   href="https://play.google.com"
                   target="_blank"
                   rel="noreferrer"
-                  className={`store-btn ${
-                    current.id === 1 ? 'play-yellow' : 'play-blue'
-                  }`}
+                  className={`store-btn ${current.id === 1 ? 'play-gold' : 'play-white'}`}
                 >
                   <PlayStoreIcon />
-
                   <div className="store-text">
                     <small>Disponible sur</small>
                     <strong>Google Play</strong>
@@ -186,33 +161,12 @@ const Hero = ({ scrollTo }) => {
               {/* STATS */}
               <div className="hero-stats">
                 <div className="stat">
-                  <span
-                    className="stat-number"
-                    style={{ color: current.statColor }}
-                  >
-                    5k+
-                  </span>
-                  <span className="stat-label">Colis livrés</span>
+                  <span className="stat-number" style={{ color: current.statColor }}>5k+</span>
+                  <span className="stat-label" style={{ color: current.labelColor }}>Colis livrés</span>
                 </div>
-
                 <div className="stat">
-                  <span
-                    className="stat-number"
-                    style={{ color: current.statColor }}
-                  >
-                    2-4j
-                  </span>
-                  <span className="stat-label">Livraison</span>
-                </div>
-
-                <div className="stat">
-                  <span
-                    className="stat-number"
-                    style={{ color: current.statColor }}
-                  >
-                    24/7
-                  </span>
-                  <span className="stat-label">Support</span>
+                  <span className="stat-number" style={{ color: current.statColor }}>7j/7</span>
+                  <span className="stat-label" style={{ color: current.labelColor }}>Support</span>
                 </div>
               </div>
             </div>
@@ -220,19 +174,10 @@ const Hero = ({ scrollTo }) => {
             {/* IMAGE */}
             <motion.div
               className="hero-image"
-              animate={{
-                y: [0, -18, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+              animate={{ y: [0, -16, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             >
-              <img
-                src={current.image}
-                alt="Application mobile"
-              />
+              <img src={current.image} alt="Application mobile" />
             </motion.div>
           </motion.div>
         </AnimatePresence>
@@ -243,14 +188,9 @@ const Hero = ({ scrollTo }) => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`dot ${
-              currentSlide === index ? 'active' : ''
-            }`}
+            className={`dot ${currentSlide === index ? 'active' : ''}`}
             style={{
-              background:
-                currentSlide === index
-                  ? current.dotActiveColor
-                  : current.dotColor,
+              background: currentSlide === index ? current.dotActiveColor : current.dotColor,
             }}
             onClick={() => setCurrentSlide(index)}
           />
@@ -276,25 +216,25 @@ const Hero = ({ scrollTo }) => {
 
         .hero-glow {
           position: absolute;
-          width: 700px;
-          height: 700px;
-          background: rgba(255, 255, 255, 0.15);
-          filter: blur(120px);
+          width: 600px;
+          height: 600px;
+          background: rgba(255,255,255,0.12);
+          filter: blur(110px);
           border-radius: 50%;
-          top: -150px;
-          right: -100px;
+          top: -130px;
+          right: -80px;
           animation: floatGlow 8s ease-in-out infinite;
         }
 
         @keyframes floatGlow {
-          0% { transform: translate(0, 0); }
-          50% { transform: translate(-60px, 40px); }
-          100% { transform: translate(0, 0); }
+          0% { transform: translate(0,0); }
+          50% { transform: translate(-50px,35px); }
+          100% { transform: translate(0,0); }
         }
 
         .hero-tabs {
           position: absolute;
-          top: 120px;
+          top: 108px;
           left: 50%;
           transform: translateX(-50%);
           z-index: 20;
@@ -302,27 +242,28 @@ const Hero = ({ scrollTo }) => {
 
         .tabs-wrapper {
           display: flex;
-          gap: 8px;
-          background: rgba(255, 255, 255, 0.15);
+          gap: 6px;
+          background: rgba(255,255,255,0.18);
           backdrop-filter: blur(14px);
-          padding: 6px;
-          border-radius: 18px;
+          padding: 5px;
+          border-radius: 16px;
         }
 
         .tab-btn {
           border: none;
-          padding: 12px 18px;
+          padding: 10px 16px;
           border-radius: 12px;
           cursor: pointer;
+          font-size: 14px;
           font-weight: 700;
           background: transparent;
           color: white;
-          transition: 0.3s;
+          transition: 0.25s;
         }
 
         .tab-btn.active {
           background: white;
-          color: #00BFFF;
+          color: #1E3A8A;
         }
 
         .hero-container {
@@ -330,20 +271,20 @@ const Hero = ({ scrollTo }) => {
           z-index: 5;
           width: 100%;
           max-width: 1250px;
-          padding: 220px 32px 100px;
+          padding: 200px 32px 90px;
         }
 
         .hero-content {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 50px;
+          gap: 48px;
         }
 
         .hero-text {
           flex: 1;
-          max-width: 560px;
-          min-height: 520px;
+          max-width: 540px;
+          min-height: 490px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -353,109 +294,102 @@ const Hero = ({ scrollTo }) => {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 8px 18px;
+          padding: 7px 16px;
           border-radius: 999px;
-          margin-bottom: 28px;
+          margin-bottom: 22px;
           backdrop-filter: blur(10px);
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 600;
           width: fit-content;
         }
 
         .badge-dot {
-          width: 8px;
-          height: 8px;
+          width: 7px;
+          height: 7px;
           border-radius: 50%;
           background: #10b981;
-          box-shadow: 0 0 10px #10b981;
+          box-shadow: 0 0 8px #10b981;
         }
 
         .hero-title {
-          font-size: clamp(38px, 5vw, 70px);
-          line-height: 1.05;
+          font-size: clamp(34px, 4.5vw, 62px);
+          line-height: 1.07;
           font-weight: 900;
-          margin-bottom: 30px;
+          margin-bottom: 26px;
         }
 
         .shipping-methods {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 14px;
-          margin-bottom: 32px;
+          grid-template-columns: repeat(3,1fr);
+          gap: 12px;
+          margin-bottom: 28px;
         }
 
         .method-card {
           background: white;
-          padding: 16px;
-          border-radius: 18px;
+          padding: 14px 12px;
+          border-radius: 16px;
           text-align: center;
-          transition: 0.35s ease;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 8px 20px rgba(30,58,138,0.1);
+          transition: 0.3s ease;
         }
 
-        .method-card:hover {
-          transform: translateY(-10px) scale(1.03);
-        }
+        .method-card:hover { transform: translateY(-8px) scale(1.02); }
 
         .method-icon {
           display: block;
-          font-size: 24px;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
         }
 
         .method-name {
           display: block;
           font-weight: 800;
-          color: #00BFFF;
-          font-size: 14px;
-        }
-
-        .method-desc {
-          font-size: 12px;
-          color: #666;
-          margin-top: 2px;
+          color: #1E3A8A;
+          font-size: 13px;
         }
 
         .hero-btn {
           border: none;
-          padding: 16px 34px;
+          padding: 14px 30px;
           border-radius: 999px;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 800;
           cursor: pointer;
-          margin-bottom: 28px;
-          transition: 0.3s;
-          background: #faf066;
-          color: #00BFFF;
+          margin-bottom: 24px;
+          transition: 0.25s;
+          background: #D4A820;
+          color: #1E3A8A;
           width: fit-content;
+          box-shadow: 0 8px 20px rgba(212,168,32,0.3);
         }
 
-        .hero-btn:hover {
-          transform: translateY(-4px);
-        }
+        .hero-btn:hover { transform: translateY(-3px); }
 
         .hero-btn.expedition {
-          background: #00BFFF;
-          color: #faf066;
+          background: #1E3A8A;
+          color: #D4A820;
+          box-shadow: 0 8px 20px rgba(30,58,138,0.25);
         }
 
         .store-buttons {
           display: flex;
           flex-wrap: wrap;
-          gap: 14px;
-          margin-bottom: 38px;
+          gap: 12px;
+          margin-bottom: 32px;
         }
 
         .store-btn {
           display: flex;
           align-items: center;
-          gap: 12px;
-          padding: 12px 18px;
-          border-radius: 14px;
+          gap: 10px;
+          padding: 11px 16px;
+          border-radius: 13px;
           text-decoration: none;
-          transition: 0.3s;
-          min-width: 180px;
+          transition: 0.25s;
+          min-width: 160px;
         }
+
+        .store-btn:hover { transform: translateY(-3px); }
 
         .store-text {
           display: flex;
@@ -463,52 +397,22 @@ const Hero = ({ scrollTo }) => {
           line-height: 1.1;
         }
 
-        .store-btn:hover {
-          transform: translateY(-4px);
-        }
+        .appstore { background: #1E3A8A; color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.25); }
+        .play-gold { background: #D4A820; color: #1E3A8A; box-shadow: 0 4px 14px rgba(212,168,32,0.3); }
+        .play-white { background: #D4A820; color: #1E3A8A; box-shadow: 0 4px 14px rgba(212,168,32,0.3); }
 
-        .appstore {
-          background: black;
-          color: white;
-        }
+        .store-btn small { font-size: 10px; opacity: 0.7; }
+        .store-btn strong { font-size: 14px; }
 
-        .play-yellow {
-          background: #faf066;
-          color: #00BFFF;
-        }
-
-        .play-blue {
-          background: white;
-          color: #00BFFF;
-        }
-
-        .store-btn small {
-          display: block;
-          font-size: 10px;
-          opacity: 0.8;
-          white-space: nowrap;
-        }
-
-        .store-btn strong {
-          font-size: 15px;
-          white-space: nowrap;
-        }
-
-        .hero-stats {
-          display: flex;
-          gap: 40px;
-        }
+        .hero-stats { display: flex; gap: 36px; }
 
         .stat-number {
-          font-size: 28px;
+          font-size: 26px;
           font-weight: 900;
           display: block;
         }
 
-        .stat-label {
-          color: #222;
-          font-size: 13px;
-        }
+        .stat-label { font-size: 12px; }
 
         .hero-image {
           flex: 1;
@@ -518,322 +422,118 @@ const Hero = ({ scrollTo }) => {
 
         .hero-image img {
           width: 100%;
-          max-width: 430px;
-          filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.18));
+          max-width: 400px;
+          filter: drop-shadow(0 22px 40px rgba(0,0,0,0.16));
         }
 
         .slide-dots {
           position: absolute;
-          bottom: 40px;
+          bottom: 34px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
-          gap: 10px;
+          gap: 8px;
           z-index: 10;
         }
 
         .dot {
-          width: 10px;
-          height: 10px;
+          width: 9px;
+          height: 9px;
           border: none;
           border-radius: 999px;
           transition: 0.3s;
           cursor: pointer;
         }
 
-        .dot.active {
-          width: 34px;
-        }
+        .dot.active { width: 30px; }
 
+        /* ─── RESPONSIVE ─────────────────────────────────────── */
         @media (max-width: 1024px) {
-          .hero-container {
-            padding: 200px 24px 80px;
-          }
-
-          .hero-content {
-            gap: 30px;
-          }
-
-          .hero-image img {
-            max-width: 340px;
-          }
+          .hero-container { padding: 190px 24px 74px; }
+          .hero-content { gap: 28px; }
+          .hero-image img { max-width: 320px; }
         }
 
         @media (max-width: 980px) {
-          .hero {
-            min-height: auto;
-          }
+          .hero { min-height: auto; }
 
           .hero-tabs {
             position: relative;
-            top: 0;
-            left: 0;
-            transform: none;
-            margin: 0 auto 30px;
+            top: 0; left: 0; transform: none;
+            margin: 0 auto 26px;
             display: flex;
             justify-content: center;
             width: 100%;
           }
 
-          .hero-container {
-            padding: 100px 24px 80px;
-          }
+          .hero-container { padding: 120px 24px 72px; }
 
           .hero-content {
             flex-direction: column;
             text-align: center;
-            gap: 40px;
+            gap: 36px;
           }
 
           .hero-text {
-            max-width: 640px;
-            min-height: 580px;
-            display: flex;
-            flex-direction: column;
+            max-width: 600px;
+            min-height: auto;
             align-items: center;
-            justify-content: flex-start;
           }
 
-          .hero-title {
-            font-size: 48px;
-          }
+          .hero-title { font-size: 42px; }
 
           .shipping-methods {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2,1fr);
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
           }
 
           .shipping-methods .method-card:last-child {
             grid-column: span 2;
-            max-width: calc(50% - 7px);
+            width: calc(50% - 6px);
+            max-width: calc(50% - 6px);
             margin: 0 auto;
-            width: 100%;
           }
+
+          .store-buttons { justify-content: center; }
+          .hero-stats { justify-content: center; }
+          .hero-image img { max-width: 280px; }
+        }
+
+        @media (max-width: 520px) {
+          .hero-container { padding: 115px 16px 56px; }
+          .hero-title { font-size: 30px; line-height: 1.17; margin-bottom: 20px; }
+
+          .shipping-methods {
+            width: 100%; max-width: 320px;
+            grid-template-columns: repeat(2,1fr);
+            gap: 9px; margin-bottom: 20px;
+          }
+
+          .method-card { padding: 12px 8px; border-radius: 14px; }
+          .method-name { font-size: 12px; }
+
+          .shipping-methods .method-card:last-child {
+            grid-column: span 2;
+            width: calc(50% - 4.5px);
+            max-width: calc(50% - 4.5px);
+            margin: 0 auto;
+          }
+
+          .hero-btn { width: 100%; max-width: 320px; padding: 13px 18px; font-size: 15px; margin-bottom: 18px; }
 
           .store-buttons {
-            justify-content: center;
-            width: 100%;
+            width: 100%; max-width: 320px;
+            flex-direction: column; gap: 10px; margin-bottom: 26px;
           }
 
-          .hero-stats {
-            justify-content: center;
-            width: 100%;
-          }
+          .store-btn { width: 100%; min-height: 56px; }
 
-          .hero-image img {
-            max-width: 300px;
-          }
+          .hero-stats { width: 100%; max-width: 320px; justify-content: center; gap: 36px; }
+          .stat-number { font-size: 26px; }
+          .hero-image img { max-width: 200px; }
         }
 
-   @media (max-width: 520px) {
-
-  /* =========================
-     HERO
-  ========================== */
-
-  .hero-container {
-    padding: 80px 16px 60px;
-  }
-
-  .hero-text {
-    min-height: auto;
-    align-items: center;
-  }
-
-  .hero-title {
-    font-size: 32px;
-    line-height: 1.15;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  /* =========================
-     SHIPPING METHODS
-  ========================== */
-
-  .shipping-methods {
-    width: 100%;
-    max-width: 340px;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-
-    margin-bottom: 24px;
-  }
-
-  .method-card {
-    padding: 14px 10px;
-    border-radius: 18px;
-
-    min-height: 110px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    box-sizing: border-box;
-  }
-
-  .shipping-methods .method-card:last-child {
-    grid-column: span 2;
-
-    max-width: 100%;
-    min-height: 100px;
-  }
-
-  .method-icon {
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  .method-name {
-    font-size: 14px;
-    line-height: 1.1;
-    margin-bottom: 4px;
-    text-align: center;
-  }
-
-  .method-desc {
-    font-size: 12px;
-    line-height: 1;
-    text-align: center;
-  }
-
-  /* =========================
-     CTA BUTTON
-  ========================== */
-
-  .hero-btn {
-    width: 100%;
-    max-width: 340px;
-
-    padding: 14px 20px;
-
-    font-size: 16px;
-    margin-bottom: 22px;
-  }
-
-  /* =========================
-     STORE BUTTONS
-  ========================== */
-
-  .store-buttons {
-    width: 100%;
-    max-width: 340px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 12px;
-    margin-bottom: 30px;
-  }
-
-  .store-btn {
-    width: 100%;
-    min-height: 62px;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
-    gap: 12px;
-
-    padding: 12px 16px;
-
-    border-radius: 16px;
-
-    box-sizing: border-box;
-  }
-
-  .store-btn svg {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-  }
-
-  .store-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    line-height: 1.05;
-    text-align: left;
-  }
-
-  .store-btn small {
-    font-size: 10px;
-    white-space: nowrap;
-  }
-
-  .store-btn strong {
-    font-size: 15px;
-    white-space: nowrap;
-  }
-
-  /* GOOGLE PLAY EN BLANC */
-
-  .play-yellow {
-    background: white;
-    color: #00BFFF;
-  }
-
-  /* =========================
-     STATS
-  ========================== */
-
-  .hero-stats {
-    width: 100%;
-    max-width: 340px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    gap: 0;
-
-    margin-top: 10px;
-  }
-
-  .stat {
-    flex: 1;
-    text-align: center;
-  }
-
-  .stat-number {
-    font-size: 30px;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .stat-label {
-    font-size: 13px;
-    line-height: 1.2;
-  }
-
-  /* =========================
-     IMAGE
-  ========================== */
-
-  .hero-image img {
-    max-width: 220px;
-  }
-}
-
-        @media (max-width: 768px) {
-          .hero-image {
-            animation: none !important;
-            transform: none !important;
-          }
-
-          .method-card:hover,
-          .store-btn:hover,
-          .hero-btn:hover {
-            transform: none !important;
-          }
-        }
       `}</style>
     </section>
   );

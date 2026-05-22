@@ -76,9 +76,9 @@ const TrustBar = () => {
           background: linear-gradient(
             90deg,
             transparent,
-            #00BFFF,
-            #faf066,
-            #00BFFF,
+            #1E3A8A,
+            #D4A820,
+            #1E3A8A,
             transparent
           );
           opacity: 0.8;
@@ -115,12 +115,12 @@ const TrustBar = () => {
 
         .glow-left {
           left: -80px;
-          background: #00BFFF;
+          background: #1E3A8A;
         }
 
         .glow-right {
           right: -80px;
-          background: #faf066;
+          background: #D4A820;
         }
 
         /* ANIMATION ISOLÉE UNIQUEMENT POUR LA TRUSTBAR */
@@ -165,12 +165,12 @@ const TrustBar = () => {
           justify-content: center;
           background: linear-gradient(
             135deg,
-            #00BFFF,
-            #0284c7
+            #1E3A8A,
+            #152E70
           );
           color: white;
           font-size: 18px;
-          box-shadow: 0 8px 18px rgba(0, 191, 255, 0.25);
+          box-shadow: 0 8px 18px rgba(30, 58, 138, 0.2);
           flex-shrink: 0;
         }
 

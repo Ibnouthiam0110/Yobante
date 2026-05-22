@@ -1,38 +1,21 @@
 // src/components/sections/Contact.jsx
-
 import React, { useState } from 'react';
-import { Mail, MessageCircle, Clock, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, Clock, Phone, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    prenom: '',
-    nom: '',
-    email: '',
-    sujet: '',
-    message: '',
-  });
-
+  const [formData, setFormData] = useState({ prenom: '', nom: '', email: '', sujet: '', message: '' });
   const [status, setStatus] = useState('idle');
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-
     const apiKey = import.meta.env.VITE_WEB3FORMS_KEY || 'a741136d-b23e-4891-a8b4-c6f4f8210215';
-
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: apiKey,
           name: `${formData.prenom} ${formData.nom}`,
@@ -41,74 +24,63 @@ const Contact = () => {
           message: formData.message,
         }),
       });
-
       const data = await res.json();
-
       if (data.success) {
         setStatus('success');
-        setFormData({
-          prenom: '',
-          nom: '',
-          email: '',
-          sujet: '',
-          message: '',
-        });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+        setFormData({ prenom: '', nom: '', email: '', sujet: '', message: '' });
+      } else { setStatus('error'); }
+    } catch { setStatus('error'); }
   };
 
   return (
     <section id="contact" className="contact-section">
-      {/* BACKGROUND GLOW (STATIQUE) */}
       <div className="bg-glow glow-1"></div>
       <div className="bg-glow glow-2"></div>
 
       <div className="container">
         <div className="contact-grid">
+
           {/* LEFT */}
-          <div className="contact-details">
+          <div className="contact-details sr-l">
             <div className="section-tag">
               <span className="tag-line"></span>
               Contact
             </div>
-
-            <h2 className="contact-title">Parlons de vos projets</h2>
-
+            <h2 className="contact-title">Contactez-nous</h2>
             <p className="contact-description">
-              Notre équipe répond à toutes vos questions concernant les achats,
-              livraisons et expéditions entre la France et le Sénégal.
+              Notre service client est disponible pour répondre à toutes vos questions.
             </p>
 
-            {/* INFO CARDS */}
             <div className="contact-info-list">
               <div className="contact-item">
-              <div className="contact-icon"><Mail size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
-                  <strong>Email</strong>
-                  <a href="mailto:ibnouthiam69@gmail.com">
-                    ibnouthiam69@gmail.com
-                  </a>
+                <div className="contact-icon"><Phone size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
+                <div className="contact-text">
+                  <strong>Téléphone</strong>
+                  <a href="tel:+33600000000">+33 6 00 00 00 00</a>
                 </div>
               </div>
 
               <div className="contact-item">
-              <div className="contact-icon"><MessageCircle size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
+                <div className="contact-icon"><MessageCircle size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
+                <div className="contact-text">
                   <strong>WhatsApp</strong>
-                  <a
-                    href="https://wa.me/33600000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="https://wa.me/33600000000" target="_blank" rel="noopener noreferrer">
                     +33 6 00 00 00 00
                   </a>
                 </div>
               </div>
 
               <div className="contact-item">
-              <div className="contact-icon"><Clock size={24} strokeWidth={1.5} color="#00bfff" /></div>                <div className="contact-text">
+                <div className="contact-icon"><Mail size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
+                <div className="contact-text">
+                  <strong>Email</strong>
+                  <a href="mailto:ibnouthiam69@gmail.com">ibnouthiam69@gmail.com</a>
+                </div>
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-icon"><Clock size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
+                <div className="contact-text">
                   <strong>Disponibilité</strong>
                   <span>Lundi – Samedi • 8h – 20h</span>
                 </div>
@@ -117,362 +89,213 @@ const Contact = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="form-wrapper">
+          <div className="form-wrapper sr-r">
             <div className="form-glow"></div>
-
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-header">
                 <h3>Avez-vous une question ?</h3>
-                <p>Réponse garantie sous 24 heures.</p>
+                <p>Notre équipe vous répondra dans les plus brefs délais.</p>
               </div>
 
-              {/* ROW */}
               <div className="form-row">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    id="prenom"
-                    name="prenom"
-                    placeholder="Prénom"
-                    value={formData.prenom}
-                    onChange={handleChange}
-                    required
-                  />
+                  <input type="text" name="prenom" placeholder="Prénom"
+                    value={formData.prenom} onChange={handleChange} required />
                 </div>
-
                 <div className="form-group">
-                  <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    placeholder="Nom"
-                    value={formData.nom}
-                    onChange={handleChange}
-                    required
-                  />
+                  <input type="text" name="nom" placeholder="Nom"
+                    value={formData.nom} onChange={handleChange} required />
                 </div>
               </div>
 
-              {/* EMAIL */}
               <div className="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Votre adresse email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <input type="email" name="email" placeholder="Votre adresse email"
+                  value={formData.email} onChange={handleChange} required />
               </div>
 
-              {/* SUBJECT */}
               <div className="form-group">
-                <select
-                  id="sujet"
-                  name="sujet"
-                  value={formData.sujet}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="" disabled hidden>
-                    Sélectionner un sujet
-                  </option>
-                  <option value="Demande de devis - Colis -10kg">
-                    Demande de devis - Colis -10kg
-                  </option>
-                  <option value="Demande de devis - Colis +10kg">
-                    Demande de devis - Colis +10kg
-                  </option>
+                <select name="sujet" value={formData.sujet} onChange={handleChange} required>
+                  <option value="" disabled hidden>Sélectionner un sujet</option>
+                  <option value="Demande de devis - Colis -10kg">Demande de devis - Colis -10kg</option>
+                  <option value="Demande de devis - Colis +10kg">Demande de devis - Colis +10kg</option>
                   <option value="Envoi de documents">Envoi de documents</option>
                   <option value="Boutique en ligne">Boutique en ligne</option>
                   <option value="Autres">Autres</option>
                 </select>
               </div>
 
-              {/* MESSAGE */}
               <div className="form-group">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Décrivez votre demande..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                ></textarea>
+                <textarea name="message" rows="4" placeholder="Décrivez votre demande..."
+                  value={formData.message} onChange={handleChange} required></textarea>
               </div>
 
-              {/* FEEDBACK */}
               {status === 'success' && (
                 <div className="feedback success">
-                  <CheckCircle size={16} strokeWidth={2} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  <CheckCircle size={15} strokeWidth={2} style={{ marginRight: '7px', verticalAlign: 'middle' }} />
                   Message envoyé avec succès.
                 </div>
               )}
 
               {status === 'error' && (
                 <div className="feedback error">
-                  <XCircle size={16} strokeWidth={2} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  <XCircle size={15} strokeWidth={2} style={{ marginRight: '7px', verticalAlign: 'middle' }} />
                   Une erreur s'est produite.
                 </div>
               )}
 
-              {/* BUTTON */}
-              <button
-                type="submit"
-                className="submit-btn"
-                disabled={status === 'sending'}
-              >
-              {status === 'sending' ? 'Envoi en cours...' : (<>Envoyer le message<ArrowRight size={18} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} /></>)}              </button>
+              <button type="submit" className="submit-btn" disabled={status === 'sending'}>
+                {status === 'sending' ? 'Envoi en cours...' : (
+                  <>Envoyer le message<ArrowRight size={16} strokeWidth={2} style={{ marginLeft: '8px', verticalAlign: 'middle' }} /></>
+                )}
+              </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Le bloc style est maintenant bien à l'intérieur du parent unique <section> */}
       <style jsx>{`
         .contact-section {
-          position: relative;
-          overflow: hidden;
-          padding: 120px 0;
-          background: #f8fbff;
+          position: relative; overflow: hidden;
+          padding: 100px 0; background: #f8fbff;
         }
+
         .container {
-          position: relative;
-          z-index: 5;
-          max-width: 1250px;
-          margin: 0 auto;
-          padding: 0 24px;
+          position: relative; z-index: 5;
+          max-width: 1250px; margin: 0 auto; padding: 0 24px;
         }
+
         .contact-grid {
-          display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 80px;
-          align-items: center;
+          display: grid; grid-template-columns: 1fr 1.15fr;
+          gap: 70px; align-items: center;
         }
+
         .bg-glow {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(120px);
-          opacity: 0.35;
+          position: absolute; border-radius: 50%;
+          filter: blur(120px); opacity: 0.3;
         }
-        .glow-1 {
-          width: 450px;
-          height: 450px;
-          background: #00bfff;
-          top: -100px;
-          left: -100px;
-        }
-        .glow-2 {
-          width: 350px;
-          height: 350px;
-          background: #faf066;
-          bottom: -100px;
-          right: -80px;
-        }
+
+        .glow-1 { width: 400px; height: 400px; background: #1e3a8a; top: -90px; left: -90px; }
+        .glow-2 { width: 320px; height: 320px; background: #D4A820; bottom: -90px; right: -70px; }
+
         .section-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          color: #00bfff;
-          font-weight: 800;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          margin-bottom: 24px;
-          font-size: 14px;
+          display: inline-flex; align-items: center; gap: 12px;
+          color: #1e3a8a; font-weight: 800; letter-spacing: 1.5px;
+          text-transform: uppercase; margin-bottom: 20px; font-size: 12px;
         }
-        .tag-line {
-          width: 32px;
-          height: 2px;
-          background: #faf066;
-        }
+
+        .tag-line { width: 28px; height: 2px; background: #D4A820; }
+
         .contact-title {
-          font-size: clamp(36px, 5vw, 58px);
-          line-height: 1.1;
-          color: #00bfff;
-          font-weight: 900;
-          margin-bottom: 22px;
-                }
+          font-size: clamp(32px, 4.5vw, 52px);
+          line-height: 1.12; color: #1e3a8a; font-weight: 900; margin-bottom: 18px;
+        }
+
         .contact-description {
-          color: #64748b;
-          font-size: 17px;
-          line-height: 1.8;
-          margin-bottom: 42px;
-          max-width: 500px;
+          color: #64748b; font-size: 16px; line-height: 1.75;
+          margin-bottom: 36px; max-width: 440px;
         }
-        .contact-info-list {
-          display: flex;
-          flex-direction: column;
-          gap: 22px;
-        }
+
+        .contact-info-list { display: flex; flex-direction: column; gap: 16px; }
+
         .contact-item {
-          display: flex;
-          align-items: center;
-          gap: 18px;
-          padding: 18px;
-          background: rgba(255, 255, 255, 0.7);
-          border-radius: 22px;
+          display: flex; align-items: center; gap: 16px;
+          padding: 16px;
+          background: rgba(255,255,255,0.72);
+          border-radius: 20px;
           backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.5);
-          transition: 0.35s ease;
+          border: 1px solid rgba(255,255,255,0.5);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .contact-item:hover {
-          transform: translateX(8px);
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+          transform: translateX(6px);
+          box-shadow: 0 12px 30px rgba(0,0,0,.05);
         }
+
         .contact-icon {
-          width: 58px;
-          height: 58px;
-          border-radius: 18px;
-          background: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 24px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+          width: 52px; height: 52px; border-radius: 16px;
+          background: white; display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 6px 18px rgba(0,0,0,.05); flex-shrink: 0;
         }
-        .contact-text {
-          display: flex;
-          flex-direction: column;
-        }
-        .contact-text strong {
-          color: #00bfff;
-          font-size: 15px;
-          margin-bottom: 4px;
-        }
+
+        .contact-text { display: flex; flex-direction: column; }
+
+        .contact-text strong { color: #1e3a8a; font-size: 14px; margin-bottom: 3px; }
+
         .contact-text a,
         .contact-text span {
-          color: #475569;
-          text-decoration: none;
-          font-size: 16px;
+          color: #475569; text-decoration: none; font-size: 15px;
         }
-        .contact-text a:hover {
-          color: #00bfff;
-        }
+
+        .contact-text a:hover { color: #1e3a8a; }
+
+        /* FORM */
         .form-wrapper {
-          position: relative;
-          overflow: hidden;
-          background: rgba(255, 255, 255, 0.85);
+          position: relative; overflow: hidden;
+          background: rgba(255,255,255,.88);
           backdrop-filter: blur(18px);
-          border-radius: 34px;
-          padding: 42px;
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+          border-radius: 30px; padding: 38px;
+          border: 1px solid rgba(255,255,255,.6);
+          box-shadow: 0 16px 44px rgba(30,58,138,.08);
         }
+
         .form-glow {
-          position: absolute;
-          width: 260px;
-          height: 260px;
-          background: rgba(0, 191, 255, 0.12);
-          border-radius: 50%;
-          filter: blur(80px);
-          top: -100px;
-          right: -80px;
+          position: absolute; width: 240px; height: 240px;
+          background: rgba(30,58,138,.08); border-radius: 50%;
+          filter: blur(70px); top: -90px; right: -70px;
         }
-        .form-header {
-          margin-bottom: 32px;
-        }
-        .form-header h3 {
-          color: #00bfff;
-          font-size: 28px;
-          font-weight: 900;
-          margin-bottom: 8px;
-        }
-        .form-header p {
-          color: #94a3b8;
-          font-size: 15px;
-        }
-        .form-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-        }
-        .form-group {
-          margin-bottom: 18px;
-        }
-        input,
-        select,
-        textarea {
-          width: 100%;
-          padding: 16px 18px;
-          border: none;
-          border-radius: 16px;
-          background: #f8fafc;
-          font-size: 15px;
-          outline: none;
-          transition: 0.3s;
+
+        .form-header { margin-bottom: 26px; }
+
+        .form-header h3 { color: #1e3a8a; font-size: 24px; font-weight: 900; margin-bottom: 6px; }
+        .form-header p  { color: #94a3b8; font-size: 14px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .form-group { margin-bottom: 14px; }
+
+        input, select, textarea {
+          width: 100%; padding: 14px 16px; border: none;
+          border-radius: 14px; background: #f8fafc;
+          font-size: 14px; outline: none; transition: 0.25s;
           font-family: inherit;
           border: 1px solid transparent;
         }
-        input:focus,
-        select:focus,
-        textarea:focus {
+
+        input:focus, select:focus, textarea:focus {
           background: white;
-          border-color: #00bfff;
-          box-shadow: 0 0 0 4px rgba(0, 191, 255, 0.08);
+          border-color: #1e3a8a;
+          box-shadow: 0 0 0 3px rgba(30,58,138,.08);
         }
-        textarea {
-          resize: none;
-        }
+
+        textarea { resize: none; }
+
         .feedback {
-          padding: 14px 16px;
-          border-radius: 14px;
-          margin-bottom: 18px;
-          font-size: 14px;
-          font-weight: 600;
+          padding: 12px 14px; border-radius: 12px;
+          margin-bottom: 14px; font-size: 13px; font-weight: 600;
         }
-        .success {
-          background: #ecfdf5;
-          color: #166534;
-        }
-        .error {
-          background: #fef2f2;
-          color: #991b1b;
-        }
+
+        .success { background: #ecfdf5; color: #166534; }
+        .error   { background: #fef2f2; color: #991b1b; }
+
         .submit-btn {
-          width: 100%;
-          border: none;
-          padding: 18px;
-          border-radius: 18px;
-          background: #00bfff;
-          color: white;
-          font-size: 16px;
-          font-weight: 800;
-          cursor: pointer;
-          transition: 0.35s ease;
-          box-shadow: 0 12px 24px rgba(0, 191, 255, 0.22);
+          width: 100%; border: none; padding: 16px; border-radius: 16px;
+          background: #1e3a8a; color: white;
+          font-size: 15px; font-weight: 800; cursor: pointer;
+          transition: 0.3s ease;
+          box-shadow: 0 10px 22px rgba(30,58,138,.2);
         }
-        .submit-btn:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
-        }
-        .submit-btn:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-        }
-        @media (max-width: 980px) {
-          .contact-grid {
-            grid-template-columns: 1fr;
-            gap: 60px;
-          }
-        }
+
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(30,58,138,.28); }
+        .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+        @media (max-width: 980px) { .contact-grid { grid-template-columns: 1fr; gap: 52px; } }
+
         @media (max-width: 520px) {
-          .contact-section {
-            padding: 80px 0;
-          }
-          .form-wrapper {
-            padding: 28px 20px;
-          }
-          .form-row {
-            grid-template-columns: 1fr;
-          }
-          .contact-title {
-            font-size: 42px;
-          }
-          .form-header h3 {
-            font-size: 24px;
-          }
+          .contact-section { padding: 76px 0; }
+          .form-wrapper { padding: 26px 18px; }
+          .form-row { grid-template-columns: 1fr; }
+          .contact-title { font-size: 38px; }
+          .form-header h3 { font-size: 22px; }
         }
       `}</style>
     </section>
