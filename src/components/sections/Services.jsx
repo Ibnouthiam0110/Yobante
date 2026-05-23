@@ -172,7 +172,7 @@ const Services = ({ scrollTo }) => {
           {/* RIGHT promo expédition */}
           <div className="card-right promo-side">
             <div className="promo-box expedition-gradient">
-              <p className="promo-desc">
+              <p className="promo-desc expedition-desc">
                 Envoyez vos colis depuis la France vers le Sénégal avec collecte à domicile ou dépôt en point relais.
               </p>
               <button className="promo-btn expedition-btn" onClick={handleClick}>
@@ -584,7 +584,7 @@ const Services = ({ scrollTo }) => {
           top: -70px; right: -70px;
         }
 
-        .expedition-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
+        .expedition-gradient { background: #F5C518; }
         .boutique-gradient   { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
 
         .promo-desc {
@@ -592,6 +592,7 @@ const Services = ({ scrollTo }) => {
           font-weight: 800; margin: 0; color: white;
         }
 
+        .expedition-desc { color: #1E3A8A !important; }
         .boutique-desc { color: white !important; }
 
         .promo-btn {
@@ -606,10 +607,10 @@ const Services = ({ scrollTo }) => {
         }
 
         .expedition-btn {
-          background: #F5C518; color: #1E3A8A;
-          box-shadow: 0 8px 24px rgba(245,197,24,0.4);
+          background: #1E3A8A; color: white;
+          box-shadow: 0 8px 24px rgba(30,58,138,0.35);
         }
-        .expedition-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 32px rgba(245,197,24,0.5); }
+        .expedition-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 32px rgba(30,58,138,0.45); }
 
         .boutique-btn {
           background: #F5C518; color: #1E3A8A;

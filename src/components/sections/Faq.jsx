@@ -32,6 +32,14 @@ const Faq = () => {
     <section id="faq" className="faq-section">
       <div className="faq-container">
 
+        {/* HEADER */}
+        <div className="faq-header sr">
+          <div className="faq-tag">
+            <span className="faq-dot"></span>
+            Questions fréquentes
+          </div>
+        </div>
+
         {/* FAQ LIST */}
         <div className="faq-list">
           {faqs.map((faq, i) => {
