@@ -6,7 +6,7 @@ import yobanteLogo from '../../assets/images/logo.png';
 const trustItems = [
   { icon: <Zap size={13} />, label: 'Livraison rapide' },
   { icon: <Lock size={13} />, label: 'Paiement sécurisé' },
-  { icon: <HeadphonesIcon size={13} />, label: 'Support 7j/7' },
+  { icon: <HeadphonesIcon size={13} />, label: 'Support en ligne' },
   { icon: <Smartphone size={13} />, label: 'iOS & Android' },
 ];
 

@@ -73,7 +73,7 @@ const BOUTIQUE_STEPS = [
   },
   {
     num: "03",
-    title: "Programmez votre livraison",
+    title: "Programmez vos livraisons",
     desc: "Recevez directement votre commande à l'adresse de votre choix."
   }
 ];
@@ -128,7 +128,7 @@ const Services = ({ scrollTo }) => {
                 {STEPS.map((step, i) => (
                   <div key={step.id} className="step-wrapper">
                     <div className="step-card white-card">
-                      <div className="step-num blue-bg">{step.num}</div>
+                      <div className="step-num blue-bg">Étape {i + 1}</div>
                       <p className="step-title blue-text">{step.title}</p>
                       <p className="step-desc dark-text">{step.desc}</p>
                     </div>
@@ -233,7 +233,7 @@ const Services = ({ scrollTo }) => {
                 {BOUTIQUE_STEPS.map((step, i) => (
                   <div key={i} className="step-wrapper">
                     <div className="step-card boutique-step-card">
-                      <div className="step-num gold-bg step-num-dark">{step.num}</div>
+                      <div className="step-num gold-bg step-num-dark">Étape {i + 1}</div>
                       <p className="step-title boutique-step-title">{step.title}</p>
                       {step.desc && <p className="step-desc boutique-step-desc">{step.desc}</p>}
                     </div>
@@ -286,14 +286,17 @@ const Services = ({ scrollTo }) => {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          font-size: 12px;
+          font-size: 11px;
           font-weight: 800;
           text-transform: uppercase;
           color: #1E3A8A;
-          letter-spacing: 1.5px;
+          letter-spacing: 2px;
+          background: rgba(30,58,138,0.06);
+          padding: 8px 16px;
+          border-radius: 999px;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #F5C518; }
+        .tag-line { width: 20px; height: 2px; background: #F5C518; border-radius: 2px; }
 
         /* WRAPPERS */
         .service-card-wrapper {
@@ -306,10 +309,10 @@ const Services = ({ scrollTo }) => {
         }
 
         .glass-card {
-          background: rgba(255,255,255,0.65);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255,255,255,0.3);
-          box-shadow: 0 16px 50px rgba(30,58,138,0.08);
+          background: rgba(255,255,255,0.72);
+          backdrop-filter: blur(24px);
+          border: 1px solid rgba(255,255,255,0.45);
+          box-shadow: 0 20px 60px rgba(30,58,138,0.1), 0 2px 0 rgba(255,255,255,0.8) inset;
         }
 
         .boutique-wrapper { grid-template-columns: 1fr 2fr; }
@@ -321,7 +324,7 @@ const Services = ({ scrollTo }) => {
           gap: 28px;
         }
 
-        .yellow-main { background: linear-gradient(135deg, #F5C518 0%, #F8E98A 100%); }
+        .yellow-main { background: #F5C518; }
         .blue-dark-bg { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
 
         /* COLORS */
@@ -386,20 +389,36 @@ const Services = ({ scrollTo }) => {
           box-sizing: border-box;
         }
 
-        .white-card { background: rgba(255,255,255,0.95); }
+        .white-card {
+          background: rgba(255,255,255,0.97);
+          transition: all 0.28s cubic-bezier(0.34,1.3,0.64,1);
+        }
+        .white-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 36px rgba(30,58,138,0.14);
+        }
 
         .boutique-step-card {
           background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.14);
+          border: 1px solid rgba(255,255,255,0.18);
           backdrop-filter: blur(10px);
+          transition: all 0.28s cubic-bezier(0.34,1.3,0.64,1);
+        }
+        .boutique-step-card:hover {
+          transform: translateY(-6px);
+          background: rgba(255,255,255,0.15);
+          box-shadow: 0 14px 32px rgba(0,0,0,0.15);
         }
 
         .step-num {
-          width: 34px; height: 34px;
-          border-radius: 50%;
+          height: 30px;
+          border-radius: 50px;
+          padding: 0 14px;
+          width: auto;
+          white-space: nowrap;
           margin: 0 auto 12px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 12px; font-weight: 900; color: white;
+          display: inline-flex; align-items: center; justify-content: center;
+          font-size: 11px; font-weight: 900; color: white;
           flex-shrink: 0;
         }
 
@@ -452,15 +471,17 @@ const Services = ({ scrollTo }) => {
           position: absolute;
           top: -1px; left: 50%;
           transform: translateX(-50%);
-          background: #1E3A8A;
+          background: linear-gradient(90deg, #1E3A8A, #2a52c9);
           color: white;
-          padding: 3px 32px;
+          padding: 4px 28px;
           border-radius: 0 0 14px 14px;
-          font-size: 10px;
+          font-size: 9px;
           font-weight: 800;
-          letter-spacing: 0.3px;
+          letter-spacing: 0.8px;
           z-index: 10;
           white-space: nowrap;
+          text-transform: uppercase;
+          box-shadow: 0 4px 12px rgba(30,58,138,0.25);
         }
 
         .plan-icon-container {
@@ -488,10 +509,19 @@ const Services = ({ scrollTo }) => {
         .plan-btn {
           margin-top: auto;
           width: 100%; border: none;
-          padding: 10px; border-radius: 50px;
-          background: #1E3A8A; color: white;
+          padding: 11px; border-radius: 50px;
+          background: linear-gradient(135deg, #1E3A8A, #2a52c9);
+          color: white;
           font-size: 11px; font-weight: 800; cursor: pointer;
           flex-shrink: 0;
+          transition: all 0.25s ease;
+          box-shadow: 0 4px 14px rgba(30,58,138,0.25);
+          letter-spacing: 0.3px;
+        }
+        .plan-btn:hover {
+          background: linear-gradient(135deg, #152E70, #1E3A8A);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(30,58,138,0.35);
         }
 
         /* CATEGORIES */
@@ -503,11 +533,18 @@ const Services = ({ scrollTo }) => {
 
         .category-pill {
           background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.14);
+          border: 1px solid rgba(255,255,255,0.16);
           border-radius: 18px;
           padding: 14px 10px;
           text-align: center;
           backdrop-filter: blur(12px);
+          transition: all 0.25s ease;
+          cursor: default;
+        }
+        .category-pill:hover {
+          background: rgba(255,255,255,0.18);
+          border-color: rgba(245,197,24,0.4);
+          transform: translateY(-4px);
         }
 
         .cat-icon {
@@ -548,33 +585,47 @@ const Services = ({ scrollTo }) => {
         }
 
         .expedition-gradient { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
-        .boutique-gradient   { background: linear-gradient(135deg, #F5C518 0%, #F5C518 100%); }
+        .boutique-gradient   { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
 
         .promo-desc {
           font-size: 20px; line-height: 1.55;
           font-weight: 800; margin: 0; color: white;
         }
 
-        .boutique-desc { color: #1E3A8A !important; }
+        .boutique-desc { color: white !important; }
 
         .promo-btn {
           width: 100%; max-width: 260px;
           border: none; border-radius: 50px;
-          padding: 14px 22px;
+          padding: 15px 24px;
           font-size: 14px; font-weight: 800;
           cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          transition: transform 0.2s ease;
+          transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+          letter-spacing: 0.2px;
         }
 
-        .expedition-btn { background: white; color: #1E3A8A; }
-        .boutique-btn   { background: #1E3A8A; color: white; }
+        .expedition-btn {
+          background: #F5C518; color: #1E3A8A;
+          box-shadow: 0 8px 24px rgba(245,197,24,0.4);
+        }
+        .expedition-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 32px rgba(245,197,24,0.5); }
+
+        .boutique-btn {
+          background: #F5C518; color: #1E3A8A;
+          box-shadow: 0 8px 24px rgba(245,197,24,0.35);
+        }
+        .boutique-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 32px rgba(245,197,24,0.45); }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
           .service-card-wrapper,
           .boutique-wrapper { grid-template-columns: 1fr; }
           .promo-side { min-height: 280px; }
+
+          /* Expédition : promo passe en premier sur mobile */
+          .service-card-wrapper:not(.boutique-wrapper) .card-left { order: 2; }
+          .service-card-wrapper:not(.boutique-wrapper) .promo-side { order: 1; }
         }
 
         @media (max-width: 768px) {

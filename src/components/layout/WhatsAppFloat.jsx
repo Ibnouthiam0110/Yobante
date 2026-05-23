@@ -14,21 +14,21 @@ const WhatsAppFloat = () => {
           right: 28px;
           width: 58px;
           height: 58px;
-          background: linear-gradient(135deg, #1E3A8A, #2a52c9);
+          background: linear-gradient(135deg, #25D366, #1ebe57);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 6px 24px rgba(30, 58, 138, 0.45);
+          box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
           z-index: 9999;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           text-decoration: none;
-          border: 2px solid #F5C518;
+          border: 2px solid #ffffff;
         }
 
         .whatsapp-float:hover {
           transform: scale(1.1);
-          box-shadow: 0 10px 32px rgba(30, 58, 138, 0.55);
+          box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
         }
 
         @media (max-width: 480px) {

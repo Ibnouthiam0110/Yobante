@@ -87,6 +87,25 @@ button, a, .clickable { cursor: pointer; }
   box-shadow: 0 4px 24px rgba(30,58,138,0.08);
 }
 
+/* ─── SCROLLBAR ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1E3A8A, #2a52c9);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: #152E70; }
+
+/* ─── TEXT SELECTION ──────────────────────────────────────────────── */
+::selection { background: rgba(30,58,138,0.18); color: #0f172a; }
+
+/* ─── FOCUS VISIBLE ───────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #1E3A8A;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 /* ─── MOBILE ─────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   /* kill hover transforms on mobile — but keep .sr transitions */
@@ -98,9 +117,15 @@ button, a, .clickable { cursor: pointer; }
   .submit-btn:hover,
   .method-card:hover,
   .store-btn:hover,
-  .hero-btn:hover {
+  .hero-btn:hover,
+  .faq-item:hover,
+  .contact-item:hover,
+  .category-pill:hover,
+  .white-card:hover,
+  .boutique-step-card:hover,
+  .plan-btn:hover {
     transform: none !important;
-    box-shadow: none !important;
+    box-shadow: inherit !important;
   }
   body { overflow-x: hidden; }
 }

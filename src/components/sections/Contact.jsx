@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Mail, MessageCircle, Clock, Phone, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ prenom: '', nom: '', email: '', sujet: '', message: '' });
+  const [formData, setFormData] = useState({ prenom: '', nom: '', email: '', telephone: '', sujet: '', message: '' });
   const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +20,7 @@ const Contact = () => {
           access_key: apiKey,
           name: `${formData.prenom} ${formData.nom}`,
           email: formData.email,
+          telephone: formData.telephone,
           subject: formData.sujet,
           message: formData.message,
         }),
@@ -27,7 +28,7 @@ const Contact = () => {
       const data = await res.json();
       if (data.success) {
         setStatus('success');
-        setFormData({ prenom: '', nom: '', email: '', sujet: '', message: '' });
+        setFormData({ prenom: '', nom: '', email: '', telephone: '', sujet: '', message: '' });
       } else { setStatus('error'); }
     } catch { setStatus('error'); }
   };
@@ -111,6 +112,22 @@ const Contact = () => {
               <div className="form-group">
                 <input type="email" name="email" placeholder="Votre adresse email"
                   value={formData.email} onChange={handleChange} required />
+              </div>
+
+              <div className="form-group">
+                <div className="phone-input-wrapper">
+                  <span className="phone-prefix">
+                    <Phone size={14} strokeWidth={2} />
+                  </span>
+                  <input
+                    type="tel"
+                    name="telephone"
+                    placeholder="Votre numéro de téléphone ou WhatsApp"
+                    value={formData.telephone}
+                    onChange={handleChange}
+                    className="phone-input"
+                  />
+                </div>
               </div>
 
               <div className="form-group">
@@ -199,23 +216,26 @@ const Contact = () => {
 
         .contact-item {
           display: flex; align-items: center; gap: 16px;
-          padding: 16px;
-          background: rgba(255,255,255,0.72);
+          padding: 16px 18px;
+          background: rgba(255,255,255,0.82);
           border-radius: 20px;
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255,255,255,0.5);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          backdrop-filter: blur(14px);
+          border: 1px solid rgba(255,255,255,0.6);
+          transition: transform 0.28s cubic-bezier(0.34,1.3,0.64,1), box-shadow 0.28s ease;
         }
 
         .contact-item:hover {
-          transform: translateX(6px);
-          box-shadow: 0 12px 30px rgba(0,0,0,.05);
+          transform: translateX(8px);
+          box-shadow: 0 12px 32px rgba(30,58,138,.09);
+          border-color: rgba(30,58,138,.12);
         }
 
         .contact-icon {
-          width: 52px; height: 52px; border-radius: 16px;
-          background: white; display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 6px 18px rgba(0,0,0,.05); flex-shrink: 0;
+          width: 54px; height: 54px; border-radius: 16px;
+          background: linear-gradient(135deg, #EEF2FF, white);
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 6px 18px rgba(30,58,138,.08); flex-shrink: 0;
+          border: 1px solid rgba(30,58,138,.08);
         }
 
         .contact-text { display: flex; flex-direction: column; }
@@ -232,11 +252,11 @@ const Contact = () => {
         /* FORM */
         .form-wrapper {
           position: relative; overflow: hidden;
-          background: rgba(255,255,255,.88);
-          backdrop-filter: blur(18px);
+          background: rgba(255,255,255,.92);
+          backdrop-filter: blur(20px);
           border-radius: 30px; padding: 38px;
-          border: 1px solid rgba(255,255,255,.6);
-          box-shadow: 0 16px 44px rgba(30,58,138,.08);
+          border: 1px solid rgba(255,255,255,.7);
+          box-shadow: 0 20px 56px rgba(30,58,138,.1);
         }
 
         .form-glow {
@@ -248,7 +268,23 @@ const Contact = () => {
         .form-header { margin-bottom: 26px; }
 
         .form-header h3 { color: #1e3a8a; font-size: 24px; font-weight: 900; margin-bottom: 6px; }
-        .form-header p  { color: #94a3b8; font-size: 14px; }
+        .form-header p  { color: #94a3b8; font-size: 14px; margin-bottom: 14px; }
+
+        .form-contact-shortcuts {
+          display: flex; gap: 10px; flex-wrap: wrap;
+        }
+
+        .shortcut-btn {
+          display: inline-flex; align-items: center; gap: 7px;
+          padding: 8px 14px; border-radius: 50px;
+          font-size: 13px; font-weight: 700;
+          text-decoration: none;
+          transition: opacity 0.2s ease;
+        }
+        .shortcut-btn:hover { opacity: 0.85; }
+
+        .shortcut-phone { background: rgba(30,58,138,.1); color: #1e3a8a; }
+        .shortcut-wa    { background: rgba(37,211,102,.15); color: #15803d; }
 
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .form-group { margin-bottom: 14px; }
@@ -267,6 +303,43 @@ const Contact = () => {
           box-shadow: 0 0 0 3px rgba(30,58,138,.08);
         }
 
+        /* PHONE INPUT */
+        .phone-input-wrapper {
+          display: flex; align-items: center;
+          background: #f8fafc;
+          border-radius: 14px;
+          border: 1px solid transparent;
+          transition: 0.25s;
+          overflow: hidden;
+        }
+
+        .phone-input-wrapper:focus-within {
+          background: white;
+          border-color: #1e3a8a;
+          box-shadow: 0 0 0 3px rgba(30,58,138,.08);
+        }
+
+        .phone-prefix {
+          display: flex; align-items: center; justify-content: center;
+          padding: 0 14px;
+          color: #25D366;
+          flex-shrink: 0;
+        }
+
+        .phone-input {
+          flex: 1; border: none !important;
+          background: transparent !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          padding: 14px 16px 14px 4px !important;
+        }
+
+        .phone-input:focus {
+          background: transparent !important;
+          border-color: transparent !important;
+          box-shadow: none !important;
+        }
+
         textarea { resize: none; }
 
         .feedback {
@@ -279,10 +352,12 @@ const Contact = () => {
 
         .submit-btn {
           width: 100%; border: none; padding: 16px; border-radius: 16px;
-          background: #1e3a8a; color: white;
+          background: linear-gradient(135deg, #1e3a8a 0%, #2a52c9 100%);
+          color: white;
           font-size: 15px; font-weight: 800; cursor: pointer;
-          transition: 0.3s ease;
-          box-shadow: 0 10px 22px rgba(30,58,138,.2);
+          transition: all 0.3s ease;
+          box-shadow: 0 10px 28px rgba(30,58,138,.25);
+          letter-spacing: 0.2px;
         }
 
         .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(30,58,138,.28); }

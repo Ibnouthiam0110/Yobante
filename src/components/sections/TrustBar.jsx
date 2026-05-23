@@ -9,7 +9,7 @@ const TRUST_ITEMS = [
   },
   {
     icon: <MessageCircle size={18} strokeWidth={1.8} color="white" />,
-    text: 'Support WhatsApp 24/7',
+    text: 'Support en ligne',
   },
   {
     icon: <Lock size={18} strokeWidth={1.8} color="white" />,

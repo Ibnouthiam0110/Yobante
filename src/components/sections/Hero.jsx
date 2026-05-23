@@ -1,6 +1,6 @@
 // src/components/sections/Hero.jsx
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Package, ShoppingBag, Plane, Ship, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -21,6 +21,15 @@ const PlayStoreIcon = () => (
 
 const Hero = ({ scrollTo }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= 980 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 980);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const slides = [
     {
@@ -78,11 +87,11 @@ const Hero = ({ scrollTo }) => {
           <div className="tabs-wrapper">
             <button className={`tab-btn ${currentSlide === 0 ? 'active' : ''}`} onClick={() => setCurrentSlide(0)}>
               <Package size={14} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
-               Expédition
+               Yobanté Rêk
             </button>
             <button className={`tab-btn ${currentSlide === 1 ? 'active' : ''}`} onClick={() => setCurrentSlide(1)}>
               <ShoppingBag size={14} strokeWidth={1.8} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
-               Boutique
+               Yobanté Boutique
             </button>
           </div>
         </div>
@@ -137,7 +146,7 @@ const Hero = ({ scrollTo }) => {
 
               {/* STORES */}
               <div className="store-buttons">
-                <a href="https://apps.apple.com" target="_blank" rel="noreferrer" className="store-btn appstore">
+                <a href="https://apps.apple.com" target="_blank" rel="noreferrer" className={`store-btn ${current.id === 1 ? 'appstore' : 'appstore-white'}`}>
                   <AppStoreIcon />
                   <div className="store-text">
                     <small>Télécharger sur</small>
@@ -158,24 +167,13 @@ const Hero = ({ scrollTo }) => {
                 </a>
               </div>
 
-              {/* STATS */}
-              <div className="hero-stats">
-                <div className="stat">
-                  <span className="stat-number" style={{ color: current.statColor }}>5k+</span>
-                  <span className="stat-label" style={{ color: current.labelColor }}>Colis livrés</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-number" style={{ color: current.statColor }}>7j/7</span>
-                  <span className="stat-label" style={{ color: current.labelColor }}>Support</span>
-                </div>
-              </div>
             </div>
 
             {/* IMAGE */}
             <motion.div
               className="hero-image"
-              animate={{ y: [0, -16, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              animate={isMobile ? {} : { y: [0, -16, 0] }}
+              transition={isMobile ? {} : { duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             >
               <img src={current.image} alt="Application mobile" />
             </motion.div>
@@ -244,26 +242,32 @@ const Hero = ({ scrollTo }) => {
           display: flex;
           gap: 6px;
           background: rgba(255,255,255,0.18);
-          backdrop-filter: blur(14px);
+          backdrop-filter: blur(16px);
           padding: 5px;
-          border-radius: 16px;
+          border-radius: 18px;
+          border: 1px solid rgba(255,255,255,0.22);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.12);
         }
 
         .tab-btn {
           border: none;
-          padding: 10px 16px;
-          border-radius: 12px;
+          padding: 10px 20px;
+          border-radius: 14px;
           cursor: pointer;
           font-size: 14px;
           font-weight: 700;
           background: transparent;
-          color: white;
-          transition: 0.25s;
+          color: rgba(255,255,255,0.85);
+          transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+          letter-spacing: 0.1px;
         }
+
+        .tab-btn:hover:not(.active) { color: white; background: rgba(255,255,255,0.12); }
 
         .tab-btn.active {
           background: white;
           color: #1E3A8A;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.14);
         }
 
         .hero-container {
@@ -304,11 +308,19 @@ const Hero = ({ scrollTo }) => {
         }
 
         .badge-dot {
-          width: 7px;
-          height: 7px;
+          width: 8px;
+          height: 8px;
           border-radius: 50%;
           background: #10b981;
-          box-shadow: 0 0 8px #10b981;
+          box-shadow: 0 0 0 0 rgba(16,185,129,0.5);
+          animation: pulse-dot 2s ease-in-out infinite;
+          flex-shrink: 0;
+        }
+
+        @keyframes pulse-dot {
+          0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); }
+          60%  { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+          100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
         }
 
         .hero-title {
@@ -316,6 +328,7 @@ const Hero = ({ scrollTo }) => {
           line-height: 1.07;
           font-weight: 900;
           margin-bottom: 26px;
+          letter-spacing: -0.5px;
         }
 
         .shipping-methods {
@@ -327,49 +340,58 @@ const Hero = ({ scrollTo }) => {
 
         .method-card {
           background: white;
-          padding: 14px 12px;
-          border-radius: 16px;
+          padding: 16px 12px;
+          border-radius: 18px;
           text-align: center;
-          box-shadow: 0 8px 20px rgba(30,58,138,0.1);
-          transition: 0.3s ease;
+          box-shadow: 0 8px 24px rgba(30,58,138,0.12);
+          transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+          border: 1px solid rgba(30,58,138,0.06);
         }
 
-        .method-card:hover { transform: translateY(-8px) scale(1.02); }
+        .method-card:hover {
+          transform: translateY(-10px) scale(1.04);
+          box-shadow: 0 16px 36px rgba(30,58,138,0.18);
+          border-color: rgba(30,58,138,0.14);
+        }
 
         .method-icon {
           display: block;
-          margin-bottom: 6px;
+          margin-bottom: 8px;
         }
 
         .method-name {
           display: block;
           font-weight: 800;
           color: #1E3A8A;
-          font-size: 13px;
+          font-size: 12px;
+          letter-spacing: 0.2px;
         }
 
         .hero-btn {
           border: none;
-          padding: 14px 30px;
+          padding: 15px 34px;
           border-radius: 999px;
           font-size: 15px;
           font-weight: 800;
           cursor: pointer;
           margin-bottom: 24px;
-          transition: 0.25s;
+          transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
           background: #F5C518;
           color: #1E3A8A;
           width: fit-content;
-          box-shadow: 0 8px 20px rgba(245,197,24,0.3);
+          box-shadow: 0 10px 28px rgba(245,197,24,0.38);
+          letter-spacing: 0.2px;
         }
 
-        .hero-btn:hover { transform: translateY(-3px); }
+        .hero-btn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 16px 36px rgba(245,197,24,0.45); }
 
         .hero-btn.expedition {
           background: #1E3A8A;
           color: #F5C518;
-          box-shadow: 0 8px 20px rgba(30,58,138,0.25);
+          box-shadow: 0 10px 28px rgba(30,58,138,0.28);
         }
+
+        .hero-btn.expedition:hover { box-shadow: 0 16px 36px rgba(30,58,138,0.38); }
 
         .store-buttons {
           display: flex;
@@ -382,14 +404,14 @@ const Hero = ({ scrollTo }) => {
           display: flex;
           align-items: center;
           gap: 10px;
-          padding: 11px 16px;
-          border-radius: 13px;
+          padding: 12px 18px;
+          border-radius: 15px;
           text-decoration: none;
-          transition: 0.25s;
-          min-width: 160px;
+          transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+          min-width: 165px;
         }
 
-        .store-btn:hover { transform: translateY(-3px); }
+        .store-btn:hover { transform: translateY(-4px) scale(1.03); }
 
         .store-text {
           display: flex;
@@ -397,12 +419,13 @@ const Hero = ({ scrollTo }) => {
           line-height: 1.1;
         }
 
-        .appstore { background: #1E3A8A; color: white; box-shadow: 0 4px 14px rgba(30,58,138,0.25); }
-        .play-gold { background: #ffffff; color: #1E3A8A; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
-        .play-white { background: #F5C518; color: #1E3A8A; box-shadow: 0 4px 14px rgba(245,197,24,0.3); }
+        .appstore       { background: #1E3A8A; color: white;   box-shadow: 0 6px 18px rgba(30,58,138,0.28); }
+        .appstore-white { background: white;   color: #1E3A8A; box-shadow: 0 6px 18px rgba(255,255,255,0.3);  border: 1px solid rgba(255,255,255,0.5); }
+        .play-gold  { background: #ffffff; color: #1E3A8A; box-shadow: 0 6px 18px rgba(0,0,0,0.14); }
+        .play-white { background: #F5C518; color: #1E3A8A; box-shadow: 0 6px 18px rgba(245,197,24,0.35); }
 
-        .store-btn small { font-size: 10px; opacity: 0.7; }
-        .store-btn strong { font-size: 14px; }
+        .store-btn small { font-size: 10px; opacity: 0.65; }
+        .store-btn strong { font-size: 14px; font-weight: 800; letter-spacing: 0.1px; }
 
         .hero-stats { display: flex; gap: 36px; }
 
@@ -418,12 +441,27 @@ const Hero = ({ scrollTo }) => {
           flex: 1;
           display: flex;
           justify-content: center;
+          position: relative;
+        }
+
+        .hero-image::before {
+          content: '';
+          position: absolute;
+          width: 340px; height: 340px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.14);
+          filter: blur(70px);
+          top: 50%; left: 50%;
+          transform: translate(-50%,-50%);
+          pointer-events: none;
         }
 
         .hero-image img {
           width: 100%;
           max-width: 400px;
-          filter: drop-shadow(0 22px 40px rgba(0,0,0,0.16));
+          filter: drop-shadow(0 28px 50px rgba(0,0,0,0.22));
+          position: relative;
+          z-index: 1;
         }
 
         .slide-dots {

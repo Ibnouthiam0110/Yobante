@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "Comment obtenir un devis ?",
-    a: "Téléchargez l'application YOBANTÉ puis renseignez les informations de votre colis. Selon la catégorie, un devis vous sera transmis rapidement."
+    a: "Téléchargez l'application Yobanté Rêk puis renseignez les informations de votre colis. Selon la catégorie, un devis vous sera transmis rapidement."
   },
   {
     q: "Quels sont les moyens de paiement acceptés ?",
@@ -31,21 +31,6 @@ const Faq = () => {
   return (
     <section id="faq" className="faq-section">
       <div className="faq-container">
-
-        {/* HEADER */}
-        <div className="faq-header sr">
-          <div className="faq-tag">
-            <span className="faq-dot"></span>
-            Questions fréquentes
-          </div>
-          <h2 className="faq-title">
-            Vos questions, <span>nos réponses.</span>
-          </h2>
-          <p className="faq-description">
-            Retrouvez ici toutes les réponses concernant les expéditions,
-            les livraisons et l'utilisation de nos applications YOBANTÉ.
-          </p>
-        </div>
 
         {/* FAQ LIST */}
         <div className="faq-list">
@@ -74,7 +59,16 @@ const Faq = () => {
         .faq-section {
           position: relative; overflow: hidden;
           padding: 90px 0;
-          background: #ffffff;
+          background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .faq-section::before {
+          content: '';
+          position: absolute;
+          width: 500px; height: 500px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 70%);
+          top: -100px; right: -120px;
+          pointer-events: none;
         }
 
         .faq-container {
@@ -115,20 +109,23 @@ const Faq = () => {
         }
 
         /* FAQ LIST */
-        .faq-list { display: flex; flex-direction: column; gap: 13px; }
+        .faq-list { display: flex; flex-direction: column; gap: 14px; }
 
         .faq-item {
           background: white;
-          border-radius: 18px;
+          border-radius: 20px;
           overflow: hidden;
-          border: 1px solid rgba(0,0,0,.06);
-          box-shadow: 0 3px 16px rgba(0,0,0,.02);
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+          border: 1.5px solid rgba(0,0,0,.055);
+          box-shadow: 0 2px 12px rgba(0,0,0,.03);
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
         }
 
+        .faq-item:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(30,58,138,.07); }
+
         .faq-item.open {
-          border-color: rgba(30,58,138,.2);
-          box-shadow: 0 8px 28px rgba(30,58,138,.06);
+          border-color: rgba(30,58,138,.22);
+          box-shadow: 0 10px 32px rgba(30,58,138,.08);
+          transform: translateY(-2px);
         }
 
         /* BUTTON */
@@ -140,35 +137,49 @@ const Faq = () => {
         }
 
         .faq-number {
-          min-width: 44px; height: 44px; border-radius: 13px;
-          background: rgba(30,58,138,.07); color: #1E3A8A;
+          min-width: 46px; height: 46px; border-radius: 14px;
+          background: linear-gradient(135deg, rgba(30,58,138,.1), rgba(30,58,138,.06));
+          color: #1E3A8A;
           display: flex; align-items: center; justify-content: center;
-          font-weight: 800; font-size: 14px;
+          font-weight: 900; font-size: 14px;
+          border: 1px solid rgba(30,58,138,.1);
+          flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-number {
+          background: linear-gradient(135deg, #1E3A8A, #2a52c9);
+          color: white; border-color: transparent;
+          box-shadow: 0 4px 14px rgba(30,58,138,.28);
         }
 
         .faq-question {
           flex: 1; color: #0f172a;
-          font-size: 17px; font-weight: 700; line-height: 1.4;
+          font-size: 16.5px; font-weight: 700; line-height: 1.45;
         }
 
         .faq-icon {
-          min-width: 38px; width: 38px; height: 38px; border-radius: 50%;
-          background: #f8fafc; color: #1E3A8A;
+          min-width: 36px; width: 36px; height: 36px; border-radius: 50%;
+          background: #f1f5ff; color: #1E3A8A;
           display: flex; align-items: center; justify-content: center;
-          transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+          transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+          flex-shrink: 0;
         }
 
         .faq-item.open .faq-icon {
           transform: rotate(135deg);
           background: #1E3A8A; color: white;
+          box-shadow: 0 4px 12px rgba(30,58,138,.3);
         }
 
         /* ANSWER */
         .faq-answer-wrapper { width: 100%; }
 
         .faq-answer {
-          padding: 0 26px 20px 88px;
-          color: #475569; line-height: 1.7; font-size: 15px;
+          padding: 0 26px 22px 90px;
+          color: #475569; line-height: 1.75; font-size: 15px;
+          border-top: 1px solid rgba(30,58,138,.06);
+          margin-top: -2px;
+          padding-top: 16px;
         }
 
         /* RESPONSIVE */

@@ -32,7 +32,7 @@ const appsData = [
     description: "Achetez vos produits préférés à prix discount et faites-les livrer directement au Sénégal.",
     features: [
       "Produits authentiques",
-      "Possibilité d'achat et de vente en gros",
+      "Possibilité d'achat en gros",
       "Expérience d'achat simple et pratique"
     ],
     iosUrl: "https://apps.apple.com",
@@ -51,11 +51,8 @@ const Applications = () => {
         <div className="section-header sr">
           <div className="section-badge">
             <span className="tag-line"></span>
-            Applications mobiles
+            Nos applications mobiles
           </div>
-          <h2 className="section-title">
-            Deux solutions complémentaires<br />pour vos besoins.
-          </h2>
         </div>
 
         {/* CARDS */}
@@ -64,27 +61,28 @@ const Applications = () => {
             <div key={app.id} className={`app-card sr sr-d${i + 1}`}>
               <div className="card-glow"></div>
 
-              <div className="app-logo-container">
-                <img src={app.logo} alt={app.alt} className="app-logo" />
+              <div className="card-inner">
+                <div className="app-logo-container">
+                  <img src={app.logo} alt={app.alt} className="app-logo" />
+                </div>
+
+                <div className={`app-chip ${app.chipClass}`}>
+                  {app.chipIcon}
+                  {app.chipText}
+                </div>
+
+                <p>{app.description}</p>
+
+                <ul className="app-features">
+                  {app.features.map((feature, j) => (
+                    <li key={j}>{feature}</li>
+                  ))}
+                </ul>
               </div>
 
-              <div className={`app-chip ${app.chipClass}`}>
-                {app.chipIcon}
-                {app.chipText}
-              </div>
-
-              <h3>{app.title}</h3>
-              <p>{app.description}</p>
-
-              <ul className="app-features">
-                {app.features.map((feature, j) => (
-                  <li key={j}>{feature}</li>
-                ))}
-              </ul>
-
-              <div className="download-buttons">
+              <div className={`download-buttons${app.id === 'boutique' ? ' boutique-download-wrap' : ''}`} style={{ padding: '0 34px' }}>
                 <button
-                  className="download-btn ios"
+                  className={`download-btn ios${app.id === 'boutique' ? ' ios-boutique' : ''}`}
                   onClick={() => window.open(app.iosUrl, '_blank')}
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style={{ marginRight: '7px', verticalAlign: 'middle' }}>
@@ -111,6 +109,8 @@ const Applications = () => {
       </div>
 
       <style jsx>{`
+        .card-inner { padding: 30px 34px 0; display: flex; flex-direction: column; flex: 1; }
+
         .apps-section {
           position: relative;
           overflow: hidden;
@@ -132,16 +132,18 @@ const Applications = () => {
         .glow-2 { width: 380px; height: 380px; background: #F5C518; bottom: -100px; right: -80px; }
 
         /* HEADER */
-        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
 
         .section-badge {
           display: inline-flex; align-items: center; gap: 12px;
           margin-bottom: 18px; color: #1E3A8A;
-          font-size: 12px; font-weight: 800;
-          letter-spacing: 1.5px; text-transform: uppercase;
+          font-size: 11px; font-weight: 800;
+          letter-spacing: 2px; text-transform: uppercase;
+          background: rgba(30,58,138,0.06);
+          padding: 9px 18px; border-radius: 999px;
         }
 
-        .tag-line { width: 28px; height: 2px; background: #F5C518; }
+        .tag-line { width: 20px; height: 2px; background: #F5C518; border-radius: 2px; }
 
         .section-title {
           font-size: clamp(30px, 4.5vw, 50px);
@@ -162,27 +164,32 @@ const Applications = () => {
         /* CARD */
         .app-card {
           position: relative; overflow: hidden;
-          background: rgba(255,255,255,.85);
-          backdrop-filter: blur(18px);
+          background: rgba(255,255,255,.9);
+          backdrop-filter: blur(20px);
           border-radius: 28px;
-          padding: 42px 34px;
-          border: 1px solid rgba(255,255,255,.6);
-          box-shadow: 0 8px 36px rgba(30,58,138,.07);
+          padding: 0 0 34px;
+          border: 1px solid rgba(255,255,255,.7);
+          box-shadow: 0 8px 40px rgba(30,58,138,.08);
           display: flex; flex-direction: column;
-          transition: box-shadow 0.3s ease, transform 0.3s ease;
+          transition: box-shadow 0.32s ease, transform 0.32s ease;
         }
 
         .app-card:hover {
-          box-shadow: 0 16px 48px rgba(30,58,138,.13);
-          transform: translateY(-4px);
+          box-shadow: 0 20px 56px rgba(30,58,138,.15);
+          transform: translateY(-6px);
+        }
+
+        .card-inner {
+          padding: 34px 34px 0;
+          display: flex; flex-direction: column; flex: 1;
         }
 
         .card-glow {
           position: absolute;
-          width: 220px; height: 220px; border-radius: 50%;
-          background: rgba(30,58,138,.08);
-          filter: blur(70px);
-          top: -90px; right: -70px; pointer-events: none;
+          width: 260px; height: 260px; border-radius: 50%;
+          background: rgba(30,58,138,.07);
+          filter: blur(80px);
+          top: -100px; right: -80px; pointer-events: none;
         }
 
         .app-logo-container {
@@ -195,47 +202,76 @@ const Applications = () => {
         /* CHIPS */
         .app-chip {
           display: inline-flex; align-items: center; justify-content: center;
-          gap: 7px; padding: 8px 14px; border-radius: 999px;
-          font-size: 12px; font-weight: 700;
-          margin-bottom: 20px; align-self: center;
+          gap: 7px; padding: 8px 16px; border-radius: 999px;
+          font-size: 11.5px; font-weight: 700;
+          margin-bottom: 18px; align-self: center;
+          letter-spacing: 0.2px;
         }
 
-        .app-chip.expedition { background: rgba(30,58,138,.1); color: #1E3A8A; }
-        .app-chip.boutique   { background: rgba(245,197,24,.2); color: #B8900E; }
+        .app-chip.expedition {
+          background: rgba(30,58,138,.1); color: #1E3A8A;
+          border: 1px solid rgba(30,58,138,.12);
+        }
+        .app-chip.boutique {
+          background: rgba(245,197,24,.2); color: #8a6600;
+          border: 1px solid rgba(245,197,24,.3);
+        }
 
         .app-card h3 { font-size: 26px; color: #1E3A8A; margin-bottom: 14px; font-weight: 900; }
-        .app-card p  { color: #64748b; line-height: 1.65; margin-bottom: 24px; font-size: 14px; }
+        .app-card p  { color: #64748b; line-height: 1.7; margin-bottom: 24px; font-size: 14px; }
 
         /* FEATURES */
         .app-features { list-style: none; padding: 0; margin: 0 0 28px; }
 
         .app-features li {
           display: flex; align-items: center; gap: 12px;
-          margin-bottom: 13px; color: #334155; font-size: 14px;
+          margin-bottom: 12px; color: #334155; font-size: 14px;
+          line-height: 1.5;
         }
 
         .app-features li::before {
-          content: '✓'; width: 22px; height: 22px; border-radius: 50%;
+          content: '✓'; width: 24px; height: 24px; border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
-          background: rgba(30,58,138,.1); color: #1E3A8A;
+          background: linear-gradient(135deg, #1E3A8A, #2a52c9);
+          color: white;
           font-size: 11px; font-weight: 900; flex-shrink: 0;
+          box-shadow: 0 3px 8px rgba(30,58,138,.25);
         }
 
         /* BUTTONS */
         .download-buttons { display: flex; gap: 12px; margin-top: auto; }
+
+        .boutique-download-wrap {
+          background: white;
+          border-radius: 18px;
+          padding: 16px;
+          border: 1px solid rgba(0,0,0,.06);
+          box-shadow: 0 4px 14px rgba(0,0,0,.04);
+          margin-top: auto;
+        }
 
         .download-btn {
           flex: 1; border: none; border-radius: 14px;
           padding: 14px 18px; font-size: 14px; font-weight: 800;
           cursor: pointer;
           display: inline-flex; align-items: center; justify-content: center;
-          transition: opacity 0.2s;
+          transition: all 0.25s cubic-bezier(0.34,1.4,0.64,1);
+          letter-spacing: 0.1px;
         }
 
-        .download-btn:hover { opacity: 0.88; }
+        .download-btn:hover { transform: translateY(-3px); opacity: 0.92; }
 
         .ios     { background: #1E3A8A; color: white; box-shadow: 0 6px 18px rgba(30,58,138,.2); }
         .android { background: #F5C518; color: #1E3A8A; box-shadow: 0 6px 18px rgba(245,197,24,.2); }
+
+        /* Boutique : App Store fond blanc (évite bleu sur blanc de carte) */
+        .ios-boutique {
+          background: white !important;
+          color: #1E3A8A !important;
+          border: 1.5px solid rgba(30,58,138,.2);
+          box-shadow: 0 4px 12px rgba(30,58,138,.08) !important;
+        }
+        .ios-boutique:hover { background: #f0f4ff !important; opacity: 1; }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) { .container { padding: 0 28px; } .apps-grid { gap: 22px; } }
