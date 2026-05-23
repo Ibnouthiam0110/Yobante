@@ -80,9 +80,9 @@ const Applications = () => {
                 </ul>
               </div>
 
-              <div className={`download-buttons${app.id === 'boutique' ? ' boutique-download-wrap' : ''}`} style={{ padding: '0 34px' }}>
+              <div className="download-buttons" style={{ padding: '0 34px' }}>
                 <button
-                  className={`download-btn ios${app.id === 'boutique' ? ' ios-boutique' : ''}`}
+                  className="download-btn ios"
                   onClick={() => window.open(app.iosUrl, '_blank')}
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style={{ marginRight: '7px', verticalAlign: 'middle' }}>
@@ -261,8 +261,8 @@ const Applications = () => {
 
         .download-btn:hover { transform: translateY(-3px); opacity: 0.92; }
 
-        .ios     { background: #1E3A8A; color: white; box-shadow: 0 6px 18px rgba(30,58,138,.2); }
-        .android { background: #F5C518; color: #1E3A8A; box-shadow: 0 6px 18px rgba(245,197,24,.2); }
+        .ios     { background: #1E3A8A; color: white; box-shadow: none; }
+        .android { background: #F5C518; color: #1E3A8A; box-shadow: none; }
 
         /* Boutique : App Store fond blanc (évite bleu sur blanc de carte) */
         .ios-boutique {
