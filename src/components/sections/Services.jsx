@@ -80,7 +80,7 @@ const BOUTIQUE_STEPS = [
 
 const CATEGORIES = [
   { icon: <Shirt size={26} strokeWidth={1.5} color="white" />, label: "Mode & Textile" },
-  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />, label: "�?lectronique" },
+  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />, label: "Électronique" },
   { icon: <Sparkles size={26} strokeWidth={1.5} color="white" />, label: "Beauté & Soins" },
   { icon: <Home size={26} strokeWidth={1.5} color="white" />, label: "Maison & Déco" },
   { icon: <Footprints size={26} strokeWidth={1.5} color="white" />, label: "Chaussures" },
