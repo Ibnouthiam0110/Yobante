@@ -1,8 +1,8 @@
 // src/components/layout/Navbar.jsx
 import { useState } from 'react';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/Logo Yobante Bleu - fond blanc.png';
 
-const Navbar = ({ scrolled, scrollTo }) => {
+const Navbar = ({ scrolled, hidden, scrollTo }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -20,7 +20,7 @@ const Navbar = ({ scrolled, scrollTo }) => {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hidden ? 'nav-hidden' : ''}`}>
         <div className="nav-container">
 
           {/* Logo */}
@@ -93,12 +93,15 @@ const Navbar = ({ scrolled, scrollTo }) => {
   width: 100%;
   height: 90px;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.3s ease, padding 0.3s ease;
   padding: 0px 0;
 
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
   border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.navbar.nav-hidden {
+  transform: translateY(-100%);
 }
 
        .navbar.scrolled {
@@ -127,8 +130,8 @@ const Navbar = ({ scrolled, scrollTo }) => {
         }
 
         .logo-img {
-          width: 140px;
-          height: auto;
+          height: 72px;
+          width: auto;
           object-fit: contain;
         }
 
@@ -290,7 +293,8 @@ const Navbar = ({ scrolled, scrollTo }) => {
           }
 
           .logo-img {
-            width: 140px;
+            height: 54px;
+            width: auto;
           }
         }
 
@@ -306,7 +310,8 @@ const Navbar = ({ scrolled, scrollTo }) => {
           }
 
           .logo-img {
-            width: 130px;
+            height: 48px;
+            width: auto;
           }
 
           .burger {

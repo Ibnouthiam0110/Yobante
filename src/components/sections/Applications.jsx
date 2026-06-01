@@ -1,6 +1,6 @@
 // src/components/sections/Applications.jsx
-import expeditionLogo from '../../assets/images/logo.png';
-import boutiqueLogo from '../../assets/images/logo.png';
+import expeditionLogo from '../../assets/images/Logo Yobante Rek - fond blanc.PNG';
+import boutiqueLogo from '../../assets/images/Logo Yobante Boutique - Fond Blanc.PNG';
 import { Package, ShoppingBag } from 'lucide-react';
 
 const appsData = [
@@ -109,7 +109,7 @@ const Applications = () => {
       </div>
 
       <style jsx>{`
-        .card-inner { padding: 30px 34px 0; display: flex; flex-direction: column; flex: 1; }
+        .card-inner { padding: 34px 34px 0; display: flex; flex-direction: column; flex: 1; }
 
         .apps-section {
           position: relative;
@@ -194,10 +194,17 @@ const Applications = () => {
 
         .app-logo-container {
           display: flex; justify-content: center; align-items: center;
-          margin-bottom: 20px; height: 72px; width: 100%;
+          margin-bottom: 18px;
+          padding: 12px 0 4px;
         }
 
-        .app-logo { max-width: 200px; height: 72px; object-fit: contain; }
+        .app-logo {
+          max-height: 70px;
+          width: auto;
+          max-width: 65%;
+          object-fit: contain;
+          mix-blend-mode: multiply;
+        }
 
         /* CHIPS */
         .app-chip {

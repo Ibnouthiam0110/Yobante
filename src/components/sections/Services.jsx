@@ -1,6 +1,8 @@
 // src/components/sections/Services.jsx
 import { useCallback } from "react";
 import React from "react";
+import rekLogo from "../../assets/images/Logo Yobante Rek.png";
+import boutiqueLogo from "../../assets/images/Logo Yobante Boutique.png";
 import {
   Mail, Package, Truck, ShoppingBag, ArrowRight,
   Shirt, Smartphone, Sparkles, Home, Footprints, Boxes,
@@ -172,6 +174,7 @@ const Services = ({ scrollTo }) => {
           {/* RIGHT promo expédition */}
           <div className="card-right promo-side">
             <div className="promo-box expedition-gradient">
+              <img src={rekLogo} alt="Yobanté Rek" className="promo-logo" />
               <p className="promo-desc expedition-desc">
                 Envoyez vos colis depuis la France vers le Sénégal avec collecte à domicile ou dépôt en point relais.
               </p>
@@ -188,6 +191,7 @@ const Services = ({ scrollTo }) => {
           {/* LEFT promo boutique */}
           <div className="card-right promo-side">
             <div className="promo-box boutique-gradient">
+              <img src={boutiqueLogo} alt="Yobanté Boutique" className="promo-logo" />
               <p className="promo-desc boutique-desc">
                 Achetez vos produits préférés à prix discount
               </p>
@@ -586,6 +590,15 @@ const Services = ({ scrollTo }) => {
 
         .expedition-gradient { background: #F5C518; }
         .boutique-gradient   { background: linear-gradient(135deg, #1E3A8A 0%, #152E70 100%); }
+
+        .promo-logo {
+          width: 150px;
+          height: auto;
+          border-radius: 20px;
+          object-fit: contain;
+          box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+          flex-shrink: 0;
+        }
 
         .promo-desc {
           font-size: 20px; line-height: 1.55;

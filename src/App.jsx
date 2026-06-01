@@ -14,10 +14,21 @@ import AboutSection from './components/sections/AboutSection';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    let lastY = window.scrollY;
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 20);
+      if (currentY > lastY && currentY > 80) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      lastY = currentY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,7 +58,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar scrolled={scrolled} scrollTo={scrollTo} />
+      <Navbar scrolled={scrolled} hidden={hidden} scrollTo={scrollTo} />
       <Hero scrollTo={scrollTo} />
       <TrustBar />
       <Services scrollTo={scrollTo} />

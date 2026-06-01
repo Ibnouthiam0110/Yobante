@@ -57,7 +57,7 @@ const Cta = ({ scrollTo }) => {
           position: relative;
           overflow: hidden;
           padding: 100px 0;
-          background: linear-gradient(135deg, #00BFFF 0%, #0099dd 100%);
+          background: linear-gradient(135deg, #0f1f52 0%, #1E3A8A 80%, #2a52c9 100%);
           text-align: center;
           color: white;
         }
