@@ -5,7 +5,9 @@ import rekLogo from "../../assets/images/Logo Yobante Rek.png";
 import boutiqueLogo from "../../assets/images/Logo Yobante Boutique.png";
 import {
   Mail, Package, Truck, ShoppingBag, ArrowRight,
-  Shirt, Smartphone, Sparkles, Home, Footprints, Boxes,
+  Baby, Wrench, PawPrint, GlassWater, Coffee, Wheat,
+  FlaskConical, Archive, Snowflake, Apple, Cookie,
+  SprayCan, Droplets, ShieldCheck,
 } from "lucide-react";
 
 const STEPS = [
@@ -53,7 +55,7 @@ const PRICING_PLANS = [
   {
     id: "colis20",
     icon: <Truck size={30} strokeWidth={1.5} color="#1E3A8A" />,
-    name: "Colis +10kg",
+    name: "Colis +20kg",
     price: "Devis",
     desc: "Gros colis, électroménagers, mobiliers...",
     features: ["Collecte à domicile"],
@@ -81,12 +83,21 @@ const BOUTIQUE_STEPS = [
 ];
 
 const CATEGORIES = [
-  { icon: <Shirt size={26} strokeWidth={1.5} color="white" />, label: "Mode & Textile" },
-  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />, label: "Électronique" },
-  { icon: <Sparkles size={26} strokeWidth={1.5} color="white" />, label: "Beauté & Soins" },
-  { icon: <Home size={26} strokeWidth={1.5} color="white" />, label: "Maison & Déco" },
-  { icon: <Footprints size={26} strokeWidth={1.5} color="white" />, label: "Chaussures" },
-  { icon: <Boxes size={26} strokeWidth={1.5} color="white" />, label: "Vente en gros" },
+  { icon: <Baby size={26} strokeWidth={1.5} color="white" />,        label: "Bébé" },
+  { icon: <Wrench size={26} strokeWidth={1.5} color="white" />,      label: "Dépannage" },
+  { icon: <PawPrint size={26} strokeWidth={1.5} color="white" />,    label: "Petfood & Animalerie" },
+  { icon: <GlassWater size={26} strokeWidth={1.5} color="white" />,  label: "Boissons" },
+  { icon: <Coffee size={26} strokeWidth={1.5} color="white" />,      label: "Petit-déj'" },
+  { icon: <Wheat size={26} strokeWidth={1.5} color="white" />,       label: "Boulangerie" },
+  { icon: <FlaskConical size={26} strokeWidth={1.5} color="white" />, label: "Huiles, Sauces & Épices" },
+  { icon: <Archive size={26} strokeWidth={1.5} color="white" />,     label: "Pâtes, Riz & Céréales" },
+  { icon: <Snowflake size={26} strokeWidth={1.5} color="white" />,   label: "Frais & Surgelés" },
+  { icon: <Apple size={26} strokeWidth={1.5} color="white" />,       label: "Fruits & Légumes" },
+  { icon: <Cookie size={26} strokeWidth={1.5} color="white" />,      label: "Snacking" },
+  { icon: <Archive size={26} strokeWidth={1.5} color="white" />,     label: "Conserves" },
+  { icon: <SprayCan size={26} strokeWidth={1.5} color="white" />,    label: "Entretien Maison" },
+  { icon: <Droplets size={26} strokeWidth={1.5} color="white" />,    label: "Hygiène & Beauté" },
+  { icon: <ShieldCheck size={26} strokeWidth={1.5} color="white" />, label: "Adulte" },
 ];
 
 const Services = ({ scrollTo }) => {
@@ -662,7 +673,7 @@ const Services = ({ scrollTo }) => {
 
         @media (max-width: 480px) {
           .section { padding: 64px 0; }
-          .categories-grid { grid-template-columns: 1fr; }
+          .categories-grid { grid-template-columns: repeat(2, 1fr); }
           .card-main-title { font-size: 24px; }
           .card-left { padding: 22px 16px; gap: 22px; }
           .promo-box { padding: 32px 22px; gap: 20px; }
