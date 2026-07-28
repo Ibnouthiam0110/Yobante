@@ -5,9 +5,10 @@ import rekLogo from "../../assets/images/Logo Yobante Rek.png";
 import boutiqueLogo from "../../assets/images/Logo Yobante Boutique.png";
 import {
   Mail, Package, Truck, ShoppingBag, ArrowRight,
-  Baby, Wrench, PawPrint, GlassWater, Coffee, Wheat,
-  FlaskConical, Archive, Snowflake, Apple, Cookie,
-  SprayCan, Droplets, ShieldCheck,
+  Tag, MapPin, Coffee, Shirt, UtensilsCrossed, Home,
+  Apple, Fish, Egg, Snowflake, Baby, Cookie, FlaskConical,
+  GlassWater, Wheat, SprayCan, Droplets, PawPrint,
+  Gamepad2, Smartphone, Laptop, Tv, Dumbbell,
 } from "lucide-react";
 
 const STEPS = [
@@ -83,21 +84,31 @@ const BOUTIQUE_STEPS = [
 ];
 
 const CATEGORIES = [
-  { icon: <Baby size={26} strokeWidth={1.5} color="white" />,        label: "Bébé" },
-  { icon: <Wrench size={26} strokeWidth={1.5} color="white" />,      label: "Dépannage" },
-  { icon: <PawPrint size={26} strokeWidth={1.5} color="white" />,    label: "Petfood & Animalerie" },
-  { icon: <GlassWater size={26} strokeWidth={1.5} color="white" />,  label: "Boissons" },
-  { icon: <Coffee size={26} strokeWidth={1.5} color="white" />,      label: "Petit-déj'" },
-  { icon: <Wheat size={26} strokeWidth={1.5} color="white" />,       label: "Boulangerie" },
-  { icon: <FlaskConical size={26} strokeWidth={1.5} color="white" />, label: "Huiles, Sauces & Épices" },
-  { icon: <Archive size={26} strokeWidth={1.5} color="white" />,     label: "Pâtes, Riz & Céréales" },
-  { icon: <Snowflake size={26} strokeWidth={1.5} color="white" />,   label: "Frais & Surgelés" },
-  { icon: <Apple size={26} strokeWidth={1.5} color="white" />,       label: "Fruits & Légumes" },
-  { icon: <Cookie size={26} strokeWidth={1.5} color="white" />,      label: "Snacking" },
-  { icon: <Archive size={26} strokeWidth={1.5} color="white" />,     label: "Conserves" },
-  { icon: <SprayCan size={26} strokeWidth={1.5} color="white" />,    label: "Entretien Maison" },
-  { icon: <Droplets size={26} strokeWidth={1.5} color="white" />,    label: "Hygiène & Beauté" },
-  { icon: <ShieldCheck size={26} strokeWidth={1.5} color="white" />, label: "Adulte" },
+  { icon: <Tag size={26} strokeWidth={1.5} color="white" />,            label: "Promotions" },
+  { icon: <MapPin size={26} strokeWidth={1.5} color="white" />,         label: "Produits Locaux" },
+  { icon: <Coffee size={26} strokeWidth={1.5} color="white" />,         label: "Cafés" },
+  { icon: <Shirt size={26} strokeWidth={1.5} color="white" />,          label: "Mode Locale" },
+  { icon: <UtensilsCrossed size={26} strokeWidth={1.5} color="white" />, label: "Traiteur" },
+  { icon: <Home size={26} strokeWidth={1.5} color="white" />,           label: "Mobilier & Déco" },
+  { icon: <Apple size={26} strokeWidth={1.5} color="white" />,          label: "Fruits & Légumes" },
+  { icon: <Fish size={26} strokeWidth={1.5} color="white" />,           label: "Viande & Poissons" },
+  { icon: <Egg size={26} strokeWidth={1.5} color="white" />,            label: "Crèmerie & Laitiers" },
+  { icon: <UtensilsCrossed size={26} strokeWidth={1.5} color="white" />, label: "Charcuterie" },
+  { icon: <Snowflake size={26} strokeWidth={1.5} color="white" />,      label: "Surgelés" },
+  { icon: <Baby size={26} strokeWidth={1.5} color="white" />,           label: "Bébé" },
+  { icon: <Cookie size={26} strokeWidth={1.5} color="white" />,         label: "Épicerie Sucrée" },
+  { icon: <FlaskConical size={26} strokeWidth={1.5} color="white" />,   label: "Épicerie Salée" },
+  { icon: <GlassWater size={26} strokeWidth={1.5} color="white" />,     label: "Boissons" },
+  { icon: <Wheat size={26} strokeWidth={1.5} color="white" />,          label: "Pains & Pâtisserie" },
+  { icon: <SprayCan size={26} strokeWidth={1.5} color="white" />,       label: "Entretien & Nettoyage" },
+  { icon: <Droplets size={26} strokeWidth={1.5} color="white" />,       label: "Hygiène & Beauté" },
+  { icon: <PawPrint size={26} strokeWidth={1.5} color="white" />,       label: "Animalerie" },
+  { icon: <Gamepad2 size={26} strokeWidth={1.5} color="white" />,       label: "Jeux Vidéo" },
+  { icon: <Smartphone size={26} strokeWidth={1.5} color="white" />,     label: "Smartphones & Connectés" },
+  { icon: <Laptop size={26} strokeWidth={1.5} color="white" />,         label: "Informatique & Bureau" },
+  { icon: <Tv size={26} strokeWidth={1.5} color="white" />,             label: "Image & Son" },
+  { icon: <Dumbbell size={26} strokeWidth={1.5} color="white" />,       label: "Sport" },
+  { icon: <ShoppingBag size={26} strokeWidth={1.5} color="white" />,    label: "Mode & Textile" },
 ];
 
 const Services = ({ scrollTo }) => {
