@@ -1,0 +1,92 @@
+name: Deploy Site Vitrine to VPS
+
+on:
+  push:
+    branches:
+      - main
+  # Permet de relancer un déploiement à la main depuis l'onglet Actions,
+  # sans avoir à pousser un commit vide.
+  workflow_dispatch:
+
+# Deux pushes rapprochés ne doivent pas déployer en parallèle : le second
+# annule le premier au lieu d'écrire par-dessus lui pendant le transfert.
+concurrency:
+  group: deploy-vitrine
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Le site n'a qu'une variable : la clé du formulaire de contact
+      # (Web3Forms). Elle est publique par nature — le formulaire l'envoie
+      # depuis le navigateur — mais on la garde en secret GitHub pour pouvoir
+      # la changer sans toucher au code. Si le secret n'est pas défini, le
+      # code retombe sur sa valeur par défaut.
+      - name: Write .env
+        run: |
+          echo "VITE_WEB3FORMS_KEY=${{ secrets.VITE_WEB3FORMS_KEY }}" > .env
+
+      - name: Build
+        run: npm run build
+
+      # Garde-fou : un build vide (échec silencieux) ne doit pas écraser le
+      # site en production.
+      - name: Vérifier le build
+        run: test -f dist/index.html && test -d dist/assets
+
+      # Le dossier cible peut ne pas exister au tout premier déploiement.
+      - name: Préparer le dossier cible
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            mkdir -p /var/www/yobante-site
+
+      - name: Deploy dist/ to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "dist/*"
+          target: "/var/www/yobante-site"
+          strip_components: 1
+          overwrite: true
+
+      # Les fichiers arrivent en root ; nginx (www-data) doit pouvoir les lire.
+      - name: Corriger les droits
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            chown -R www-data:www-data /var/www/yobante-site
+            find /var/www/yobante-site -type d -exec chmod 755 {} \;
+            find /var/www/yobante-site -type f -exec chmod 644 {} \;
+
+      - name: Verify deployment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            curl -f -I https://yobanterek.com || exit 1
