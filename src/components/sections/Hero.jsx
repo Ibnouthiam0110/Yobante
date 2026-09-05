@@ -51,7 +51,7 @@ const Hero = ({ scrollTo }) => {
       id: 2,
       title: "Achetez vos marques préférées à prix discount !",
       buttonText: "Explorer",
-      buttonLink: "apps",
+      buttonLink: "app-boutique",
       image: deliveryPhone,
       bgColor: "#1E3A8A",
       textColor: "#ffffff",

@@ -75,7 +75,7 @@ const Contact = () => {
                 <div className="contact-icon"><Mail size={22} strokeWidth={1.5} color="#1e3a8a" /></div>
                 <div className="contact-text">
                   <strong>Email</strong>
-                  <a href="mailto:yobante@gmail.com">yobante@gmail.com</a>
+                  <a href="mailto:contact@yobanterek.com">contact@yobanterek.com</a>
                 </div>
               </div>
 
@@ -133,8 +133,8 @@ const Contact = () => {
               <div className="form-group">
                 <select name="sujet" value={formData.sujet} onChange={handleChange} required>
                   <option value="" disabled hidden>Sélectionner un sujet</option>
-                  <option value="Demande de devis - Colis -10kg">Demande de devis - Colis -10kg</option>
-                  <option value="Demande de devis - Colis +10kg">Demande de devis - Colis +10kg</option>
+                  <option value="Demande de devis - Colis -30 kilos">Demande de devis - Colis -30 kilos</option>
+                  <option value="Demande de devis - Gros colis">Demande de devis - Gros colis</option>
                   <option value="Envoi de documents">Envoi de documents</option>
                   <option value="Boutique en ligne">Boutique en ligne</option>
                   <option value="Autres">Autres</option>

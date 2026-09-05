@@ -24,7 +24,7 @@ export const siteContent = {
     { num: "04", title: "Livraison à domicile", description: "Votre destinataire reçoit son colis à l'adresse indiquée." }
   ],
   pricing: {
-    note: "Pour les colis de moins de 10 kg et plus de 10 kg, un devis vous est envoyé sous 24h après soumission de votre demande.",
+    note: "Pour les colis de moins de 30 kilos et les gros colis, un devis vous est envoyé sous 24h après soumission de votre demande.",
     plans: [
       { 
         name: "Documents", 
@@ -35,20 +35,20 @@ export const siteContent = {
         features: ["Documents, courriers, enveloppes", "Poids inférieur à 500g",  "Livraison à domicile"] 
       },
       { 
-        name: "Colis -10kg", 
+        name: "Colis -30 kilos",
         description: "Vêtements, chaussures, électronique légère", 
         price: "Devis", 
         unit: "sous 24h", 
         popular: true, 
-        features: ["Jusqu'à 10 kg", "Devis personnalisé rapide", "Paiement via l'application",  "Assurance incluse", "Livraison prioritaire"] 
+        features: ["Jusqu'à 30 kilos", "Devis personnalisé rapide", "Paiement via l'application",  "Assurance incluse", "Livraison prioritaire"]
       },
       { 
-        name: "Colis +10kg", 
+        name: "Gros colis",
         description: "Gros envois, électroménagers, meubles", 
         price: "Devis", 
         unit: "sous 24h", 
         popular: false, 
-        features: ["Plus de 10 kg", "Devis personnalisé détaillé", "Collecte à domicile incluse", "Assurance premium", "Gestionnaire dédié"] 
+        features: ["Plus de 20 kilos", "Devis personnalisé détaillé", "Collecte à domicile incluse", "Assurance premium", "Gestionnaire dédié"]
       }
     ]
   },
@@ -68,13 +68,13 @@ export const siteContent = {
   ],
   faq: [
     { q: "Quels objets puis-je envoyer ?", a: "Vous pouvez envoyer des documents, vêtements, chaussures, produits alimentaires non périssables, appareils électroniques, cosmétiques, jouets, médicaments (avec ordonnance). Les produits inflammables, armes, et périssables sont interdits." },
-    { q: "Comment obtenir un devis pour mon colis ?", a: "Pour les colis (moins de 10 kg ou plus de 10 kg), remplissez le formulaire de contact en indiquant le poids estimé et la nature des objets. Nous vous répondons sous 24 heures avec un tarif personnalisé." },
+    { q: "Comment obtenir un devis pour mon colis ?", a: "Pour les colis de moins de 30 kilos ou les gros colis, remplissez le formulaire de contact en indiquant le poids estimé et la nature des objets. Nous vous répondons sous 24 heures avec un tarif personnalisé." },
     { q: "Quel est le délai de livraison ?", a: "Le délai standard est de 7 à 14 jours ouvrés depuis la France vers le Sénégal. Les délais peuvent varier selon les douanes et la destination exacte." },
     { q: "Comment suivre mon colis ?", a: "Dès la prise en charge. Utilisez-le directement depuis l'application YOBANTÉ Expédition." },
     { q: "Le paiement en ligne est-il sécurisé ?", a: "Oui, le paiement est entièrement sécurisé via notre application. Nous utilisons des protocoles de chiffrement standard pour protéger vos données bancaires." }
   ],
   contact: {
-    email: "contact@yobante.com",
+    email: "contact@yobanterek.com",
     whatsapp: "+33 6 00 00 00 00",
     availability: "Lundi – Samedi · 8h00 – 20h00"
   },

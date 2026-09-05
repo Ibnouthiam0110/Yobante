@@ -58,7 +58,7 @@ const Applications = () => {
         {/* CARDS */}
         <div className="apps-grid">
           {appsData.map((app, i) => (
-            <div key={app.id} className={`app-card sr sr-d${i + 1}`}>
+            <div id={`app-${app.id}`} key={app.id} className={`app-card sr sr-d${i + 1}`}>
               <div className="card-glow"></div>
 
               <div className="card-inner">
@@ -177,6 +177,15 @@ const Applications = () => {
         .app-card:hover {
           box-shadow: 0 20px 56px rgba(30,58,138,.15);
           transform: translateY(-6px);
+        }
+
+        .app-card.scroll-target {
+          animation: app-card-focus 60s ease-out;
+        }
+
+        @keyframes app-card-focus {
+          0%, 15% { box-shadow: 0 0 0 5px rgba(245,197,24,.75), 0 20px 56px rgba(30,58,138,.22); }
+          100% { box-shadow: 0 8px 40px rgba(30,58,138,.08); }
         }
 
         .card-inner {

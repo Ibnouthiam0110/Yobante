@@ -52,7 +52,10 @@ function App() {
   const scrollTo = (id) => {
     const element = document.getElementById(id);
     if (element) {
+      element.classList.remove('scroll-target');
       element.scrollIntoView({ behavior: 'smooth' });
+      requestAnimationFrame(() => element.classList.add('scroll-target'));
+      window.setTimeout(() => element.classList.remove('scroll-target'), 60000);
     }
   };
 

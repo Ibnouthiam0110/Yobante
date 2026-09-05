@@ -46,17 +46,17 @@ const PRICING_PLANS = [
   {
     id: "colis10",
     icon: <Package size={30} strokeWidth={1.5} color="#1E3A8A" />,
-    name: "Colis -10kg",
+    name: "Colis -30 kilos",
     price: "Devis",
     desc: "Vêtements, chaussures, Électronique légère...",
-    features: ["Jusqu'à 10 kg"],
+    features: ["Jusqu'à 30 kilos"],
     button: "Obtenir un devis",
     type: "popular"
   },
   {
     id: "colis20",
     icon: <Truck size={30} strokeWidth={1.5} color="#1E3A8A" />,
-    name: "Colis +20kg",
+    name: "Gros colis",
     price: "Devis",
     desc: "Gros colis, électroménagers, mobiliers...",
     features: ["Collecte à domicile"],
@@ -200,7 +200,7 @@ const Services = ({ scrollTo }) => {
               <p className="promo-desc expedition-desc">
                 Envoyez vos colis depuis la France vers le Sénégal avec collecte à domicile ou dépôt en point relais.
               </p>
-              <button className="promo-btn expedition-btn" onClick={handleClick}>
+              <button className="promo-btn expedition-btn" onClick={() => scrollTo("app-expedition")}>
                 En savoir plus →
               </button>
             </div>
@@ -217,7 +217,7 @@ const Services = ({ scrollTo }) => {
               <p className="promo-desc boutique-desc">
                 Achetez vos produits préférés à prix discount
               </p>
-              <button className="promo-btn boutique-btn" onClick={() => scrollTo("apps")}>
+              <button className="promo-btn boutique-btn" onClick={() => scrollTo("app-boutique")}>
                 Explorer nos rayons
               </button>
             </div>
