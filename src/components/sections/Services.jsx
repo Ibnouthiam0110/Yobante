@@ -208,7 +208,7 @@ const Services = ({ scrollTo }) => {
         </div>
 
         {/* ===== BOUTIQUE ===== */}
-        <div className="service-card-wrapper boutique-wrapper glass-card sr" style={{ marginTop: "60px" }}>
+        <div id="app-boutique" className="service-card-wrapper boutique-wrapper glass-card sr" style={{ marginTop: "60px" }}>
 
           {/* LEFT promo boutique */}
           <div className="card-right promo-side">
