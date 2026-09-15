@@ -130,7 +130,7 @@ const Navbar = ({ scrolled, hidden, scrollTo }) => {
         }
 
         .logo-img {
-          height: 72px;
+          height: 38px;
           width: auto;
           object-fit: contain;
         }
@@ -293,7 +293,7 @@ const Navbar = ({ scrolled, hidden, scrollTo }) => {
           }
 
           .logo-img {
-            height: 54px;
+            height: 34px;
             width: auto;
           }
         }
@@ -310,7 +310,7 @@ const Navbar = ({ scrolled, hidden, scrollTo }) => {
           }
 
           .logo-img {
-            height: 48px;
+            height: 30px;
             width: auto;
           }
 
